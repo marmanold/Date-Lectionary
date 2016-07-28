@@ -1,4 +1,4 @@
-use 5.006;
+use v5.22;
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
@@ -8,18 +8,24 @@ WriteMakefile(
     AUTHOR           => q{Michael Wayne Arnold <marmanold@cpan.org>},
     VERSION_FROM     => 'lib/Date/Lectionary.pm',
     ABSTRACT_FROM    => 'lib/Date/Lectionary.pm',
-    LICENSE          => 'artistic_2',
+    LICENSE          => 'perl_5',
     PL_FILES         => {},
-    MIN_PERL_VERSION => 5.006,
+    MIN_PERL_VERSION => 5.022000,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
     },
     BUILD_REQUIRES => {
-        'Test::More' => 0,
+        'Test::More' => '1.302040',
+        'Test::CheckManifest' => '0.9',
+        'Test::Exception' => '0.43', 
     },
     PREREQ_PM => {
-        #'ABC'              => 1.6,
-        #'Foo::Bar::Module' => 5.0401,
+        'Carp' => '1.38', 
+        'Try::Tiny' => '0.24', 
+        'Time::Piece' => '1.31',
+        'Moose' => '2.1804', 
+        'Date::Advent' => '1.20160727',
+        'Date::Lectionary::Time' => '1.20160727', 
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Date-Lectionary-*' },
