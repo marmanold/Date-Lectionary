@@ -7,6 +7,7 @@ use warnings;
 use Moose;
 use Carp;
 use Try::Tiny;
+use Time::Piece;
 use Date::Advent;
 use Date::Lectionary::Time qw(nextSunday prevSunday);
 use namespace::autoclean;
@@ -17,11 +18,11 @@ Date::Lectionary - The great new Date::Lectionary!
 
 =head1 VERSION
 
-Version 1.20160727
+Version 1.20160729
 
 =cut
 
-our $VERSION = '1.20160727';
+our $VERSION = '1.20160731';
 
 
 =head1 SYNOPSIS
@@ -41,6 +42,57 @@ A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
+
+=cut
+
+has 'date' => (
+	is			=> 'ro', 
+	isa			=> 'Time::Piece',
+	required 	=> 1
+);
+
+has 'year' => (
+	is 			=> 'ro', 
+	isa 		=> 'Str',
+	builder 	=> '_build_year', 
+	lazy 		=> 1,
+);
+
+has 'advent' => (
+	is 			=> 'ro', 
+	isa			=> 'Date::Advent', 
+	init_arg 	=> undef,
+	writer 		=> '_setAdvent', 
+);
+
+sub BUILD {
+	my $self = shift;
+
+	try{
+		$self->_setAdvent(Date::Advent->new(date => $self->date));
+	}
+	catch{
+		confess "Could not calculate Advent for the given date [". $self->date->ymd ."].";
+	}
+}
+
+sub _build_year {
+	my $self = shift;
+	
+	my $calYear = $self->advent->firstSunday->year;
+
+	if ($calYear%3 == 0) {
+		return 'A';
+	}
+	elsif (($calYear-1)%3 == 0) {
+		return 'B';
+	}
+	elsif (($calYear-2)%3 == 0) {
+		return 'C';
+	}
+
+	return undef;
+}
 
 =head1 AUTHOR
 

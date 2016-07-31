@@ -26,6 +26,7 @@ WriteMakefile(
         'Moose' => '2.1804', 
         'Date::Advent' => '1.20160727',
         'Date::Lectionary::Time' => '1.20160727', 
+        'namespace::autoclean' => '0.28',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Date-Lectionary-*' },
