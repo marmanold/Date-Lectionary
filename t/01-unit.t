@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests=>5;
+use Test::More tests=>6;
 use Test::Exception;
 
 use Time::Piece;
@@ -34,6 +34,13 @@ is(
 	$lectYearA2->year, 
 	'A', 
 	'Test the liturgical cycle year for December 31, 2013.  It should be year A.'
+);
+
+my $lectYearA3 = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-12-31", "%Y-%m-%d"));
+is(
+	$lectYearA3->year, 
+	'A', 
+	'Test the liturgical cycle year for December 31, 2016.  It should be year A.'
 );
 
 my $lectYearC2 = Date::Lectionary->new('date'=>Time::Piece->strptime("2013-11-01", "%Y-%m-%d"));
