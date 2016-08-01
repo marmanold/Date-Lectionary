@@ -10,7 +10,9 @@ use Try::Tiny;
 use Time::Piece;
 use Date::Advent;
 use Date::Lectionary::Time qw(nextSunday prevSunday);
+use Date::Lectionary::Reading;
 use namespace::autoclean;
+use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
@@ -18,7 +20,7 @@ Date::Lectionary - The great new Date::Lectionary!
 
 =head1 VERSION
 
-Version 1.20160729
+Version 1.20160731
 
 =cut
 
@@ -41,6 +43,11 @@ Perhaps a little code snippet.
 A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
 
+=cut
+
+enum 'litCycleYear', [qw(A B C)];
+no Moose::Util::TypeConstraints;
+
 =head1 SUBROUTINES/METHODS
 
 =cut
@@ -48,38 +55,58 @@ if you don't export anything, such as for a purely object-oriented module.
 has 'date' => (
 	is			=> 'ro', 
 	isa			=> 'Time::Piece',
-	required 	=> 1
+	required 	=> 1,
+);
+
+has 'day' => (
+	is 			=> 'ro', 
+	isa 		=> 'Str',
+	writer 		=> '_setDay', 
+	init_arg 	=> undef,
 );
 
 has 'year' => (
 	is 			=> 'ro', 
-	isa 		=> 'Str',
-	builder 	=> '_build_year', 
-	lazy 		=> 1,
+	isa 		=> 'litCycleYear',
+	writer 		=> '_setYear', 
+	init_arg	=> undef,
 );
 
-has 'advent' => (
+has 'readings' => (
 	is 			=> 'ro', 
-	isa			=> 'Date::Advent', 
-	init_arg 	=> undef,
-	writer 		=> '_setAdvent', 
+	isa 		=> 'ArrayRef[Date::Lectionary::Reading]',
+	writer 		=> '_setReadings', 
+	init_arg 	=> undef, 
 );
 
 sub BUILD {
 	my $self = shift;
 
+	my $advent = _buildAdvent($self->date);
+
+	$self->_setYear(_determineYear($advent->firstSunday->year));
+
+	$self->_setDay(_determineDay($self->date));
+
+	$self->_setReadings(_buildReadings());
+}
+
+sub _buildAdvent {
+	my $date = shift;
+
+	my $advent = undef;
+
 	try{
-		$self->_setAdvent(Date::Advent->new(date => $self->date));
+		$advent = Date::Advent->new(date => $date);
+		return $advent;
 	}
 	catch{
-		confess "Could not calculate Advent for the given date [". $self->date->ymd ."].";
+		confess "Could not calculate Advent for the given date [". $date->ymd ."].";
 	}
 }
 
-sub _build_year {
-	my $self = shift;
-	
-	my $calYear = $self->advent->firstSunday->year;
+sub _determineYear {
+	my $calYear = shift;
 
 	if ($calYear%3 == 0) {
 		return 'A';
@@ -92,6 +119,20 @@ sub _build_year {
 	}
 
 	return undef;
+}
+
+sub _buildReadings {
+	my @readings;
+
+	push(@readings, Date::Lectionary::Reading->new(book=>'Gen', begin=>'1:1', end=>'1:5'));
+
+	return \@readings;
+}
+
+sub _determineDay {
+	my $date = shift;
+
+	return 'Christmas';
 }
 
 =head1 AUTHOR

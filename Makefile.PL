@@ -24,6 +24,7 @@ WriteMakefile(
         'Try::Tiny' => '0.24', 
         'Time::Piece' => '1.31',
         'Moose' => '2.1804', 
+        'Moose::Util::TypeConstraints' => '2.1804', 
         'Date::Advent' => '1.20160727',
         'Date::Lectionary::Time' => '1.20160727', 
         'namespace::autoclean' => '0.28',
