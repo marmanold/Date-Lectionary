@@ -22,11 +22,11 @@ Date::Lectionary - The great new Date::Lectionary!
 
 =head1 VERSION
 
-Version 1.20160731
+Version 1.20160807
 
 =cut
 
-our $VERSION = '1.20160731';
+our $VERSION = '1.20160807';
 
 
 =head1 SYNOPSIS
@@ -175,6 +175,43 @@ sub _determineHolyWeek {
 	$dateMark = $dateMark - ONE_DAY;
 	if ($date == $dateMark) {
 		return "Monday in Holy Week";
+	}
+
+	return undef;
+}
+
+sub _determineEasterWeek {
+	my $date = shift;
+	my $easter = shift;
+
+	my $dateMark = $easter + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Monday of Easter Week";
+	}
+
+	$dateMark = $dateMark + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Tuesday of Easter Week";
+	}
+
+	$dateMark = $dateMark + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Wednesday of Easter Week";
+	}
+
+	$dateMark = $dateMark + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Thursday of Easter Week";
+	}
+
+	$dateMark = $dateMark + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Friday of Easter Week";
+	}
+
+	$dateMark = $dateMark + ONE_DAY;
+	if ($date == $dateMark) {
+		return "Saturday of Easter Week";
 	}
 
 	return undef;
@@ -402,6 +439,10 @@ sub _determineDay {
 	#Holy Week
 	my $holyWeekDay = _determineHolyWeek($date, $easter);
 	if ($holyWeekDay) {return $holyWeekDay;}
+
+	#Easter WEek
+	my $easterWeekDay = _determineEasterWeek($date, $easter);
+	if ($easterWeekDay) {return $easterWeekDay;}
 
 	#Fixed celebrations
 	my $fixedDay = _buildFixedDays($date);

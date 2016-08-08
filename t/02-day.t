@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests=>4;
+use Test::More tests=>5;
 use Test::Exception;
 
 use Time::Piece;
@@ -34,4 +34,11 @@ is(
 	$holySat->day,
 	'Holy Saturday', 
 	'Ensure that March 26, 2016 is Holy Saturday'
+);
+
+my $easterTuesday = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-03-29", "%Y-%m-%d"));
+is(
+	$easterTuesday->day,
+	'Tuesday of Easter Week', 
+	'Ensure that March 29, 2016 is Tuesday of Easter Week'
 );
