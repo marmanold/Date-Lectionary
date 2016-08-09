@@ -74,6 +74,6 @@ is(
 my $regularDay = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-11-19", "%Y-%m-%d"));
 is(
 	$regularDay->day,
-	'Christ the King',
-	'Ensure that November 19, 2016 is Christ the King'
+	'Christ the King [2016-11-20]',
+	'Ensure that November 19, 2016 is Christ the King [2016-11-20]'
 );
