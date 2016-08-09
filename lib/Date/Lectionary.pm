@@ -55,37 +55,37 @@ no Moose::Util::TypeConstraints;
 =cut
 
 has 'date' => (
-	is			=> 'ro', 
+	is			=> 'ro',
 	isa			=> 'Time::Piece',
 	required 	=> 1,
 );
 
 has 'day' => (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'Str',
-	writer 		=> '_setDay', 
+	writer 		=> '_setDay',
 	init_arg 	=> undef,
 );
 
 has 'year' => (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'litCycleYear',
-	writer 		=> '_setYear', 
+	writer 		=> '_setYear',
 	init_arg	=> undef,
 );
 
 has 'readings' => (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'ArrayRef[Date::Lectionary::Reading]',
-	writer 		=> '_setReadings', 
-	init_arg 	=> undef, 
+	writer 		=> '_setReadings',
+	init_arg 	=> undef,
 );
 
 sub BUILD {
 	my $self = shift;
 
-	my $advent = _buildAdvent($self->date);
-	my $easter = _buildEaster($advent->firstSunday->year+1);
+	my $advent = _determineAdvent($self->date);
+	my $easter = _determineEaster($advent->firstSunday->year+1);
 
 	$self->_setYear(_determineYear($advent->firstSunday->year));
 
@@ -94,7 +94,7 @@ sub BUILD {
 	$self->_setReadings(_buildReadings());
 }
 
-sub _buildAdvent {
+sub _determineAdvent {
 	my $date = shift;
 
 	my $advent = undef;
@@ -108,7 +108,7 @@ sub _buildAdvent {
 	}
 }
 
-sub _buildEaster {
+sub _determineEaster {
 	my $easterYear = shift;
 
 	my $easter = undef;
@@ -140,6 +140,36 @@ sub _determineAshWednesday {
 	}
 	catch{
 		confess "Could not calculate Ash Wednesday for Easter [". $easter->ymd ."].";
+	}
+}
+
+sub _determineAscension {
+	my $easter = shift;
+
+	my $ascension = undef;
+
+	try{
+		my $secondsToAdd = 39 * ONE_DAY;
+		$ascension = $easter + $secondsToAdd;
+		return $ascension;
+	}
+	catch{
+		confess "Could not calculate Ascension for Easter [". $easter->ymd ."].";
+	}
+}
+
+sub _determinePentecost {
+	my $easter = shift;
+
+	my $pentecost = undef;
+
+	try{
+		my $secondsToAdd = 49 * ONE_DAY;
+		$pentecost = $easter + $secondsToAdd;
+		return $pentecost;
+	}
+	catch{
+		confess "Could not calculate Pentecost for Easter [". $easter->ymd ."].";
 	}
 }
 
@@ -217,57 +247,77 @@ sub _determineEasterWeek {
 	return undef;
 }
 
-
 sub _buildFixedDays {
 	my $date = shift;
 
 	#Fixed holidays in January
 	if($date->mon == 1) {
-
+		if($date->mday == 1) { return "Holy Name"; }
+		if($date->mday == 6) { return "The Epiphany"; }
+		if($date->mday == 18) { return "Confession of St. Peter"; }
+		if($date->mday == 25) { return "Conversion of St. Paul"; }
 	}
 	#Fixed holidays in February
 	elsif($date->mon == 2) {
-
+		if($date->mday == 2) { return "The Presentation of Christ in the Temple"; }
+		if($date->mday == 24) { return "St. Matthias"; }
 	}
 	#Fixed holidays in March
 	elsif($date->mon == 3) {
-
+		if($date->mday == 19) { return "St. Joseph"; }
+		if($date->mday == 25) { return "The Annunciation"; }
 	}
 	#Fixed holidays in April
 	elsif($date->mon == 4) {
-
+		if($date->mday == 25) { return "St. Mark"; }
 	}
 	#Fixed holidays in May
 	elsif($date->mon == 5) {
-
+		if($date->mday == 1) { return "St. Philip & St. James"; }
+		if($date->mday == 31) { return "The Visitation"; }
 	}
 	#Fixed holidays in June
 	elsif($date->mon == 6) {
-
+		if($date->mday == 11) { return "St. Barnabas"; }
+		if($date->mday == 24) { return "Nativity of St. John the Baptist"; }
+		if($date->mday == 29) { return "St. Peter & St. Paul"; }
 	}
 	#Fixed holidays in July
 	elsif($date->mon == 7) {
-
+		if($date->mday == 1) { return "Dominion Day"; }
+		if($date->mday == 4) { return "Independence Day"; }
+		if($date->mday == 22) { return "St. Mary of Magdala"; }
+		if($date->mday == 25) { return "St. James"; }
 	}
 	#Fixed holidays in August
 	elsif($date->mon == 8) {
-
+		if($date->mday == 6) { return "The Transfiguration"; }
+		if($date->mday == 15) { return "St. Mary the Virgin"; }
+		if($date->mday == 24) { return "St. Bartholomew"; }
 	}
 	#Fixed holidays in September
 	elsif($date->mon == 9) {
-
+		if($date->mday == 14) { return "Holy Cross Day"; }
+		if($date->mday == 21) { return "St. Matthew"; }
+		if($date->mday == 29) { return "Holy Michael & All Angels"; }
 	}
 	#Fixed holidays in October
 	elsif($date->mon == 10) {
-
+		if($date->mday == 18) { return "St. Luke"; }
+		if($date->mday == 28) { return "St. Simon & St. Jude"; }
 	}
 	#Fixed holidays in November
 	elsif($date->mon == 11) {
-
+		if($date->mday == 1) { return "All Saint's Day"; }
+		if($date->mday == 30) { return "St. Andrew"; }
 	}
 	#Fixed holidays in December
 	elsif($date->mon == 12) {
-		if ($date->mday == 25) { return "Christmas Day";}
+		if($date->mday == 21) { return "St. Thomas"; }
+		if($date->mday == 25) { return "Christmas Day"; }
+		if($date->mday == 26) { return "St. Stephen"; }
+		if($date->mday == 27) { return "St. John"; }
+		if($date->mday == 28) { return "Holy Innocents"; }
 	}
 	else {
 		confess "Date [". $date->ymd . "] is not a known or valid date.";
@@ -339,7 +389,7 @@ sub _determineChristmasEpiphany {
 	croak "There are no further Sundays of Christmastide or Epiphany.";
 }
 
-sub _determineLentHolyWeek {
+sub _determineLent {
 	my $date = shift;
 	my $ashWednesday = shift;
 
@@ -379,6 +429,36 @@ sub _determineLentHolyWeek {
 	}
 
 	croak "There are no further Sundays in Lent";
+}
+
+sub _determineEasterSeason {
+	my $date = shift;
+	my $easter = shift;
+
+	my $dateMarker = nextSunday($easter);
+	if ($date == $dateMarker) {
+		return "The Second Sunday of Easter";
+	}
+
+	$dateMarker = nextSunday($dateMarker);
+	if ($date == $dateMarker) {
+		return "The Third Sunday of Easter";
+	}
+
+	$dateMarker = nextSunday($dateMarker);
+	if ($date == $dateMarker) {
+		return "The Fourth Sunday of Easter";
+	}
+
+	$dateMarker = nextSunday($dateMarker);
+	if ($date == $dateMarker) {
+		return "The Fifth Sunday of Easter";
+	}
+
+	$dateMarker = nextSunday($dateMarker);
+	if ($date == $dateMarker) {
+		return "The Sixth Sunday of Easter";
+	}
 }
 
 sub _determineYear {
@@ -440,9 +520,21 @@ sub _determineDay {
 	my $holyWeekDay = _determineHolyWeek($date, $easter);
 	if ($holyWeekDay) {return $holyWeekDay;}
 
-	#Easter WEek
+	#Easter Week
 	my $easterWeekDay = _determineEasterWeek($date, $easter);
 	if ($easterWeekDay) {return $easterWeekDay;}
+
+	#Ascension is 40 days after Easter
+	my $ascension = _determineAscension($easter);
+	if ($date == $ascension) {
+		return "Ascension Day";
+	}
+
+	#Pentecost is 50 days after Easter
+	my $pentecost = _determinePentecost($easter);
+	if ($date == $pentecost) {
+		return "Pentecost";
+	}
 
 	#Fixed celebrations
 	my $fixedDay = _buildFixedDays($date);
