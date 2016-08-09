@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests=>7;
+use Test::More tests=>10;
 use Test::Exception;
 
 use Time::Piece;
@@ -55,4 +55,25 @@ is(
 	$pentecost->day,
 	'Pentecost',
 	'Ensure that May 15, 2016 is Pentecost'
+);
+
+my $st_luke = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-10-18", "%Y-%m-%d"));
+is(
+	$st_luke->day,
+	'St. Luke',
+	'Ensure that October 10, 2016 is St. Luke'
+);
+
+my $christTheKing = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-11-20", "%Y-%m-%d"));
+is(
+	$christTheKing->day,
+	'Christ the King',
+	'Ensure that November 20, 2016 is Christ the King'
+);
+
+my $regularDay = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-11-19", "%Y-%m-%d"));
+is(
+	$regularDay->day,
+	'Christ the King',
+	'Ensure that November 19, 2016 is Christ the King'
 );

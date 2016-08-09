@@ -11,7 +11,7 @@ use Time::Piece;
 use Time::Seconds;
 use Date::Advent;
 use Date::Easter;
-use Date::Lectionary::Time qw(nextSunday prevSunday);
+use Date::Lectionary::Time qw(nextSunday prevSunday closestSunday);
 use Date::Lectionary::Reading;
 use namespace::autoclean;
 use Moose::Util::TypeConstraints;
@@ -22,11 +22,11 @@ Date::Lectionary - The great new Date::Lectionary!
 
 =head1 VERSION
 
-Version 1.20160807
+Version 1.20160809
 
 =cut
 
-our $VERSION = '1.20160807';
+our $VERSION = '1.20160809';
 
 
 =head1 SYNOPSIS
@@ -55,28 +55,28 @@ no Moose::Util::TypeConstraints;
 =cut
 
 has 'date' => (
-	is			=> 'ro',
-	isa			=> 'Time::Piece',
+	is				=> 'ro',
+	isa				=> 'Time::Piece',
 	required 	=> 1,
 );
 
 has 'day' => (
-	is 			=> 'ro',
-	isa 		=> 'Str',
+	is 				=> 'ro',
+	isa 			=> 'Str',
 	writer 		=> '_setDay',
 	init_arg 	=> undef,
 );
 
 has 'year' => (
-	is 			=> 'ro',
-	isa 		=> 'litCycleYear',
+	is 				=> 'ro',
+	isa 			=> 'litCycleYear',
 	writer 		=> '_setYear',
 	init_arg	=> undef,
 );
 
 has 'readings' => (
-	is 			=> 'ro',
-	isa 		=> 'ArrayRef[Date::Lectionary::Reading]',
+	is 				=> 'ro',
+	isa 			=> 'ArrayRef[Date::Lectionary::Reading]',
 	writer 		=> '_setReadings',
 	init_arg 	=> undef,
 );
@@ -459,6 +459,155 @@ sub _determineEasterSeason {
 	if ($date == $dateMarker) {
 		return "The Sixth Sunday of Easter";
 	}
+
+	croak "There are no further Sundays of Easter.";
+}
+
+sub _determineOrdinary {
+	my $date = shift;
+	my $pentecost = shift;
+
+	my $trinitySunday = nextSunday($pentecost);
+	if ($date == $trinitySunday) {
+		return "Trinity Sunday";
+	}
+
+	my $dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-05-25", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 8";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-06-01", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 9";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-06-08", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 10";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-06-15", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 11";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-06-22", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 12";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-06-29", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 13";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-07-06", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 14";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-07-13", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 15";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-07-20", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 16";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-07-27", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 17";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-08-03", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 18";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-08-10", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 19";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-08-17", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 20";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-08-24", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 21";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-08-31", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 22";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-09-07", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 23";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-09-14", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 24";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-09-21", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 25";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-09-28", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 26";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-10-05", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 27";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-10-12", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 28";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-10-19", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 29";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-10-26", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 30";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-11-02", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 31";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-11-09", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 32";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-11-16", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Ordinary 33";
+	}
+
+	$dateMarker = closestSunday(Time::Piece->strptime($pentecost->year . "-11-23", "%Y-%m-%d"));
+	if ($date == $dateMarker) {
+		return "Christ the King";
+	}
+
+	croak "There are no further Sundays of Ordinary Time.";
 }
 
 sub _determineYear {
@@ -540,9 +689,11 @@ sub _determineDay {
 	my $fixedDay = _buildFixedDays($date);
 	if ($fixedDay) {return $fixedDay;}
 
+	#If the date isn't a Sunday and we've determined it is not a fixed holiday
+	#move the date to the upcoming Sunday and determine readings for that day.
 	if($date->wday!=1) {
 		my $nextSunday = nextSunday($date);
-		$date = $nextSunday;
+		return _determineDay($nextSunday, $advent, $easter) . " [".$nextSunday->ymd."]";
 	}
 
 	#Sundays of the Liturgical Year
@@ -552,6 +703,14 @@ sub _determineDay {
 
 	if($date < $easter) {
 		return _determineLent($date, $ashWednesday);
+	}
+
+	if ($date > $easter && $date < $pentecost) {
+		return _determineEasterSeason($date, $easter);
+	}
+
+	if ($date > $pentecost) {
+		return _determineOrdinary($date, $pentecost);
 	}
 }
 
