@@ -1,6 +1,6 @@
 =head1 NAME
 
-Date::Lectionary::Time
+Date::Lectionary
 
 =head1 SYNOPSIS
 
