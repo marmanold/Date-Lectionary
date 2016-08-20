@@ -75,6 +75,12 @@ has 'readings' => (
 	init_arg 	=> undef,
 );
 
+=head2 BUILD
+
+Constructor for the Date::Lectionary object.  Takes a Time::Piect object, date, to create the object.
+
+=cut
+
 sub BUILD {
 	my $self = shift;
 
