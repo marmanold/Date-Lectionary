@@ -94,6 +94,30 @@ sub BUILD {
 	$self->_setReadings(_buildReadings());
 }
 
+sub _determineYear {
+	my $calYear = shift;
+
+	if ($calYear%3 == 0) {
+		return 'A';
+	}
+	elsif (($calYear-1)%3 == 0) {
+		return 'B';
+	}
+	elsif (($calYear-2)%3 == 0) {
+		return 'C';
+	}
+
+	return undef;
+}
+
+sub _buildReadings {
+	my @readings;
+
+	push(@readings, Date::Lectionary::Reading->new(book=>'Gen', begin=>'1:1', end=>'1:5'));
+
+	return \@readings;
+}
+
 sub _determineAdvent {
 	my $date = shift;
 
@@ -608,30 +632,6 @@ sub _determineOrdinary {
 	}
 
 	croak "There are no further Sundays of Ordinary Time.";
-}
-
-sub _determineYear {
-	my $calYear = shift;
-
-	if ($calYear%3 == 0) {
-		return 'A';
-	}
-	elsif (($calYear-1)%3 == 0) {
-		return 'B';
-	}
-	elsif (($calYear-2)%3 == 0) {
-		return 'C';
-	}
-
-	return undef;
-}
-
-sub _buildReadings {
-	my @readings;
-
-	push(@readings, Date::Lectionary::Reading->new(book=>'Gen', begin=>'1:1', end=>'1:5'));
-
-	return \@readings;
 }
 
 sub _determineDay {
