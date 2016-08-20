@@ -12,32 +12,20 @@ use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
-Date::Lectionary::Reading - The great new Date::Lectionary::Reading!
+Date::Lectionary::Reading
 
 =head1 VERSION
 
-Version 1.20160731
+Version 1.20160820
 
 =cut
 
-our $VERSION = '1.20160731';
+our $VERSION = '1.20160820';
 
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Date::Lectionary;
-
-    my $foo = Date::Lectionary->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+A helper object for Date::Lectionary to package together all the parts of a scripture reading.
 
 =cut
 
@@ -50,40 +38,52 @@ no Moose::Util::TypeConstraints;
 =cut
 
 has 'book'  	=> (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'Str',
-	required 	=> 1, 
+	required 	=> 1,
 );
 
 has 'begin'  	=> (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'Str',
-	required 	=> 1, 
+	required 	=> 1,
 );
 
 has 'end'  		=> (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'Str',
 	required	=> 1,
 );
 
 has 'testament' => (
-	is 			=> 'ro', 
-	isa			=> 'Testament', 
+	is 			=> 'ro',
+	isa			=> 'Testament',
 	builder 	=> '_buildTestament',
 );
 
 has 'type'  	=> (
-	is 			=> 'ro', 
+	is 			=> 'ro',
 	isa 		=> 'ReadingType',
 	builder 	=> '_buildType'
 );
+
+=head2 _buildTestament
+
+Private method that determines which testament the given reading's book is in.
+
+=cut
 
 sub _buildTestament {
 	my $self = shift;
 
 	return 'OT';
 }
+
+=head2 _buildType
+
+Private method that determines what type of reading the given reading is.
+
+=cut
 
 sub _buildType {
 	my $self = shift;

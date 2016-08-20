@@ -18,32 +18,26 @@ use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
-Date::Lectionary - The great new Date::Lectionary!
+Date::Lectionary
 
 =head1 VERSION
 
-Version 1.20160809
+Version 1.20160820
 
 =cut
 
-our $VERSION = '1.20160809';
+our $VERSION = '1.20160820';
 
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for either the date or, if the date isn't a Sunday or Holiday, the next Sunday's readings.
 
-Perhaps a little code snippet.
+	use Time::Piece;
+	use Date::Lectionary;
 
-    use Date::Lectionary;
-
-    my $foo = Date::Lectionary->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+	my $christmas = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-12-25", "%Y-%m-%d"));
+	say $christmas->day; #String representation of the name of the day in the liturgical calednar; e.g. Christmas Day
 
 =cut
 
@@ -94,21 +88,39 @@ sub BUILD {
 	$self->_setReadings(_buildReadings());
 }
 
+=head2 _determineYear
+
+Private method that takes a four-digit representation of the Common Era year and calculates the liturgical year -- A, B, or C -- for the year.
+
+=cut
+
 sub _determineYear {
 	my $calYear = shift;
 
-	if ($calYear%3 == 0) {
-		return 'A';
+	try{
+		if ($calYear%3 == 0) {
+			return 'A';
+		}
+		elsif (($calYear-1)%3 == 0) {
+			return 'B';
+		}
+		elsif (($calYear-2)%3 == 0) {
+			return 'C';
+		}
+		else {
+			confess "The liturgical year for the year [" . $calYear . "] could not be determined.";
+		}
 	}
-	elsif (($calYear-1)%3 == 0) {
-		return 'B';
+	catch{
+		confess "A liturgical year for the value [" . $calYear . "] could not be calculated.";
 	}
-	elsif (($calYear-2)%3 == 0) {
-		return 'C';
-	}
-
-	return undef;
 }
+
+=head2 _buildReadings
+
+Private method that returns an ArrayRef of Date::Lectionary::Reading objects for the lectionary readings associated with the date.
+
+=cut
 
 sub _buildReadings {
 	my @readings;
@@ -117,6 +129,12 @@ sub _buildReadings {
 
 	return \@readings;
 }
+
+=head2 _determineAdvent
+
+Private method that takes a Time::Piece date object to returns a Date::Advent object containing the dates for Advent of the current liturgical year.
+
+=cut
 
 sub _determineAdvent {
 	my $date = shift;
@@ -131,6 +149,12 @@ sub _determineAdvent {
 		confess "Could not calculate Advent for the given date [". $date->ymd ."].";
 	}
 }
+
+=head2 _determineEaster
+
+Private method that takes a four-digit representation of a Common Era year and calculates the date for Easter as a Time::Piece object.
+
+=cut
 
 sub _determineEaster {
 	my $easterYear = shift;
@@ -147,9 +171,9 @@ sub _determineEaster {
 	}
 }
 
-=head2 _buildAshWednesday
+=head2 _determineAshWednesday
 
-	Ash Wednesday is the start of Lent.  It occurs 46 days before Easter for the given year.
+	Private method that takes the Time::Piece date for Easter and determines the date for Ash Wednesday.  Ash Wednesday is the start of Lent.  It occurs 46 days before Easter for the given year.
 
 =cut
 sub _determineAshWednesday {
@@ -167,6 +191,12 @@ sub _determineAshWednesday {
 	}
 }
 
+=head2 _determineAscension
+
+Private method that takes the Time::Piece date for Easter and determines the date for Ascension.  Ascension is forty days (inclusive) after Easter.
+
+=cut
+
 sub _determineAscension {
 	my $easter = shift;
 
@@ -182,6 +212,12 @@ sub _determineAscension {
 	}
 }
 
+=head2 _determinePentecost
+
+Private method the takes the Time::Piece date for Easter and determines the date for Pentecost.  Pentecost is fifty days (inclusive) after Easter.
+
+=cut
+
 sub _determinePentecost {
 	my $easter = shift;
 
@@ -196,6 +232,12 @@ sub _determinePentecost {
 		confess "Could not calculate Pentecost for Easter [". $easter->ymd ."].";
 	}
 }
+
+=head2 _determineHolyWeek
+
+Private method used to return the names of various days within Holy Week.  Takes the Time::Piece date given at construction and the Time::Piece date for Easter.  Returns undef if the date given at construction is not found in Holy Week.
+
+=cut
 
 sub _determineHolyWeek {
 	my $date = shift;
@@ -234,6 +276,12 @@ sub _determineHolyWeek {
 	return undef;
 }
 
+=head2 _determineEasterWeek
+
+Private method used to return the names of various days within Easter Week.  Takes the Time::Piece date given at construction and the Time::Piece date for Easter.  Returns undef if the date given at construction is not found in Easter Week.
+
+=cut
+
 sub _determineEasterWeek {
 	my $date = shift;
 	my $easter = shift;
@@ -270,6 +318,12 @@ sub _determineEasterWeek {
 
 	return undef;
 }
+
+=head2 _buildFixedDays
+
+Private method that takes the Time::Piece date given at construction and determines if the date is on of many fixed (non-moveable) feast in the liturgical calendar.  Fixed feasts are taken from the Anglican Church in North America's revision of the revised common lectionary.
+
+=cut
 
 sub _buildFixedDays {
 	my $date = shift;
@@ -348,6 +402,12 @@ sub _buildFixedDays {
 	}
 }
 
+=head2 _determineChristmasEpiphany
+
+Private method that matches the date given at construction against the Sundays in Christmastide and Epiphany.  Returns a string representation of the name of the Sunday in the lectionary.
+
+=cut
+
 sub _determineChristmasEpiphany {
 	my $date = shift;
 
@@ -410,8 +470,14 @@ sub _determineChristmasEpiphany {
 		return "The Last Sunday after Epiphany";
 	}
 
-	croak "There are no further Sundays of Christmastide or Epiphany.";
+	confess "There are no further Sundays of Christmastide or Epiphany.";
 }
+
+=head2 _determineLent
+
+Private method that matches the date given at construction against the Sundays in Lent.  Returns a string representation of the name of the Sunday in the lectionary.
+
+=cut
 
 sub _determineLent {
 	my $date = shift;
@@ -452,8 +518,14 @@ sub _determineLent {
 		return "Palm Sunday";
 	}
 
-	croak "There are no further Sundays in Lent";
+	confess "There are no further Sundays in Lent";
 }
+
+=head2 _determineEasterSeason
+
+Private method that matches the date given at construction against the Sundays in the Easter season.  Returns a string representation of the name of the Sunday in the lectionary.
+
+=cut
 
 sub _determineEasterSeason {
 	my $date = shift;
@@ -484,8 +556,14 @@ sub _determineEasterSeason {
 		return "The Sixth Sunday of Easter";
 	}
 
-	croak "There are no further Sundays of Easter.";
+	confess "There are no further Sundays of Easter.";
 }
+
+=head2 _determineOrdinary
+
+Private method that matches the date given at construction against the Sundays in Ordinary time, e.g. Trinity Sunday and following Sundays.  Returns a string representation of the name of the Sunday in the lectionary.
+
+=cut
 
 sub _determineOrdinary {
 	my $date = shift;
@@ -631,8 +709,14 @@ sub _determineOrdinary {
 		return "Christ the King";
 	}
 
-	croak "There are no further Sundays of Ordinary Time.";
+	confess "There are no further Sundays of Ordinary Time.";
 }
+
+=head2 _determineDay
+
+Private method that takes the Time::Piece data given at construction and, using other private methods, determines the name of the Feast Day or Sunday in the lectionary.  If the date given at construction is a fix feast, that day will be returned.  If the date given is a special feast -- e.g. Easter, Ash Wednesday, etc. -- or a Sunday the name of that day will be returned.  If the date isn't a special feast or a Sunday the name of the upcoming Sunday will be returned with the date of the upcoming Sunday appended in square brackets.
+
+=cut
 
 sub _determineDay {
 	my $date = shift;
