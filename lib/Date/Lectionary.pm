@@ -22,11 +22,11 @@ Date::Lectionary
 
 =head1 VERSION
 
-Version 1.20160820
+Version 1.20160830
 
 =cut
 
-our $VERSION = '1.20160820';
+our $VERSION = '1.20160830';
 
 
 =head1 SYNOPSIS
@@ -134,6 +134,158 @@ sub _buildReadings {
 	push(@readings, Date::Lectionary::Reading->new(book=>'Gen', begin=>'1:1', end=>'1:5'));
 
 	return \@readings;
+}
+
+=head2 _determineFeasts
+
+Private method that takes the Time::Piece date given at construction and determines if the date is one of many feasts in the liturgical calendar.  Feasts are taken from the Anglican Church in North America's revision of the revised common lectionary.
+
+=cut
+
+sub _determineFeasts {
+	my $date = shift;
+	my $yesterday = $date - ONE_DAY;
+
+	if ($yesterday->wday==1) {
+		return _buildMoveableDays($yesterday);
+	}
+	elsif ($date->wday==1) {
+			return _buildFixedDays($date);
+	}
+	else {
+		return _buildMoveableDays($date) ? _buildMoveableDays($date) : _buildFixedDays($date);
+	}
+}
+
+=head2 _buildMoveableDays
+
+Private method that takes the Time::Piece date given at construction and determines if the date is one of many moveable feasts in the liturgical calendar.  Feasts are taken from the Anglican Church in North America's revision of the revised common lectionary.
+
+=cut
+
+sub _buildMoveableDays {
+	my $date = shift;
+
+	#Moveable holidays in January
+	if($date->mon == 1) {
+		if($date->mday == 18) { return "Confession of St. Peter"; }
+		if($date->mday == 25) { return "Conversion of St. Paul"; }
+	}
+	#Moveable holidays in February
+	elsif($date->mon == 2) {
+		if($date->mday == 2) { return "The Presentation of Christ in the Temple"; }
+		if($date->mday == 24) { return "St. Matthias"; }
+	}
+	#Moveable holidays in March
+	elsif($date->mon == 3) {
+		if($date->mday == 19) { return "St. Joseph"; }
+		if($date->mday == 25) { return "The Annunciation"; }
+	}
+	#Moveable holidays in April
+	elsif($date->mon == 4) {
+		if($date->mday == 25) { return "St. Mark"; }
+	}
+	#Moveable holidays in May
+	elsif($date->mon == 5) {
+		if($date->mday == 1) { return "St. Philip & St. James"; }
+		if($date->mday == 31) { return "The Visitation"; }
+	}
+	#Moveable holidays in June
+	elsif($date->mon == 6) {
+		if($date->mday == 11) { return "St. Barnabas"; }
+		if($date->mday == 24) { return "Nativity of St. John the Baptist"; }
+		if($date->mday == 29) { return "St. Peter & St. Paul"; }
+	}
+	#Moveable holidays in July
+	elsif($date->mon == 7) {
+		if($date->mday == 22) { return "St. Mary of Magdala"; }
+		if($date->mday == 25) { return "St. James"; }
+	}
+	#Moveable holidays in August
+	elsif($date->mon == 8) {
+		if($date->mday == 15) { return "St. Mary the Virgin"; }
+		if($date->mday == 24) { return "St. Bartholomew"; }
+	}
+	#Moveable holidays in September
+	elsif($date->mon == 9) {
+		if($date->mday == 14) { return "Holy Cross Day"; }
+		if($date->mday == 21) { return "St. Matthew"; }
+		if($date->mday == 29) { return "Holy Michael & All Angels"; }
+	}
+	#Moveable holidays in October
+	elsif($date->mon == 10) {
+		if($date->mday == 18) { return "St. Luke"; }
+		if($date->mday == 28) { return "St. Simon & St. Jude"; }
+	}
+	#Moveable holidays in November
+	elsif($date->mon == 11) {
+		if($date->mday == 30) { return "St. Andrew"; }
+	}
+	#Moveable holidays in December
+	elsif($date->mon == 12) {
+		if($date->mday == 21) { return "St. Thomas"; }
+		if($date->mday == 26) { return "St. Stephen"; }
+		if($date->mday == 27) { return "St. John"; }
+		if($date->mday == 28) { return "Holy Innocents"; }
+	}
+	else {
+		confess "Date [". $date->ymd . "] is not a known or valid date.";
+	}
+}
+
+=head2 _buildFixedDays
+
+Private method that takes the Time::Piece date given at construction and determines if the date is one of many fixed (non-moveable) feasts in the liturgical calendar.  Fixed feasts are taken from the Anglican Church in North America's revision of the revised common lectionary.
+
+=cut
+
+sub _buildFixedDays {
+	my $date = shift;
+
+	#Fixed holidays in January
+	if($date->mon == 1) {
+		if($date->mday == 1) { return "Holy Name"; }
+		if($date->mday == 6) { return "The Epiphany"; }
+	}
+	#Fixed holidays in February
+	elsif($date->mon == 2) {
+	}
+	#Fixed holidays in March
+	elsif($date->mon == 3) {
+	}
+	#Fixed holidays in April
+	elsif($date->mon == 4) {
+	}
+	#Fixed holidays in May
+	elsif($date->mon == 5) {
+	}
+	#Fixed holidays in June
+	elsif($date->mon == 6) {
+	}
+	#Fixed holidays in July
+	elsif($date->mon == 7) {
+	}
+	#Fixed holidays in August
+	elsif($date->mon == 8) {
+		if($date->mday == 6) { return "The Transfiguration"; }
+	}
+	#Fixed holidays in September
+	elsif($date->mon == 9) {
+	}
+	#Fixed holidays in October
+	elsif($date->mon == 10) {
+	}
+	#Fixed holidays in November
+	elsif($date->mon == 11) {
+		if($date->mday == 1) { return "All Saint's Day"; }
+	}
+	#Fixed holidays in December
+	elsif($date->mon == 12) {
+		if($date->mday == 25) { return "Christmas Day"; }
+	}
+	else {
+		confess "Date [". $date->ymd . "] is not a known or valid date.";
+	}
 }
 
 =head2 _determineAdvent
@@ -279,6 +431,11 @@ sub _determineHolyWeek {
 		return "Monday in Holy Week";
 	}
 
+	$dateMark = $dateMark - ONE_DAY;
+	if ($date == $dateMark) {
+		return "Palm Sunday";
+	}
+
 	return undef;
 }
 
@@ -325,89 +482,6 @@ sub _determineEasterWeek {
 	return undef;
 }
 
-=head2 _buildFixedDays
-
-Private method that takes the Time::Piece date given at construction and determines if the date is on of many fixed (non-moveable) feast in the liturgical calendar.  Fixed feasts are taken from the Anglican Church in North America's revision of the revised common lectionary.
-
-=cut
-
-sub _buildFixedDays {
-	my $date = shift;
-
-	#Fixed holidays in January
-	if($date->mon == 1) {
-		if($date->mday == 1) { return "Holy Name"; }
-		if($date->mday == 6) { return "The Epiphany"; }
-		if($date->mday == 18) { return "Confession of St. Peter"; }
-		if($date->mday == 25) { return "Conversion of St. Paul"; }
-	}
-	#Fixed holidays in February
-	elsif($date->mon == 2) {
-		if($date->mday == 2) { return "The Presentation of Christ in the Temple"; }
-		if($date->mday == 24) { return "St. Matthias"; }
-	}
-	#Fixed holidays in March
-	elsif($date->mon == 3) {
-		if($date->mday == 19) { return "St. Joseph"; }
-		if($date->mday == 25) { return "The Annunciation"; }
-	}
-	#Fixed holidays in April
-	elsif($date->mon == 4) {
-		if($date->mday == 25) { return "St. Mark"; }
-	}
-	#Fixed holidays in May
-	elsif($date->mon == 5) {
-		if($date->mday == 1) { return "St. Philip & St. James"; }
-		if($date->mday == 31) { return "The Visitation"; }
-	}
-	#Fixed holidays in June
-	elsif($date->mon == 6) {
-		if($date->mday == 11) { return "St. Barnabas"; }
-		if($date->mday == 24) { return "Nativity of St. John the Baptist"; }
-		if($date->mday == 29) { return "St. Peter & St. Paul"; }
-	}
-	#Fixed holidays in July
-	elsif($date->mon == 7) {
-		if($date->mday == 1) { return "Dominion Day"; }
-		if($date->mday == 4) { return "Independence Day"; }
-		if($date->mday == 22) { return "St. Mary of Magdala"; }
-		if($date->mday == 25) { return "St. James"; }
-	}
-	#Fixed holidays in August
-	elsif($date->mon == 8) {
-		if($date->mday == 6) { return "The Transfiguration"; }
-		if($date->mday == 15) { return "St. Mary the Virgin"; }
-		if($date->mday == 24) { return "St. Bartholomew"; }
-	}
-	#Fixed holidays in September
-	elsif($date->mon == 9) {
-		if($date->mday == 14) { return "Holy Cross Day"; }
-		if($date->mday == 21) { return "St. Matthew"; }
-		if($date->mday == 29) { return "Holy Michael & All Angels"; }
-	}
-	#Fixed holidays in October
-	elsif($date->mon == 10) {
-		if($date->mday == 18) { return "St. Luke"; }
-		if($date->mday == 28) { return "St. Simon & St. Jude"; }
-	}
-	#Fixed holidays in November
-	elsif($date->mon == 11) {
-		if($date->mday == 1) { return "All Saint's Day"; }
-		if($date->mday == 30) { return "St. Andrew"; }
-	}
-	#Fixed holidays in December
-	elsif($date->mon == 12) {
-		if($date->mday == 21) { return "St. Thomas"; }
-		if($date->mday == 25) { return "Christmas Day"; }
-		if($date->mday == 26) { return "St. Stephen"; }
-		if($date->mday == 27) { return "St. John"; }
-		if($date->mday == 28) { return "Holy Innocents"; }
-	}
-	else {
-		confess "Date [". $date->ymd . "] is not a known or valid date.";
-	}
-}
-
 =head2 _determineChristmasEpiphany
 
 Private method that matches the date given at construction against the Sundays in Christmastide and Epiphany.  Returns a string representation of the name of the Sunday in the lectionary.
@@ -418,6 +492,8 @@ sub _determineChristmasEpiphany {
 	my $date = shift;
 
 	my $advent = shift;
+
+	my $ashWednesday = shift;
 
 	#Is the date in Christmastide?
 	my $dateMarker = nextSunday($advent->fourthSunday);
@@ -467,8 +543,11 @@ sub _determineChristmasEpiphany {
 	}
 
 	$dateMarker = nextSunday($dateMarker);
-	if ($date == $dateMarker) {
+	if ($date == $dateMarker && $date != prevSunday($ashWednesday)) {
 		return "The Second to Last Sunday after Epiphany";
+	}
+	elsif ($date == $dateMarker && $date == prevSunday($ashWednesday)) {
+		return "The Last Sunday after Epiphany";
 	}
 
 	$dateMarker = nextSunday($dateMarker);
@@ -514,16 +593,6 @@ sub _determineLent {
 		return "The Fifth Sunday in Lent";
 	}
 
-	$dateMarker = nextSunday($dateMarker);
-	if ($date == $dateMarker) {
-		return "The Fifth Sunday in Lent";
-	}
-
-	$dateMarker = nextSunday($dateMarker);
-	if ($date == $dateMarker) {
-		return "Palm Sunday";
-	}
-
 	confess "There are no further Sundays in Lent";
 }
 
@@ -562,7 +631,12 @@ sub _determineEasterSeason {
 		return "The Sixth Sunday of Easter";
 	}
 
-	confess "There are no further Sundays of Easter.";
+	$dateMarker = nextSunday($dateMarker);
+	if ($date == $dateMarker) {
+		return "The Sunday after Ascension Day";
+	}
+
+	confess "There are no further Sundays of Easter for [". $date->ymd ."].";
 }
 
 =head2 _determineOrdinary
@@ -775,9 +849,9 @@ sub _determineDay {
 		return "Pentecost";
 	}
 
-	#Fixed celebrations
-	my $fixedDay = _buildFixedDays($date);
-	if ($fixedDay) {return $fixedDay;}
+	#Feast Day Celebrations
+	my $feastDay = _determineFeasts($date);
+	if ($feastDay) {return $feastDay;}
 
 	#If the date isn't a Sunday and we've determined it is not a fixed holiday
 	#move the date to the upcoming Sunday and determine readings for that day.
@@ -788,7 +862,7 @@ sub _determineDay {
 
 	#Sundays of the Liturgical Year
 	if($date < $ashWednesday) {
-		return _determineChristmasEpiphany($date, $advent);
+		return _determineChristmasEpiphany($date, $advent, $ashWednesday);
 	}
 
 	if($date < $easter) {
