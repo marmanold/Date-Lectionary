@@ -28,8 +28,17 @@ WriteMakefile(
         'Moose::Util::TypeConstraints' => '2.1804',
         'Date::Advent' => '1.20160727',
         'Date::Easter' => '1.22',
-        'Date::Lectionary::Time' => '1.20160809', 
+        'Date::Lectionary::Time' => '1.20160809',
         'namespace::autoclean' => '0.28',
+    },
+    META_ADD => {
+      resources => {
+        repository => {
+            type => 'git',
+            url => 'git://github.com/marmanold/Date-Lectionary.git',
+            web => 'https://github.com/marmanold/Date-Lectionary',
+        },
+      },
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Date-Lectionary-*' },
