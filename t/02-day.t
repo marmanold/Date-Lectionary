@@ -222,7 +222,7 @@ $sunday = Date::Lectionary->new('date'=>Time::Piece->strptime("2015-10-25", "%Y-
 is($sunday->day, "Ordinary 30", 'Validating that 2015-10-25 returns the correct day.');
 
 $sunday = Date::Lectionary->new('date'=>Time::Piece->strptime("2015-11-01", "%Y-%m-%d"));
-is($sunday->day, "All Saint's Day", 'Validating that 2015-11-01 returns the correct day.');
+is($sunday->day, "All Saints' Day", 'Validating that 2015-11-01 returns the correct day.');
 
 $sunday = Date::Lectionary->new('date'=>Time::Piece->strptime("2015-11-08", "%Y-%m-%d"));
 is($sunday->day, "Ordinary 32", 'Validating that 2015-11-08 returns the correct day.');

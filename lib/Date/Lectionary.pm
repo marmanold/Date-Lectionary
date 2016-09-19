@@ -277,7 +277,7 @@ sub _buildFixedDays {
 	}
 	#Fixed holidays in November
 	elsif($date->mon == 11) {
-		if($date->mday == 1) { return "All Saint's Day"; }
+		if($date->mday == 1) { return "All Saints' Day"; }
 	}
 	#Fixed holidays in December
 	elsif($date->mon == 12) {
