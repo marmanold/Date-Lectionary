@@ -6,7 +6,6 @@ use warnings;
 
 use Moose;
 use Carp;
-use File::Share ':all';
 use Try::Tiny;
 use Time::Piece;
 use Date::Advent;

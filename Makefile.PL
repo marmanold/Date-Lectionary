@@ -13,7 +13,6 @@ WriteMakefile(
     MIN_PERL_VERSION => 5.022000,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
-        'File::ShareDir::Install' => '0.11',
     },
     BUILD_REQUIRES => {
         'Test::More' => '1.302040',
@@ -27,11 +26,11 @@ WriteMakefile(
         'Time::Seconds' => '1.31',
         'Moose' => '2.1804',
         'Moose::Util::TypeConstraints' => '2.1804',
+        'MooseX::Aliases' => '0.11',
         'Date::Advent' => '1.20160727',
         'Date::Easter' => '1.22',
         'Date::Lectionary::Time' => '1.20160809',
         'namespace::autoclean' => '0.28',
-        #'File::Share' => '0.25',
     },
     META_ADD => {
       resources => {
