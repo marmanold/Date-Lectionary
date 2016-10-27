@@ -7,12 +7,13 @@ WriteMakefile(
     NAME             => 'Date::Lectionary',
     AUTHOR           => q{Michael Wayne Arnold <marmanold@cpan.org>},
     VERSION_FROM     => 'lib/Date/Lectionary.pm',
-    ABSTRACT_FROM    => 'lib/Date/Lectionary.pm',
+    ABSTRACT         => 'Date::Lectionary',
     LICENSE          => 'perl_5',
     PL_FILES         => {},
     MIN_PERL_VERSION => 5.022000,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
+        'File::ShareDir::Install' => '0.11',
     },
     BUILD_REQUIRES => {
         'Test::More' => '1.302040',
@@ -30,6 +31,7 @@ WriteMakefile(
         'Date::Easter' => '1.22',
         'Date::Lectionary::Time' => '1.20160809',
         'namespace::autoclean' => '0.28',
+        #'File::Share' => '0.25',
     },
     META_ADD => {
       resources => {
