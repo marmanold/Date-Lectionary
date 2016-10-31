@@ -1,0 +1,35 @@
+---
+abstract: unknown
+author:
+  - 'Michael Wayne Arnold <marmanold@cpan.org>'
+build_requires:
+  Test::CheckManifest: '0.9'
+  Test::Exception: '0.43'
+  Test::More: '1.302040'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 7.18, CPAN::Meta::Converter version 2.150001'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Date-Lectionary
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Carp: '1.38'
+  Date::Advent: '1.20160727'
+  Date::Easter: '1.22'
+  Date::Lectionary::Time: '1.20160809'
+  Moose: '2.1804'
+  Moose::Util::TypeConstraints: '2.1804'
+  Time::Piece: '1.31'
+  Time::Seconds: '1.31'
+  Try::Tiny: '0.24'
+  namespace::autoclean: '0.28'
+  perl: '5.022'
+resources: {}
+version: '1.20160830'
