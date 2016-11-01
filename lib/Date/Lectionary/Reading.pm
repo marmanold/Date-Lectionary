@@ -22,14 +22,13 @@ Version 1.20160820
 
 our $VERSION = '1.20160820';
 
-
 =head1 SYNOPSIS
 
 A helper object for Date::Lectionary to package together all the parts of a scripture reading.
 
 =cut
 
-enum 'Testament', [qw(OT NT)];
+enum 'Testament',   [qw(OT NT)];
 enum 'ReadingType', [qw(OT Psalm Epistle Gospel)];
 no Moose::Util::TypeConstraints;
 
@@ -37,34 +36,34 @@ no Moose::Util::TypeConstraints;
 
 =cut
 
-has 'book'  	=> (
-	is 			=> 'ro',
-	isa 		=> 'Str',
-	required 	=> 1,
+has 'book' => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 1,
 );
 
-has 'begin'  	=> (
-	is 			=> 'ro',
-	isa 		=> 'Str',
-	required 	=> 1,
+has 'begin' => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 1,
 );
 
-has 'end'  		=> (
-	is 			=> 'ro',
-	isa 		=> 'Str',
-	required	=> 1,
+has 'end' => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 1,
 );
 
 has 'testament' => (
-	is 			=> 'ro',
-	isa			=> 'Testament',
-	builder 	=> '_buildTestament',
+    is      => 'ro',
+    isa     => 'Testament',
+    builder => '_buildTestament',
 );
 
-has 'type'  	=> (
-	is 			=> 'ro',
-	isa 		=> 'ReadingType',
-	builder 	=> '_buildType'
+has 'type' => (
+    is      => 'ro',
+    isa     => 'ReadingType',
+    builder => '_buildType'
 );
 
 =head2 _buildTestament
@@ -74,9 +73,9 @@ Private method that determines which testament the given reading's book is in.
 =cut
 
 sub _buildTestament {
-	my $self = shift;
+    my $self = shift;
 
-	return 'OT';
+    return 'OT';
 }
 
 =head2 _buildType
@@ -86,9 +85,9 @@ Private method that determines what type of reading the given reading is.
 =cut
 
 sub _buildType {
-	my $self = shift;
+    my $self = shift;
 
-	return 'OT';
+    return 'OT';
 }
 
 =head1 AUTHOR
@@ -149,4 +148,4 @@ See L<http://dev.perl.org/licenses/> for more information.
 
 __PACKAGE__->meta->make_immutable;
 
-1; # End of Date::Lectionary::Reading
+1;    # End of Date::Lectionary::Reading

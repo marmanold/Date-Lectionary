@@ -27,7 +27,6 @@ Version 1.20161027
 
 our $VERSION = '1.20161027';
 
-
 =head1 SYNOPSIS
 
 Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for either the date or, if the date isn't a Sunday or Holiday, the next Sunday's readings.
@@ -45,30 +44,30 @@ Date::Lectionary takes a Time::Piece date and returns the liturgical day and ass
 =cut
 
 has 'date' => (
-	is				=> 'ro',
-	isa				=> 'Time::Piece',
-	required 	=> 1,
+    is       => 'ro',
+    isa      => 'Time::Piece',
+    required => 1,
 );
 
 has 'day' => (
-	is 				=> 'ro',
-	isa 			=> 'Date::Lectionary::Day',
-	writer 		=> '_setDay',
-	init_arg 	=> undef,
+    is       => 'ro',
+    isa      => 'Date::Lectionary::Day',
+    writer   => '_setDay',
+    init_arg => undef,
 );
 
 has 'year' => (
-	is 				=> 'ro',
-	isa 			=> 'Date::Lectionary::Year',
-	writer 		=> '_setYear',
-	init_arg	=> undef,
+    is       => 'ro',
+    isa      => 'Date::Lectionary::Year',
+    writer   => '_setYear',
+    init_arg => undef,
 );
 
 has 'readings' => (
-	is 				=> 'ro',
-	isa 			=> 'ArrayRef[Date::Lectionary::Reading]',
-	writer 		=> '_setReadings',
-	init_arg 	=> undef,
+    is       => 'ro',
+    isa      => 'ArrayRef[Date::Lectionary::Reading]',
+    writer   => '_setReadings',
+    init_arg => undef,
 );
 
 =head2 BUILD
@@ -78,15 +77,16 @@ Constructor for the Date::Lectionary object.  Takes a Time::Piect object, date, 
 =cut
 
 sub BUILD {
-	my $self = shift;
+    my $self = shift;
 
-	my $advent = _determineAdvent($self->date);
+    my $advent = _determineAdvent( $self->date );
 
-	$self->_setYear(Date::Lectionary::Year->new('year'=>$advent->firstSunday->year));
+    $self->_setYear(
+        Date::Lectionary::Year->new( 'year' => $advent->firstSunday->year ) );
 
-	$self->_setDay(Date::Lectionary::Day->new('date'=>$self->date));
+    $self->_setDay( Date::Lectionary::Day->new( 'date' => $self->date ) );
 
-	$self->_setReadings(_buildReadings());
+    $self->_setReadings( _buildReadings() );
 }
 
 =head2 _buildReadings
@@ -96,11 +96,18 @@ Private method that returns an ArrayRef of Date::Lectionary::Reading objects for
 =cut
 
 sub _buildReadings {
-	my @readings;
+    my @readings;
 
-	push(@readings, Date::Lectionary::Reading->new(book=>'Gen', begin=>'1:1', end=>'1:5'));
+    push(
+        @readings,
+        Date::Lectionary::Reading->new(
+            book  => 'Gen',
+            begin => '1:1',
+            end   => '1:5'
+        )
+    );
 
-	return \@readings;
+    return \@readings;
 }
 
 =head2 _determineAdvent
@@ -110,17 +117,18 @@ Private method that takes a Time::Piece date object to returns a Date::Advent ob
 =cut
 
 sub _determineAdvent {
-	my $date = shift;
+    my $date = shift;
 
-	my $advent = undef;
+    my $advent = undef;
 
-	try{
-		$advent = Date::Advent->new(date => $date);
-		return $advent;
-	}
-	catch{
-		confess "Could not calculate Advent for the given date [". $date->ymd ."].";
-	}
+    try {
+        $advent = Date::Advent->new( date => $date );
+        return $advent;
+    }
+    catch {
+        confess "Could not calculate Advent for the given date ["
+          . $date->ymd . "].";
+    }
 }
 
 =head1 AUTHOR
@@ -181,4 +189,4 @@ See L<http://dev.perl.org/licenses/> for more information.
 
 __PACKAGE__->meta->make_immutable;
 
-1; # End of Date::Lectionary
+1;    # End of Date::Lectionary

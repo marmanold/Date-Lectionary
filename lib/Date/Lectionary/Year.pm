@@ -22,7 +22,6 @@ Version 1.20161027
 
 our $VERSION = '1.20161027';
 
-
 =head1 SYNOPSIS
 
 A helper object for Date::Lectionary to package which keeps information about the liturgical cycle year for the RCL, ACNA, and possibly other three-year lectionary systems.  Valid values for the liturgical cycle are A, B, or C.
@@ -37,16 +36,16 @@ no Moose::Util::TypeConstraints;
 =cut
 
 has 'year' => (
-  is				=> 'ro',
-  isa				=> 'Int',
-  required 	=> 1,
+    is       => 'ro',
+    isa      => 'Int',
+    required => 1,
 );
 
 has 'name' => (
-	is 				=> 'ro',
-	isa 			=> 'litCycleYear',
-	writer 		=> '_setName',
-	init_arg	=> undef,
+    is       => 'ro',
+    isa      => 'litCycleYear',
+    writer   => '_setName',
+    init_arg => undef,
 );
 
 =head2 BUILD
@@ -56,9 +55,9 @@ Constructor for the Date::Lectionary::Year object.  Takes a four-digit represent
 =cut
 
 sub BUILD {
-	my $self = shift;
+    my $self = shift;
 
-	$self->_setName(_determineYear($self->year));
+    $self->_setName( _determineYear( $self->year ) );
 }
 
 =head2 _determineYear
@@ -68,25 +67,27 @@ Private method that takes a four-digit representation of the Common Era year and
 =cut
 
 sub _determineYear {
-	my $calYear = shift;
+    my $calYear = shift;
 
-	try{
-		if ($calYear%3 == 0) {
-			return 'A';
-		}
-		elsif (($calYear-1)%3 == 0) {
-			return 'B';
-		}
-		elsif (($calYear-2)%3 == 0) {
-			return 'C';
-		}
-		else {
-			confess "The liturgical year for the year [" . $calYear . "] could not be determined.";
-		}
-	}
-	catch{
-		confess "A liturgical year for the value [" . $calYear . "] could not be calculated.";
-	}
+    try {
+        if ( $calYear % 3 == 0 ) {
+            return 'A';
+        }
+        elsif ( ( $calYear - 1 ) % 3 == 0 ) {
+            return 'B';
+        }
+        elsif ( ( $calYear - 2 ) % 3 == 0 ) {
+            return 'C';
+        }
+        else {
+            confess "The liturgical year for the year [" . $calYear
+              . "] could not be determined.";
+        }
+    }
+    catch {
+        confess "A liturgical year for the value [" . $calYear
+          . "] could not be calculated.";
+    }
 }
 
 =head1 AUTHOR
@@ -147,4 +148,4 @@ See L<http://dev.perl.org/licenses/> for more information.
 
 __PACKAGE__->meta->make_immutable;
 
-1; # End of Date::Lectionary::Year
+1;    # End of Date::Lectionary::Year
