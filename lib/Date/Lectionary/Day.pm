@@ -24,17 +24,21 @@ Date::Lectionary::Day
 
 =head1 VERSION
 
-Version 1.20161027
+Version 1.20161105
 
 =cut
 
-our $VERSION = '1.20161027';
+our $VERSION = '1.20161105';
 
 =head1 SYNOPSIS
 
 A helper object for Date::Lectionary to package together all the parts of a scripture reading.
 
 =cut
+
+enum 'DayType',        [qw(fixedFeast moveableFeast Sunday noLect)];
+enum 'LectionaryType', [qw(acna rcl)];
+no Moose::Util::TypeConstraints;
 
 =head1 SUBROUTINES/METHODS
 
@@ -46,9 +50,16 @@ has 'date' => (
     required => 1,
 );
 
-has 'tradition' => (
+has 'type' => (
+    is       => 'ro',
+    isa      => 'DayType',
+    writer   => '_setType',
+    init_arg => undef,
+);
+
+has 'lectionary' => (
     is      => 'ro',
-    isa     => 'Str',
+    isa     => 'LectionaryType',
     default => 'acna',
 );
 
@@ -87,10 +98,13 @@ sub BUILD {
     my $advent = _determineAdvent( $self->date );
     my $easter = _determineEaster( $advent->firstSunday->year + 1 );
 
-    my $commonName = _determineDay( $self->date, $advent, $easter );
-    $self->_setCommonName($commonName);
+    my %commonNameInfo = _determineDay( $self->date, $advent, $easter );
+    $self->_setCommonName( $commonNameInfo{commonName} );
     $self->_setDisplayName(
-        _determineDisplayName( $self->tradition, $commonName ) );
+        _determineDisplayName( $self->lectionary, $commonNameInfo{commonName} )
+    );
+
+    $self->_setType( $commonNameInfo{type} );
 }
 
 =head2 _determineDisplayName
@@ -101,17 +115,28 @@ sub _determineDisplayName {
     my $tradition  = shift;
     my $commonName = shift;
 
-    $commonName =~ s/'/&apos;/g;
-
     my $parser = XML::LibXML->new();
 
     my $data_location =
       dist_file( 'Date-Lectionary', 'date_lectionary_xref.xml' );
     my $lectionary     = $parser->parse_file($data_location);
     my $compiled_xpath = XML::LibXML::XPathExpression->new(
-        "/xref/day[\@name='$commonName']/alt[\@type='$tradition']");
+        "/xref/day[\@name=\"$commonName\"]/alt[\@type='$tradition']");
 
-    return $lectionary->findvalue($compiled_xpath);
+    my $multi_xpath =
+      XML::LibXML::XPathExpression->new("/xref/day[\@multi=\"$commonName\"]");
+
+    my $displayName = $lectionary->findvalue($compiled_xpath);
+
+    if ( $lectionary->exists($multi_xpath) ) {
+        return $commonName;
+    }
+    elsif ( $displayName eq '' ) {
+        return $commonName;
+    }
+    else {
+        return $displayName;
+    }
 }
 
 =head2 _determineAltName
@@ -847,77 +872,104 @@ sub _determineDay {
 
     #Is the date in Advent?
     if ( $date == $advent->firstSunday ) {
-        return "The First Sunday in Advent";
+        return ( commonName => "The First Sunday in Advent", type => 'Sunday' );
     }
     elsif ( $date == $advent->secondSunday ) {
-        return "The Second Sunday in Advent";
+        return (
+            commonName => "The Second Sunday in Advent",
+            type       => 'Sunday'
+        );
     }
     elsif ( $date == $advent->thirdSunday ) {
-        return "The Third Sunday in Advent";
+        return ( commonName => "The Third Sunday in Advent", type => 'Sunday' );
     }
     elsif ( $date == $advent->fourthSunday ) {
-        return "The Fourth Sunday in Advent";
+        return (
+            commonName => "The Fourth Sunday in Advent",
+            type       => 'Sunday'
+        );
     }
 
     #Is the date Easter Sunday?
     if ( $date == $easter ) {
-        return "Easter Day";
+        return ( commonName => "Easter Day", type => 'Sunday' );
     }
 
     #Determine when Ash Wednesday is
     my $ashWednesday = _determineAshWednesday($easter);
     if ( $date == $ashWednesday ) {
-        return "Ash Wednesday";
+        return ( commonName => "Ash Wednesday", type => 'fixedFeast' );
     }
 
     #Holy Week
     my $holyWeekDay = _determineHolyWeek( $date, $easter );
-    if ($holyWeekDay) { return $holyWeekDay; }
+    if ($holyWeekDay) {
+        return ( commonName => $holyWeekDay, type => 'fixedFeast' );
+    }
 
     #Easter Week
     my $easterWeekDay = _determineEasterWeek( $date, $easter );
-    if ($easterWeekDay) { return $easterWeekDay; }
+    if ($easterWeekDay) {
+        return ( commonName => $easterWeekDay, type => 'fixedFeast' );
+    }
 
     #Ascension is 40 days after Easter
     my $ascension = _determineAscension($easter);
     if ( $date == $ascension ) {
-        return "Ascension Day";
+        return ( commonName => "Ascension Day", type => 'fixedFeast' );
     }
 
     #Pentecost is 50 days after Easter
     my $pentecost = _determinePentecost($easter);
     if ( $date == $pentecost ) {
-        return "Pentecost";
+        return ( commonName => "Pentecost", type => 'fixedFeast' );
     }
 
     #Feast Day Celebrations
     my $feastDay = _determineFeasts($date);
-    if ($feastDay) { return $feastDay; }
+    if ($feastDay) { return ( commonName => $feastDay, type => 'fixedFeast' ); }
 
     #If the date isn't a Sunday and we've determined it is not a fixed holiday
     #move the date to the upcoming Sunday and determine readings for that day.
     if ( $date->wday != 1 ) {
         my $nextSunday = nextSunday($date);
-        return
-          _determineDay( $nextSunday, $advent, $easter ) . " ["
-          . $nextSunday->ymd . "]";
+        my %nextSundayCommonName =
+          _determineDay( $nextSunday, $advent, $easter );
+        return (
+            commonName => $nextSundayCommonName{commonName} . " ["
+              . $nextSunday->ymd . "]",
+            type => 'noLect'
+        );
     }
 
     #Sundays of the Liturgical Year
     if ( $date < $ashWednesday ) {
-        return _determineChristmasEpiphany( $date, $advent, $ashWednesday );
+        return (
+            commonName =>
+              _determineChristmasEpiphany( $date, $advent, $ashWednesday ),
+            type => 'Sunday'
+        );
     }
 
     if ( $date < $easter ) {
-        return _determineLent( $date, $ashWednesday );
+        return (
+            commonName => _determineLent( $date, $ashWednesday ),
+            type       => 'Sunday'
+        );
     }
 
     if ( $date > $easter && $date < $pentecost ) {
-        return _determineEasterSeason( $date, $easter );
+        return (
+            commonName => _determineEasterSeason( $date, $easter ),
+            type       => 'Sunday'
+        );
     }
 
     if ( $date > $pentecost ) {
-        return _determineOrdinary( $date, $pentecost );
+        return (
+            commonName => _determineOrdinary( $date, $pentecost ),
+            type       => 'Sunday'
+        );
     }
 }
 

@@ -39,6 +39,9 @@ Date::Lectionary takes a Time::Piece date and returns the liturgical day and ass
 
 =cut
 
+enum 'LectionaryType', [qw(acna rcl)];
+no Moose::Util::TypeConstraints;
+
 =head1 SUBROUTINES/METHODS
 
 =cut
@@ -63,6 +66,12 @@ has 'year' => (
     init_arg => undef,
 );
 
+has 'lectionary' => (
+    is      => 'ro',
+    isa     => 'LectionaryType',
+    default => 'acna',
+);
+
 has 'readings' => (
     is       => 'ro',
     isa      => 'ArrayRef[Date::Lectionary::Reading]',
@@ -84,7 +93,12 @@ sub BUILD {
     $self->_setYear(
         Date::Lectionary::Year->new( 'year' => $advent->firstSunday->year ) );
 
-    $self->_setDay( Date::Lectionary::Day->new( 'date' => $self->date ) );
+    $self->_setDay(
+        Date::Lectionary::Day->new(
+            'date'       => $self->date,
+            'lectionary' => $self->lectionary
+        )
+    );
 
     $self->_setReadings( _buildReadings() );
 }

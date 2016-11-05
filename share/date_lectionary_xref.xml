@@ -51,7 +51,7 @@
         <alt type="rcl-alt">Ordinary/Lectionary 1</alt>
     </day>
     <day name="The Second Sunday of Epiphany">
-        <alt type="rcl">Secondy Sunday after the Epiphany</alt>
+        <alt type="rcl">Second Sunday after the Epiphany</alt>
         <alt type="acna">The Second Sunday of Epiphany</alt>
         <alt type="rcl-alt">Ordinary/Lectionary 2</alt>
     </day>
@@ -275,7 +275,7 @@
         <alt type="acna">Sunday Closest to July 20</alt>
         <alt type="rcl-alt">Proper 11, Ordinary/Lectionary 16</alt>
     </day>
-    <day name="Orindary 17">
+    <day name="Ordinary 17">
         <alt type="rcl">Sunday between July 24 and July 30 inclusive</alt>
         <alt type="acna">Sunday Closest to July 27</alt>
         <alt type="rcl-alt">Proper 12, Ordinary/Lectionary 17</alt>
