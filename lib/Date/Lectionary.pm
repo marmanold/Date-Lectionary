@@ -7,9 +7,10 @@ use warnings;
 use Moose;
 use Carp;
 use Try::Tiny;
+use XML::LibXML;
+use File::Share ':all';
 use Time::Piece;
 use Date::Advent;
-use Date::Lectionary::Reading;
 use Date::Lectionary::Year;
 use Date::Lectionary::Day;
 use namespace::autoclean;
@@ -21,11 +22,11 @@ Date::Lectionary
 
 =head1 VERSION
 
-Version 1.20161027
+Version 1.20161106
 
 =cut
 
-our $VERSION = '1.20161027';
+our $VERSION = '1.20161106';
 
 =head1 SYNOPSIS
 
@@ -74,7 +75,7 @@ has 'lectionary' => (
 
 has 'readings' => (
     is       => 'ro',
-    isa      => 'ArrayRef[Date::Lectionary::Reading]',
+    isa      => 'ArrayRef',
     writer   => '_setReadings',
     init_arg => undef,
 );
@@ -100,26 +101,50 @@ sub BUILD {
         )
     );
 
-    $self->_setReadings( _buildReadings() );
+    $self->_setReadings(
+        _buildReadings(
+            $self->day->name, $self->lectionary, $self->year->name
+        )
+    );
 }
 
 =head2 _buildReadings
 
-Private method that returns an ArrayRef of Date::Lectionary::Reading objects for the lectionary readings associated with the date.
+Private method that returns an ArrayRef of strings for the lectionary readings associated with the date.
 
 =cut
 
 sub _buildReadings {
-    my @readings;
+    my $displayName = shift;
+    my $lectionary  = shift;
+    my $year        = shift;
 
-    push(
-        @readings,
-        Date::Lectionary::Reading->new(
-            book  => 'Gen',
-            begin => '1:1',
-            end   => '1:5'
-        )
+    my $parser = XML::LibXML->new();
+    my $data_location;
+    my $readings;
+
+    try {
+        $data_location =
+          dist_file( 'Date-Lectionary', $lectionary . '_lect.xml' );
+        $readings = $parser->parse_file($data_location);
+    }
+    catch {
+#carp "The readings database for the $lectionary lectionary could not be found or parsed.";
+    };
+
+    my $compiled_xpath = XML::LibXML::XPathExpression->new(
+        "/lectionary/year[\@name=\"$year\"]/day[\@name=\"$displayName\"]/lesson"
     );
+
+    my @readings;
+    try {
+        foreach my $lesson ( $readings->findnodes($compiled_xpath) ) {
+            push( @readings, $lesson->to_literal );
+        }
+    }
+    catch {
+#carp "Readings for $displayName in year $year could not be parsed from the database.";
+    };
 
     return \@readings;
 }
@@ -142,7 +167,7 @@ sub _determineAdvent {
     catch {
         confess "Could not calculate Advent for the given date ["
           . $date->ymd . "].";
-    }
+    };
 }
 
 =head1 AUTHOR

@@ -87,7 +87,7 @@ sub _determineYear {
     catch {
         confess "A liturgical year for the value [" . $calYear
           . "] could not be calculated.";
-    }
+    };
 }
 
 =head1 AUTHOR

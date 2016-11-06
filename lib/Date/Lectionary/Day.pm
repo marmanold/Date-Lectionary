@@ -161,7 +161,7 @@ sub _determineAdvent {
     catch {
         confess "Could not calculate Advent for the given date ["
           . $date->ymd . "].";
-    }
+    };
 }
 
 =head2 _determineEaster
@@ -183,7 +183,7 @@ sub _determineEaster {
     }
     catch {
         confess "Could not calculate Easter for the year [" . $easterYear . "]";
-    }
+    };
 }
 
 =head2 _determineFeasts
@@ -383,7 +383,7 @@ sub _determineAshWednesday {
     catch {
         confess "Could not calculate Ash Wednesday for Easter ["
           . $easter->ymd . "].";
-    }
+    };
 }
 
 =head2 _determineAscension
@@ -405,7 +405,7 @@ sub _determineAscension {
     catch {
         confess "Could not calculate Ascension for Easter ["
           . $easter->ymd . "].";
-    }
+    };
 }
 
 =head2 _determinePentecost
@@ -427,7 +427,7 @@ sub _determinePentecost {
     catch {
         confess "Could not calculate Pentecost for Easter ["
           . $easter->ymd . "].";
-    }
+    };
 }
 
 =head2 _determineHolyWeek
@@ -930,14 +930,13 @@ sub _determineDay {
     if ($feastDay) { return ( commonName => $feastDay, type => 'fixedFeast' ); }
 
     #If the date isn't a Sunday and we've determined it is not a fixed holiday
-    #move the date to the upcoming Sunday and determine readings for that day.
+    #then there are no readings for that day.
     if ( $date->wday != 1 ) {
-        my $nextSunday = nextSunday($date);
-        my %nextSundayCommonName =
-          _determineDay( $nextSunday, $advent, $easter );
         return (
-            commonName => $nextSundayCommonName{commonName} . " ["
-              . $nextSunday->ymd . "]",
+            commonName => $date->fullday . ', '
+              . $date->fullmonth . ' '
+              . $date->mday . ', '
+              . $date->year,
             type => 'noLect'
         );
     }

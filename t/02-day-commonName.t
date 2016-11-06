@@ -75,8 +75,8 @@ my $regularDay = Date::Lectionary->new(
     'date' => Time::Piece->strptime( "2016-11-19", "%Y-%m-%d" ) );
 is(
     $regularDay->day->commonName,
-    'Christ the King [2016-11-20]',
-    'Ensure that November 19, 2016 is Christ the King [2016-11-20]'
+    'Saturday, November 19, 2016',
+    'Ensure that November 19, 2016 is a day without readings or a name.'
 );
 
 ##Validating all the Sundays of 2015, 2016, and 2017.

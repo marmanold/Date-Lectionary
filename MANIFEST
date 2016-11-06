@@ -1,5 +1,4 @@
 lib/Date/Lectionary.pm
-lib/Date/Lectionary/Reading.pm
 lib/Date/Lectionary/Day.pm
 lib/Date/Lectionary/Year.pm
 Makefile.PL
