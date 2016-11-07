@@ -133,7 +133,7 @@ sub _buildReadings {
     };
 
     my $compiled_xpath = XML::LibXML::XPathExpression->new(
-        "/lectionary/year[\@name=\"$year\"]/day[\@name=\"$displayName\"]/lesson"
+"/lectionary/year[\@name=\"$year\" or \@name=\"holidays\"]/day[\@name=\"$displayName\"]/lesson"
     );
 
     my @readings;
