@@ -9,6 +9,7 @@ t/01-year.t
 t/02-day-commonName.t
 t/03-day-displayName-acna.t
 t/04-day-displayName-rcl.t
+t/05-readings.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
