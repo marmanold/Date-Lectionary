@@ -24,15 +24,15 @@ Date::Lectionary::Day
 
 =head1 VERSION
 
-Version 1.20161105
+Version 1.20161110
 
 =cut
 
-our $VERSION = '1.20161105';
+our $VERSION = '1.20161110';
 
 =head1 SYNOPSIS
 
-A helper object for Date::Lectionary to package together all the parts of a scripture reading.
+A helper object for Date::Lectionary to determine the liturgical name(s) and type for the given day according to a given lectionary.
 
 =cut
 
@@ -98,7 +98,8 @@ sub BUILD {
     my $advent = _determineAdvent( $self->date );
     my $easter = _determineEaster( $advent->firstSunday->year + 1 );
 
-    my %commonNameInfo = _determineDay( $self->date, $advent, $easter );
+    my %commonNameInfo =
+      _determineDay( $self->date, $self->lectionary, $advent, $easter );
     $self->_setCommonName( $commonNameInfo{commonName} );
     $self->_setDisplayName(
         _determineDisplayName( $self->lectionary, $commonNameInfo{commonName} )
@@ -116,27 +117,54 @@ sub _determineDisplayName {
     my $commonName = shift;
 
     my $parser = XML::LibXML->new();
+    my $data_location;
+    my $lectionary;
 
-    my $data_location =
-      dist_file( 'Date-Lectionary', 'date_lectionary_xref.xml' );
-    my $lectionary     = $parser->parse_file($data_location);
-    my $compiled_xpath = XML::LibXML::XPathExpression->new(
-        "/xref/day[\@name=\"$commonName\"]/alt[\@type='$tradition']");
-
-    my $multi_xpath =
-      XML::LibXML::XPathExpression->new("/xref/day[\@multi=\"$commonName\"]");
-
-    my $displayName = $lectionary->findvalue($compiled_xpath);
-
-    if ( $lectionary->exists($multi_xpath) ) {
-        return $commonName;
+    try {
+        $data_location =
+          dist_file( 'Date-Lectionary', 'date_lectionary_xref.xml' );
+        $lectionary = $parser->parse_file($data_location);
     }
-    elsif ( $displayName eq '' ) {
-        return $commonName;
+    catch {
+        confess
+          "The lectionary cross reference file could not be found or parsed.";
+    };
+
+    my $compiled_xpath;
+    my $multi_xpath;
+
+    try {
+        $compiled_xpath = XML::LibXML::XPathExpression->new(
+            "/xref/day[\@name=\"$commonName\"]/alt[\@type='$tradition']");
+        $multi_xpath =
+          XML::LibXML::XPathExpression->new(
+            "/xref/day[\@multi=\"$commonName\"]");
     }
-    else {
-        return $displayName;
+    catch {
+        confess
+"The XPATH expression to to query the cross reference database could not be compiled.";
+    };
+
+    my $displayName;
+
+    try {
+        $displayName = $lectionary->findvalue($compiled_xpath);
+
+        if ( $lectionary->exists($multi_xpath) ) {
+            return $commonName;
+        }
+        elsif ( $displayName eq '' ) {
+            return $commonName;
+        }
+        else {
+            return $displayName;
+        }
     }
+    catch {
+        confess
+"An unpected error occured while querying the cross reference database.";
+    };
+
 }
 
 =head2 _determineAltName
@@ -193,20 +221,35 @@ Private method that takes the Time::Piece date given at construction and determi
 =cut
 
 sub _determineFeasts {
-    my $date      = shift;
+    my $date       = shift;
+    my $lectionary = shift;
+
     my $yesterday = $date - ONE_DAY;
 
     if ( $yesterday->wday == 1 ) {
-        return _buildMoveableDays($yesterday);
+        my $dayName = _buildMoveableDays( $yesterday, $lectionary );
+        if ($dayName) {
+            return ( commonName => $dayName, type => 'moveableFeast' );
+        }
     }
     elsif ( $date->wday == 1 ) {
-        return _buildFixedDays($date);
+        my $dayName = _buildFixedDays( $date, $lectionary );
+        if ($dayName) {
+            return ( commonName => $dayName, type => 'fixedFeast' );
+        }
     }
     else {
-        return _buildMoveableDays($date)
-          ? _buildMoveableDays($date)
-          : _buildFixedDays($date);
+        my $dayName = _buildFixedDays( $date, $lectionary );
+        if ($dayName) {
+            return ( commonName => $dayName, type => 'fixedFeast' );
+        }
+
+        $dayName = _buildMoveableDays( $date, $lectionary );
+        if ($dayName) {
+            return ( commonName => $dayName, type => 'moveableFeast' );
+        }
     }
+    return ( commonName => undef, type => undef );
 }
 
 =head2 _buildMoveableDays
@@ -216,12 +259,17 @@ Private method that takes the Time::Piece date given at construction and determi
 =cut
 
 sub _buildMoveableDays {
-    my $date = shift;
+    my $date       = shift;
+    my $lectionary = shift;
 
     #Moveable holidays in January
     if ( $date->mon == 1 ) {
-        if ( $date->mday == 18 ) { return "Confession of St. Peter"; }
-        if ( $date->mday == 25 ) { return "Conversion of St. Paul"; }
+        if ( $date->mday == 18 && $lectionary eq 'acna' ) {
+            return "Confession of St. Peter";
+        }
+        if ( $date->mday == 25 && $lectionary eq 'acna' ) {
+            return "Conversion of St. Paul";
+        }
     }
 
     #Moveable holidays in February
@@ -229,69 +277,115 @@ sub _buildMoveableDays {
         if ( $date->mday == 2 ) {
             return "The Presentation of Christ in the Temple";
         }
-        if ( $date->mday == 24 ) { return "St. Matthias"; }
+        if ( $date->mday == 24 && $lectionary eq 'acna' ) {
+            return "St. Matthias";
+        }
     }
 
     #Moveable holidays in March
     elsif ( $date->mon == 3 ) {
-        if ( $date->mday == 19 ) { return "St. Joseph"; }
-        if ( $date->mday == 25 ) { return "The Annunciation"; }
+        if ( $date->mday == 19 && $lectionary eq 'acna' ) {
+            return "St. Joseph";
+        }
+        if ( $date->mday == 25 ) {
+            return "The Annunciation";
+        }
     }
 
     #Moveable holidays in April
     elsif ( $date->mon == 4 ) {
-        if ( $date->mday == 25 ) { return "St. Mark"; }
+        if ( $date->mday == 25 && $lectionary eq 'acna' ) {
+            return "St. Mark";
+        }
     }
 
     #Moveable holidays in May
     elsif ( $date->mon == 5 ) {
-        if ( $date->mday == 1 )  { return "St. Philip & St. James"; }
-        if ( $date->mday == 31 ) { return "The Visitation"; }
+        if ( $date->mday == 1 && $lectionary eq 'acna' ) {
+            return "St. Philip & St. James";
+        }
+        if ( $date->mday == 31 ) {
+            return "The Visitation";
+        }
     }
 
     #Moveable holidays in June
     elsif ( $date->mon == 6 ) {
-        if ( $date->mday == 11 ) { return "St. Barnabas"; }
-        if ( $date->mday == 24 ) { return "Nativity of St. John the Baptist"; }
-        if ( $date->mday == 29 ) { return "St. Peter & St. Paul"; }
+        if ( $date->mday == 11 && $lectionary eq 'acna' ) {
+            return "St. Barnabas";
+        }
+        if ( $date->mday == 24 && $lectionary eq 'acna' ) {
+            return "Nativity of St. John the Baptist";
+        }
+        if ( $date->mday == 29 && $lectionary eq 'acna' ) {
+            return "St. Peter & St. Paul";
+        }
     }
 
     #Moveable holidays in July
     elsif ( $date->mon == 7 ) {
-        if ( $date->mday == 22 ) { return "St. Mary of Magdala"; }
-        if ( $date->mday == 25 ) { return "St. James"; }
+        if ( $date->mday == 22 && $lectionary eq 'acna' ) {
+            return "St. Mary of Magdala";
+        }
+        if ( $date->mday == 25 && $lectionary eq 'acna' ) {
+            return "St. James";
+        }
     }
 
     #Moveable holidays in August
     elsif ( $date->mon == 8 ) {
-        if ( $date->mday == 15 ) { return "St. Mary the Virgin"; }
-        if ( $date->mday == 24 ) { return "St. Bartholomew"; }
+        if ( $date->mday == 15 && $lectionary eq 'acna' ) {
+            return "St. Mary the Virgin";
+        }
+        if ( $date->mday == 24 && $lectionary eq 'acna' ) {
+            return "St. Bartholomew";
+        }
     }
 
     #Moveable holidays in September
     elsif ( $date->mon == 9 ) {
-        if ( $date->mday == 14 ) { return "Holy Cross Day"; }
-        if ( $date->mday == 21 ) { return "St. Matthew"; }
-        if ( $date->mday == 29 ) { return "Holy Michael & All Angels"; }
+        if ( $date->mday == 14 ) {
+            return "Holy Cross Day";
+        }
+        if ( $date->mday == 21 && $lectionary eq 'acna' ) {
+            return "St. Matthew";
+        }
+        if ( $date->mday == 29 && $lectionary eq 'acna' ) {
+            return "Holy Michael & All Angels";
+        }
     }
 
     #Moveable holidays in October
     elsif ( $date->mon == 10 ) {
-        if ( $date->mday == 18 ) { return "St. Luke"; }
-        if ( $date->mday == 28 ) { return "St. Simon & St. Jude"; }
+        if ( $date->mday == 18 && $lectionary eq 'acna' ) {
+            return "St. Luke";
+        }
+        if ( $date->mday == 28 && $lectionary eq 'acna' ) {
+            return "St. Simon & St. Jude";
+        }
     }
 
     #Moveable holidays in November
     elsif ( $date->mon == 11 ) {
-        if ( $date->mday == 30 ) { return "St. Andrew"; }
+        if ( $date->mday == 30 && $lectionary eq 'acna' ) {
+            return "St. Andrew";
+        }
     }
 
     #Moveable holidays in December
     elsif ( $date->mon == 12 ) {
-        if ( $date->mday == 21 ) { return "St. Thomas"; }
-        if ( $date->mday == 26 ) { return "St. Stephen"; }
-        if ( $date->mday == 27 ) { return "St. John"; }
-        if ( $date->mday == 28 ) { return "Holy Innocents"; }
+        if ( $date->mday == 21 && $lectionary eq 'acna' ) {
+            return "St. Thomas";
+        }
+        if ( $date->mday == 26 && $lectionary eq 'acna' ) {
+            return "St. Stephen";
+        }
+        if ( $date->mday == 27 && $lectionary eq 'acna' ) {
+            return "St. John";
+        }
+        if ( $date->mday == 28 && $lectionary eq 'acna' ) {
+            return "Holy Innocents";
+        }
     }
     else {
         confess "Date [" . $date->ymd . "] is not a known or valid date.";
@@ -305,12 +399,17 @@ Private method that takes the Time::Piece date given at construction and determi
 =cut
 
 sub _buildFixedDays {
-    my $date = shift;
+    my $date       = shift;
+    my $lectionary = shift;
 
     #Fixed holidays in January
     if ( $date->mon == 1 ) {
-        if ( $date->mday == 1 ) { return "Holy Name"; }
-        if ( $date->mday == 6 ) { return "The Epiphany"; }
+        if ( $date->mday == 1 ) {
+            return "Holy Name";
+        }
+        if ( $date->mday == 6 ) {
+            return "The Epiphany";
+        }
     }
 
     #Fixed holidays in February
@@ -339,7 +438,9 @@ sub _buildFixedDays {
 
     #Fixed holidays in August
     elsif ( $date->mon == 8 ) {
-        if ( $date->mday == 6 ) { return "The Transfiguration"; }
+        if ( $date->mday == 6 && $lectionary eq 'acna' ) {
+            return "The Transfiguration";
+        }
     }
 
     #Fixed holidays in September
@@ -352,12 +453,16 @@ sub _buildFixedDays {
 
     #Fixed holidays in November
     elsif ( $date->mon == 11 ) {
-        if ( $date->mday == 1 ) { return "All Saints' Day"; }
+        if ( $date->mday == 1 ) {
+            return "All Saints' Day";
+        }
     }
 
     #Fixed holidays in December
     elsif ( $date->mon == 12 ) {
-        if ( $date->mday == 25 ) { return "Christmas Day"; }
+        if ( $date->mday == 25 ) {
+            return "Christmas Day";
+        }
     }
     else {
         confess "Date [" . $date->ymd . "] is not a known or valid date.";
@@ -860,12 +965,13 @@ sub _determineOrdinary {
 
 =head2 _determineDay
 
-Private method that takes the Time::Piece data given at construction and, using other private methods, determines the name of the Feast Day or Sunday in the lectionary.  If the date given at construction is a fix feast, that day will be returned.  If the date given is a special feast -- e.g. Easter, Ash Wednesday, etc. -- or a Sunday the name of that day will be returned.  If the date isn't a special feast or a Sunday the name of the upcoming Sunday will be returned with the date of the upcoming Sunday appended in square brackets.
+Private method that takes the Time::Piece data given at construction and, using other private methods, determines the name of the Feast Day or Sunday in the lectionary.  If the date given at construction is a fixed feast, that day will be returned.  If the date given is a special feast -- e.g. Easter, Ash Wednesday, etc. -- or a Sunday the name of that day will be returned.  If the date isn't a special feast or a Sunday the date represented as a string will be returned as the name with no associated readings.
 
 =cut
 
 sub _determineDay {
-    my $date = shift;
+    my $date       = shift;
+    my $lectionary = shift;
 
     my $advent = shift;
     my $easter = shift;
@@ -892,7 +998,7 @@ sub _determineDay {
 
     #Is the date Easter Sunday?
     if ( $date == $easter ) {
-        return ( commonName => "Easter Day", type => 'Sunday' );
+        return ( commonName => "Easter Day", type => 'fixedFeast' );
     }
 
     #Determine when Ash Wednesday is
@@ -926,8 +1032,10 @@ sub _determineDay {
     }
 
     #Feast Day Celebrations
-    my $feastDay = _determineFeasts($date);
-    if ($feastDay) { return ( commonName => $feastDay, type => 'fixedFeast' ); }
+    my %feastDay = _determineFeasts( $date, $lectionary );
+    if ( $feastDay{commonName} ) {
+        return ( commonName => $feastDay{commonName}, type => $feastDay{type} );
+    }
 
     #If the date isn't a Sunday and we've determined it is not a fixed holiday
     #then there are no readings for that day.

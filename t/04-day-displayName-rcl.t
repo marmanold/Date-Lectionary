@@ -79,8 +79,11 @@ my $st_luke = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2016-10-18", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is( $st_luke->day->name,
-    'St. Luke', 'Ensure that October 10, 2016 is St. Luke' );
+is(
+    $st_luke->day->name,
+    'Tuesday, October 18, 2016',
+    'Ensure that October 18, 2016 is not St. Luke for the RCL'
+);
 
 my $christTheKing = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2016-11-20", "%Y-%m-%d" ),
@@ -140,7 +143,7 @@ $sunday = Date::Lectionary->new(
 );
 is(
     $sunday->day->name,
-    "Confession of St. Peter",
+    "Monday, January 19, 2015",
     'Validating that 2015-01-19 returns the correct day.'
 );
 
@@ -160,7 +163,7 @@ $sunday = Date::Lectionary->new(
 );
 is(
     $sunday->day->name,
-    "Conversion of St. Paul",
+    "Monday, January 26, 2015",
     'Validating that 2015-01-26 returns the correct day.'
 );
 
@@ -552,8 +555,11 @@ $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2015-10-19", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is( $sunday->day->name,
-    "St. Luke", 'Validating that 2015-10-19 returns the correct day.' );
+is(
+    $sunday->day->name,
+    "Monday, October 19, 2015",
+    'Validating that 2015-10-19 returns the correct day.'
+);
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2015-10-25", "%Y-%m-%d" ),
@@ -656,8 +662,11 @@ $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2015-12-28", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is( $sunday->day->name,
-    "St. John", 'Validating that 2015-12-28 returns the correct day.' );
+is(
+    $sunday->day->name,
+    "Monday, December 28, 2015",
+    'Validating that 2015-12-28 returns the correct day.'
+);
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2016-01-03", "%Y-%m-%d" ),
@@ -839,7 +848,7 @@ $sunday = Date::Lectionary->new(
 );
 is(
     $sunday->day->name,
-    "St. Philip & St. James",
+    "Monday, May 2, 2016",
     'Validating that 2016-05-02 returns the correct day.'
 );
 
@@ -1307,8 +1316,11 @@ $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-03-20", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is( $sunday->day->name,
-    "St. Joseph", 'Validating that 2017-03-20 returns the correct day.' );
+is(
+    $sunday->day->name,
+    "Monday, March 20, 2017",
+    'Validating that 2017-03-20 returns the correct day.'
+);
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-03-26", "%Y-%m-%d" ),
@@ -1428,8 +1440,11 @@ $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-06-12", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is( $sunday->day->name,
-    "St. Barnabas", 'Validating that 2017-06-12 returns the correct day.' );
+is(
+    $sunday->day->name,
+    "Monday, June 12, 2017",
+    'Validating that 2017-06-12 returns the correct day.'
+);
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-06-18", "%Y-%m-%d" ),
@@ -1507,7 +1522,7 @@ $sunday = Date::Lectionary->new(
 );
 is(
     $sunday->day->name,
-    "The Transfiguration",
+    "Sunday between July 31 and August 6 inclusive",
     'Validating that 2017-08-06 returns the correct day.'
 );
 
