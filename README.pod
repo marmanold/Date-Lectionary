@@ -8,11 +8,43 @@ Date::Lectionary
     use Date::Lectionary;
 
     my $christmas = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-12-25", "%Y-%m-%d"));
-    say $christmas->day; #String representation of the name of the day in the liturgical calednar; e.g. Christmas Day
+    say $christmas->day->name; #String representation of the name of the day in the liturgical calendar; e.g. 'Christmas Day'
+    say $christmas->year->name; #String representation of the name of the liturgical year; e.g. 'C'
+    say ${$christmas->readings}[0] #String representation of the first reading for the day.
 
 =head1 DESCRIPTION
 
-Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for either the date or, if the date isn't a Sunday or Holiday, the next Sunday's readings.
+Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for the day.
+
+=head2 ATTRIBUTES
+
+=head3 date
+
+The Time::Piece object date given at object construction.
+
+=head3 lectionary
+
+An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary.  This attribute defaults to 'acna' if no value is given.
+
+=head3 day
+
+A Date::Lectionary::Day object containing attributes related to the liturgical day.
+
+type: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
+
+name: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
+
+alt: The alternative name --- if one is given --- of the day in the lectionary.  For noLect days a String representation of the day is returned as the alternative name.
+
+=head3 year
+
+A Date::Lectionary::Year object containing attributes related to the liturgical year the date given at object construction resides in.
+
+name: Returns 'A', 'B', or 'C' depending on the liturgical year the date given at object construction resides in.
+
+=head3 readings
+
+Return an ArrayRef of the String representation of the day's readings if there are any.  Readings in the ArrayRef are ordered in the array according to the order the readings are given in the lectionary.
 
 =head1 INSTALLATION
 
