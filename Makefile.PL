@@ -38,8 +38,9 @@ WriteMakefile(
         'File::Share'                  => '0.25',
         'XML::LibXML'                  => '2.0128',
     },
-    META_ADD => {
-        resources => {
+    META_MERGE => {
+        "meta-spec" => { version => 2 },
+        resources   => {
             repository => {
                 type => 'git',
                 url  => 'git://github.com/marmanold/Date-Lectionary.git',

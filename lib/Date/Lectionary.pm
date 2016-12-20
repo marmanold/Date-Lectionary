@@ -22,11 +22,11 @@ Date::Lectionary
 
 =head1 VERSION
 
-Version 1.20161106
+Version 1.20161218
 
 =cut
 
-our $VERSION = '1.20161106';
+our $VERSION = '1.20161218';
 
 =head1 SYNOPSIS
 
@@ -129,7 +129,8 @@ sub _buildReadings {
         $readings = $parser->parse_file($data_location);
     }
     catch {
-#carp "The readings database for the $lectionary lectionary could not be found or parsed.";
+        carp
+"The readings database for the $lectionary lectionary could not be found or parsed.";
     };
 
     my $compiled_xpath = XML::LibXML::XPathExpression->new(
@@ -143,7 +144,8 @@ sub _buildReadings {
         }
     }
     catch {
-#carp "Readings for $displayName in year $year could not be parsed from the database.";
+        carp
+"Readings for $displayName in year $year could not be parsed from the database.";
     };
 
     return \@readings;

@@ -1,0 +1,1392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lectionary name="RCL">
+    <year name="holidays">
+        <day name="Presentaiton of the Lord">
+            <lesson order="1">Malachi 3:1-4</lesson>
+            <lesson order="2">Psalm 84 or Psalm 24:7-10</lesson>
+            <lesson order="3">Hebrews 2:14-18</lesson>
+            <lesson order="4">Luke 2:22-40</lesson>
+        </day>
+        <day name="Annunciation of the Lord">
+            <lesson order="1">Isaiah 7:10-14</lesson>
+            <lesson order="2">Psalm 45 or Psalm 40:5-10</lesson>
+            <lesson order="3">Hebrews 10:4-10</lesson>
+            <lesson order="4">Luke 1:26-38</lesson>
+        </day>
+        <day name="Visitation of Mary to Elizabeth">
+            <lesson order="1">1 Samuel 2:1-10</lesson>
+            <lesson order="2">Psalm 113</lesson>
+            <lesson order="3">Romans 12:9-16b</lesson>
+            <lesson order="4">Luke 1:39-57</lesson>
+        </day>
+        <day name="Holy Cross Day">
+            <lesson order="1">Numbers 21:4b-9</lesson>
+            <lesson order="2">Psalm 98:1-5 or Psalm 78:1-2, 34-38</lesson>
+            <lesson order="3">1 Corinthians 1:18-24</lesson>
+            <lesson order="4">John 3:13-17</lesson>
+        </day>
+    </year>
+    <year name="A">
+        <day name="First Sunday of Advent">
+            <lesson order="1">Is 2:1-5</lesson>
+            <lesson order="2">Ps 122</lesson>
+            <lesson order="3">Rom 13:8-14</lesson>
+            <lesson order="4">Mt 24:29-44</lesson>
+        </day>
+        <day name="Second Sunday of Advent">
+            <lesson order="1">Is 11:1-10</lesson>
+            <lesson order="2">Ps 72:1-15(16-19)</lesson>
+            <lesson order="3">Rom 15:1-13</lesson>
+            <lesson order="4">Mt 3:1-12</lesson>
+        </day>
+        <day name="Third Sunday of Advent">
+            <lesson order="1">Is 35:1-10</lesson>
+            <lesson order="2">Psalm 146</lesson>
+            <lesson order="3">James 5:7-12</lesson>
+            <lesson order="4">Mt 11:2-19</lesson>
+        </day>
+        <day name="Fourth Sunday of Advent">
+            <lesson order="1">Is 7:10-17</lesson>
+            <lesson order="2">Ps 24</lesson>
+            <lesson order="3">Rom 1:1-7</lesson>
+            <lesson order="4">Mt 1:18-25</lesson>
+        </day>
+        <day name="Christmas, Proper I">
+            <lesson order="1">Is 9:1-7</lesson>
+            <lesson order="2">Ps 96</lesson>
+            <lesson order="3">Titus 2:11-14</lesson>
+            <lesson order="4">Lk 2:1-14(15-20)</lesson>
+        </day>
+        <day name="Christmas, Proper II">
+            <lesson order="1">Is 62:6-12</lesson>
+            <lesson order="2">Ps 97</lesson>
+            <lesson order="3">Titus 3:4-7</lesson>
+            <lesson order="4">Lk 2:(1-14)15-20</lesson>
+        </day>
+        <day name="Christmas, Proper III">
+            <lesson order="1">Is 52:7-12</lesson>
+            <lesson order="2">Ps 98</lesson>
+            <lesson order="3">Heb 1:1-12</lesson>
+            <lesson order="4">Jn 1:1-18</lesson>
+        </day>
+        <day name="First Sunday after Christmas Day">
+            <lesson order="1">Is 61:10-62:5</lesson>
+            <lesson order="2">Ps 147:13-21</lesson>
+            <lesson order="3">Gal 3:23-4:7</lesson>
+            <lesson order="4">Jn 1:1-18</lesson>
+        </day>
+        <day name="Holy Name of Jesus">
+            <lesson order="1">Ex 34:1-9</lesson>
+            <lesson order="2">Ps 8</lesson>
+            <lesson order="3">Rom 1:1-7</lesson>
+            <lesson order="4">Lk 2:15-21</lesson>
+        </day>
+        <day name="Second Sunday after Christmas Day">
+            <lesson order="1">Jer 31:7-14</lesson>
+            <lesson order="2">Ps 84</lesson>
+            <lesson order="3">Eph 1:3-14</lesson>
+            <lesson order="4">Lk 2:41-52 or Mt 2:1-12</lesson>
+        </day>
+        <day name="Epiphany of the Lord">
+            <lesson order="1">Is 60:1-9</lesson>
+            <lesson order="2">Ps 72 or 72:1-15</lesson>
+            <lesson order="3">Eph 3:1-13</lesson>
+            <lesson order="4">Mt 2:1-12</lesson>
+        </day>
+        <day name="Baptism of the Lord">
+            <lesson order="1">Isa 42:1-9</lesson>
+            <lesson order="2">Ps 89:1-29 or 89:20-29</lesson>
+            <lesson order="3">Acts 10:34-38</lesson>
+            <lesson order="4">Mt 3:13-17</lesson>
+        </day>
+        <day name="Second Sunday after the Epiphany">
+            <lesson order="1">Isa 49:1-7</lesson>
+            <lesson order="2">Ps 40:1-10</lesson>
+            <lesson order="3">1 Cor 1:1-9</lesson>
+            <lesson order="4">Jn 1:29-42</lesson>
+        </day>
+        <day name="Third Sunday after the Epiphany">
+            <lesson order="1">Amos 3:1-11</lesson>
+            <lesson order="2">Ps 139:1-16</lesson>
+            <lesson order="3">1 Cor 1:10-17</lesson>
+            <lesson order="4">Mt 4:12-22</lesson>
+        </day>
+        <day name="Fourth Sunday after the Epiphany">
+            <lesson order="1">Mic 6:1-8</lesson>
+            <lesson order="2">Ps 37:1-11</lesson>
+            <lesson order="3">1 Cor 1:18-31</lesson>
+            <lesson order="4">Mt 5:1-12</lesson>
+        </day>
+        <day name="Fifth Sunday after the Epiphany">
+            <lesson order="1">Hab. 3:(1), 2-15, (16-19)</lesson>
+            <lesson order="2">Ps 27</lesson>
+            <lesson order="3">1 Cor 2:1-16</lesson>
+            <lesson order="4">Mt 5:13-20</lesson>
+        </day>
+        <day name="Sixth Sunday after the Epiphany">
+            <lesson order="1">Ecclesiasticus 15:11-20</lesson>
+            <lesson order="2">Ps 119:(1-8)9-16</lesson>
+            <lesson order="3">1 Cor 3:1-9</lesson>
+            <lesson order="4">Mt 5:21-37</lesson>
+        </day>
+        <day name="Seventh Sunday after the Epiphany">
+            <lesson order="1">Lev 19:1-2,9-18</lesson>
+            <lesson order="2">Ps 71 or 71:12-24</lesson>
+            <lesson order="3">1 Cor 3:10-23</lesson>
+            <lesson order="4">Mt 5:38-48</lesson>
+        </day>
+        <day name="Eighth Sunday after the Epiphany">
+            <lesson order="1">Is 49:1-7</lesson>
+            <lesson order="2">Ps 67</lesson>
+            <lesson order="3">Acts 1:1-8</lesson>
+            <lesson order="4">Matthew 9:35-38</lesson>
+        </day>
+        <day name="Last Sunday after the Epiphany">
+            <lesson order="1">Ex 24:12-18</lesson>
+            <lesson order="2">Ps 99</lesson>
+            <lesson order="3">Phil 3:7-14</lesson>
+            <lesson order="4">Mt 17:1-9</lesson>
+        </day>
+        <day name="Ash Wednesday">
+            <lesson order="1">Joel 2:1-2, 12-17</lesson>
+            <lesson order="2">Ps 103 or 103:8-14</lesson>
+            <lesson order="3">2 Cor 5:20-6:10</lesson>
+            <lesson order="4">Mt 6:1-6, 16-18(19-21)</lesson>
+        </day>
+        <day name="First Sunday in Lent">
+            <lesson order="1">Gen 2:4-9, 15-17, 25-3:7</lesson>
+            <lesson order="2">Ps 51 or Ps 51:1-13</lesson>
+            <lesson order="3">Rom 5:12-19(21-22)</lesson>
+            <lesson order="4">Mt 4:1-11</lesson>
+        </day>
+        <day name="Second Sunday in Lent">
+            <lesson order="1">Gen 12:1-9</lesson>
+            <lesson order="2">Ps 33:12-22</lesson>
+            <lesson order="3">Rom 4:1-5(6-12)13-17</lesson>
+            <lesson order="4">Jn 3:1-16</lesson>
+        </day>
+        <day name="Third Sunday in Lent">
+            <lesson order="1">Jn 3:1-16</lesson>
+            <lesson order="2">Ps 95</lesson>
+            <lesson order="3">Rom 1:16-32</lesson>
+            <lesson order="4">Jn 4:5-26(27-38)39-42</lesson>
+        </day>
+        <day name="Fourth Sunday in Lent">
+            <lesson order="1">1 Sam 16:1-13</lesson>
+            <lesson order="2">Ps 23</lesson>
+            <lesson order="3">Eph 5:1-14</lesson>
+            <lesson order="4">Jn 9:1-13, 28-38(39-41)</lesson>
+        </day>
+        <day name="Fifth Sunday in Lent">
+            <lesson order="1">Ezek 37:1-14</lesson>
+            <lesson order="2">Ps 130</lesson>
+            <lesson order="3">Rom 6:15-23</lesson>
+            <lesson order="4">Jn 11:(1-17)18-44</lesson>
+        </day>
+        <day name="Liturgy of the Palms">
+            <lesson order="1">Mt 21:1-11</lesson>
+            <lesson order="2">Ps 118:19-29</lesson>
+        </day>
+        <day name="Liturgy of the Passion">
+            <lesson order="1">Isa 52:13-53:12</lesson>
+            <lesson order="2">Ps 22:1-21 or Ps 22:1-11</lesson>
+            <lesson order="3">Phil 2:5-11</lesson>
+            <lesson order="4">Mt (26:36-75) 27:1-54(55-66)</lesson>
+        </day>
+        <day name="Monday of Holy Week">
+            <lesson order="1">Isa 42:1-9</lesson>
+            <lesson order="2">Ps 36:5-10</lesson>
+            <lesson order="3">Heb 11:39-12:3</lesson>
+            <lesson order="4">Jn 12:1-11 or Mk 14:3-9</lesson>
+        </day>
+        <day name="Tuesday of Holy Week">
+            <lesson order="1">Isa 49:1-6</lesson>
+            <lesson order="2">Ps 71:1-12</lesson>
+            <lesson order="3">1 Cor 1:18-31</lesson>
+            <lesson order="4">Jn 12:37-38,42-50 or Mk 11:15-19</lesson>
+        </day>
+        <day name="Wednesday of Holy Week">
+            <lesson order="1">Isa 50:4-9</lesson>
+            <lesson order="2">Ps 69:7-15,22-23</lesson>
+            <lesson order="3">Heb 9:11-28</lesson>
+            <lesson order="4">Mt 26:1-5,14-25</lesson>
+        </day>
+        <day name="Holy Thursday">
+            <lesson order="1">Ex 12:1-14</lesson>
+            <lesson order="2">Ps 78:14-25</lesson>
+            <lesson order="3">1 Cor 11:23-26(27-34)</lesson>
+            <lesson order="4">Jn 13:1-15 or Lk 22:14-30</lesson>
+        </day>
+        <day name="Good Friday">
+            <lesson order="1">Gen 22:1-18</lesson>
+            <lesson order="2">Ps 22:1-11(12-21) or Ps 40:1-14 or 69:1-23</lesson>
+            <lesson order="3">Heb 10:1-25</lesson>
+            <lesson order="4">Jn (18:1-40) 19:1-37</lesson>
+        </day>
+        <day name="Holy Saturday">
+            <lesson order="1">Job 14:1-17</lesson>
+            <lesson order="2">Ps 130 or 31:1-5</lesson>
+            <lesson order="3">1 Pet 4:1-8</lesson>
+            <lesson order="4">Mt 27:57-66 or Jn 19:38-42</lesson>
+        </day>
+        <day name="Easter Vigil">
+            <lesson order="1">Genesis 1:1—2:2</lesson>
+            <lesson order="2">Genesis 7:1-5, 11-18; 8:8-18; 9:8-13</lesson>
+            <lesson order="3">Genesis 22:1-18</lesson>
+            <lesson order="4">Exodus 14:10—15:1</lesson>
+            <lesson order="5">Isaiah 4:2-6</lesson>
+            <lesson order="6">Isaiah 55:1-11</lesson>
+            <lesson order="7">Ezekiel 36:24-28</lesson>
+            <lesson order="8">Ezekiel 37:1-14</lesson>
+            <lesson order="9">Zephaniah 3:12-20</lesson>
+            <lesson order="10">Romans 6:3-11</lesson>
+            <lesson order="11">Matthew 28:1-10</lesson>
+        </day>
+        <day name="Easter Day">
+            <lesson order="1">Acts 10:34-43 or Ex 14:10-14,21-31</lesson>
+            <lesson order="2">Ps 118:14-17,22-24</lesson>
+            <lesson order="3">Col 3:1-4 or Acts 10:34-43</lesson>
+            <lesson order="4">Jn 20:1-10(11-18) or Mt 28:1-10</lesson>
+        </day>
+        <day name="Easter Evening">
+            <lesson order="1">Dan 12:1-3</lesson>
+            <lesson order="2">Ps 136</lesson>
+            <lesson order="3">1 Cor 5:6-8</lesson>
+            <lesson order="4">Lk 24:13-35</lesson>
+        </day>
+        <day name="Second Sunday of Easter">
+            <lesson order="1">Acts 2:14a,22-32 or Gen 8:6-16, 9:8-16</lesson>
+            <lesson order="2">Ps. 111</lesson>
+            <lesson order="3">1 Pet 1:3-9</lesson>
+            <lesson order="4">Jn 20:19-31</lesson>
+        </day>
+        <day name="Third Sunday of Easter">
+            <lesson order="1">Acts 2:14a,36-47 or Isa 43:1-12</lesson>
+            <lesson order="2">Ps 116:10-17</lesson>
+            <lesson order="3">1 Pet 1:13-25</lesson>
+            <lesson order="4">Lk 24:13-35</lesson>
+        </day>
+        <day name="Fourth Sunday of Easter">
+            <lesson order="1">Acts 6:1-9, 7:2a,51-60 or Neh 9:(1-3)6-15</lesson>
+            <lesson order="2">Ps 23</lesson>
+            <lesson order="3">1 Pet 2:13-25</lesson>
+            <lesson order="4">Jn 10:1-10</lesson>
+        </day>
+        <day name="Fifth Sunday of Easter">
+            <lesson order="1">Acts 17:1-15 or Deut 6:20-25</lesson>
+            <lesson order="2">Ps 66:1-11 or 66:1-8</lesson>
+            <lesson order="3">1 Pet 2:1-12</lesson>
+            <lesson order="4">Jn 14:1-14</lesson>
+        </day>
+        <day name="Sixth Sunday of Easter">
+            <lesson order="1">Acts 17:22-34 or Isa 41:17-20</lesson>
+            <lesson order="2">Ps 148 or 148:7-14</lesson>
+            <lesson order="3">1 Pet 3:8-18</lesson>
+            <lesson order="4">Jn 15:1-11</lesson>
+        </day>
+        <day name="Ascension of the Lord">
+            <lesson order="1">Acts 1:1-11</lesson>
+            <lesson order="2">Ps 47 or 110:1-5</lesson>
+            <lesson order="3">Eph 1:15-23</lesson>
+            <lesson order="4">Lk 24:44-53 or Mk 16:9-20</lesson>
+        </day>
+        <day name="Seventh Sunday of Easter">
+            <lesson order="1">Acts 1:(1-5)6-14 or Ezek 39:21-29</lesson>
+            <lesson order="2">Ps 68:1-20 or 47</lesson>
+            <lesson order="3">1 Pet 4:12-19</lesson>
+            <lesson order="4">Jn 17:1-11</lesson>
+        </day>
+        <day name="Day of Pentecost">
+            <lesson order="1">Acts 2:1-11</lesson>
+            <lesson order="2">Ps 104:25-37 or 104:25-32</lesson>
+            <lesson order="3">1 Cor 12:4-13</lesson>
+            <lesson order="4">Jn 20:19-23 or Jn 14:8-17</lesson>
+        </day>
+        <day name="Trinity Sunday">
+            <lesson order="1">Gen 1:1-2:3</lesson>
+            <lesson order="2">Ps 150</lesson>
+            <lesson order="3">2 Cor 13:5-14</lesson>
+            <lesson order="4">Mt 28:16-20</lesson>
+        </day>
+        <day name="Sunday between May 24 and May 28 inclusive">
+            <lesson order="1">Isa 49:8-18</lesson>
+            <lesson order="2">Ps 62</lesson>
+            <lesson order="3">1 Cor 4:1-13</lesson>
+            <lesson order="4">Mt 6:24-34</lesson>
+        </day>
+        <day name="Sunday between May 29 and June 4 inclusive">
+            <lesson order="1">Deut 11:18-32</lesson>
+            <lesson order="2">Ps 31 or Psalm 31:16-27</lesson>
+            <lesson order="3">Rom 3:21-31</lesson>
+            <lesson order="4">Mt 7:21-27</lesson>
+        </day>
+        <day name="Sunday between June 5 and June 11 inclusive">
+            <lesson order="1">Hos 5:15-6:6</lesson>
+            <lesson order="2">Ps 50</lesson>
+            <lesson order="3">Rom 4:13-18</lesson>
+            <lesson order="4">Mt 9:9-13</lesson>
+        </day>
+        <day name="Sunday between June 12 and June 18 inclusive">
+            <lesson order="1">Ex 19:1-8</lesson>
+            <lesson order="2">Ps 100</lesson>
+            <lesson order="3">Rom 5:1-11</lesson>
+            <lesson order="4">Mt 9:35-10:15</lesson>
+        </day>
+        <day name="Sunday between June 19 and June 25 inclusive">
+            <lesson order="1">Jer 20:7-13</lesson>
+            <lesson order="2">Psalm 69:1-16(17-19)</lesson>
+            <lesson order="3">Rom 5:15b-19</lesson>
+            <lesson order="4">Mt 10:16-33</lesson>
+        </day>
+        <day name="Sunday between June 26 and July 2 inclusive">
+            <lesson order="1">Isa 2:10-17</lesson>
+            <lesson order="2">Ps 89:1-18</lesson>
+            <lesson order="3">Rom 6:1-11</lesson>
+            <lesson order="4">Mt 10:34-42</lesson>
+        </day>
+        <day name="Sunday between July 3 and July 9 inclusive">
+            <lesson order="1">Zech 9:9-12</lesson>
+            <lesson order="2">Ps 145:1-13(14-21)</lesson>
+            <lesson order="3">Rom 7:21-8:6</lesson>
+            <lesson order="4">Mt 11:25-30</lesson>
+        </day>
+        <day name="Sunday between July 10 and July 16 inclusive">
+            <lesson order="1">Isa 55</lesson>
+            <lesson order="2">Ps 65</lesson>
+            <lesson order="3">Rom 8:7-17</lesson>
+            <lesson order="4">Mt 13:1-9,18-23</lesson>
+        </day>
+        <day name="Sunday between July 17 and July 23 inclusive">
+            <lesson order="1">Wis 12:13, 16-19</lesson>
+            <lesson order="2">Ps 86</lesson>
+            <lesson order="3">Rom 8:18-25</lesson>
+            <lesson order="4">Mt 13:24-30,34-43</lesson>
+        </day>
+        <day name="Sunday between July 24 and July 30 inclusive">
+            <lesson order="1">1 Kings 3:3-14</lesson>
+            <lesson order="2">Ps 119:121-136</lesson>
+            <lesson order="3">Rom 8:26-34</lesson>
+            <lesson order="4">Mt 13:31-33,44-50</lesson>
+        </day>
+        <day name="Sunday between July 31 and August 6 inclusive">
+            <lesson order="1">Neh 9:16-21</lesson>
+            <lesson order="2">Ps 78:(1-12)13-25</lesson>
+            <lesson order="3">Rom 8:35-39</lesson>
+            <lesson order="4">Mt 14:13-21</lesson>
+        </day>
+        <day name="Sunday between August 7 and August 13 inclusive">
+            <lesson order="1">Jon 2:1-10</lesson>
+            <lesson order="2">Ps 29</lesson>
+            <lesson order="3">Rom 9:1-5</lesson>
+            <lesson order="4">Mt 14:22-33</lesson>
+        </day>
+        <day name="Sunday between August 14 and August 20 inclusive">
+            <lesson order="1">Isa 56:1-8</lesson>
+            <lesson order="2">Ps 67</lesson>
+            <lesson order="3">Rom 11:13-24</lesson>
+            <lesson order="4">Mt 15:21-28</lesson>
+        </day>
+        <day name="Sunday between August 21 and August 27 inclusive">
+            <lesson order="1">Isa 51:1-6</lesson>
+            <lesson order="2">Ps 138</lesson>
+            <lesson order="3">Rom 11:25-36</lesson>
+            <lesson order="4">Mt 16:13-20</lesson>
+        </day>
+        <day name="Sunday between August 28 and September 3 inclusive">
+            <lesson order="1">Jer 15:15-21</lesson>
+            <lesson order="2">Ps 26</lesson>
+            <lesson order="3">Rom 12:1-8</lesson>
+            <lesson order="4">Mt 16:21-27</lesson>
+        </day>
+        <day name="Sunday between September 4 and September 10 inclusive">
+            <lesson order="1">Ezek 33:1-11</lesson>
+            <lesson order="2">Ps 119:33-48</lesson>
+            <lesson order="3">Rom 12:9-21</lesson>
+            <lesson order="4">Mt 18:15-20</lesson>
+        </day>
+        <day name="Sunday between September 11 and September 17 inclusive">
+            <lesson order="1">Ecclesiasticus 27:30-28:7</lesson>
+            <lesson order="2">Ps 103 or 103:1-14</lesson>
+            <lesson order="3">Rom 14:5-12</lesson>
+            <lesson order="4">Mt 18:21-35</lesson>
+        </day>
+        <day name="Sunday between September 18 and September 24 inclusive">
+            <lesson order="1">Jonah 3:10-4:11</lesson>
+            <lesson order="2">Ps 145:(1-13)14-21</lesson>
+            <lesson order="3">Phil 1:21-27</lesson>
+            <lesson order="4">Mt 20:1-16</lesson>
+        </day>
+        <day name="Sunday between September 25 and October 1 inclusive">
+            <lesson order="1">Ezek 18:1-4,25-32</lesson>
+            <lesson order="2">Ps 25:1-14(15-21)</lesson>
+            <lesson order="3">Phil 2:1-13</lesson>
+            <lesson order="4">Mt 21:28-32</lesson>
+        </day>
+        <day name="Sunday between October 2 and October 8 inclusive">
+            <lesson order="1">Isa 5:1-7</lesson>
+            <lesson order="2">Ps 80(1-6)7-19</lesson>
+            <lesson order="3">Phil 3:14-21</lesson>
+            <lesson order="4">Mt 21:33-44</lesson>
+        </day>
+        <day name="Sunday between October 9 and October 15 inclusive">
+            <lesson order="1">Isa 25:1-9</lesson>
+            <lesson order="2">Ps 23</lesson>
+            <lesson order="3">Phil 4:4-13</lesson>
+            <lesson order="4">Mt 22:1-14</lesson>
+        </day>
+        <day name="Sunday between October 16 and October 22 inclusive">
+            <lesson order="1">Isa 45:1-7</lesson>
+            <lesson order="2">Ps 96</lesson>
+            <lesson order="3">1 Thess 1:1-10</lesson>
+            <lesson order="4">Mt 22:15-22</lesson>
+        </day>
+        <day name="Sunday between October 23 and October 29 inclusive">
+            <lesson order="1">Ex 22:21-27</lesson>
+            <lesson order="2">Ps 1</lesson>
+            <lesson order="3">1 Thess 2:1-8</lesson>
+            <lesson order="4">Mt 22:34-46</lesson>
+        </day>
+        <day name="All Saints">
+            <lesson order="1">Ecclesiasticus 44:1-14 or Rev 7:9-17</lesson>
+            <lesson order="2">Ps 149</lesson>
+            <lesson order="3">Rev 7:9-17 or Eph 1:(11-14)15-23</lesson>
+            <lesson order="4">Mt 5:1-12 or Lk 6:20-26(27-36)</lesson>
+        </day>
+        <day name="Sunday between October 30 and November 5 inclusive">
+            <lesson order="1">Mic 3:5-12</lesson>
+            <lesson order="2">Ps 43</lesson>
+            <lesson order="3">1 Thess 2:9-20</lesson>
+            <lesson order="4">Mt 23:1-12</lesson>
+        </day>
+        <day name="Sunday between November 6 and November 12 inclusive">
+            <lesson order="1">Amos 5:18-24</lesson>
+            <lesson order="2">Ps 70</lesson>
+            <lesson order="3">1 Thess 4:13-18</lesson>
+            <lesson order="4">Mt 25:1-13</lesson>
+        </day>
+        <day name="Sunday between November 13 and November 19 inclusive">
+            <lesson order="1">Zeph 1:7,12-18</lesson>
+            <lesson order="2">Ps 90:1-12(13-17)</lesson>
+            <lesson order="3">1 Thess 5:1-10</lesson>
+            <lesson order="4">Mt 25:14-30</lesson>
+        </day>
+        <day name="Christ the King">
+            <lesson order="1">Ezek 34:11-20</lesson>
+            <lesson order="2">Ps 95</lesson>
+            <lesson order="3">1 Cor 15:20-28</lesson>
+            <lesson order="4">Mt 25:31-46</lesson>
+        </day>
+    </year>
+    <year name="B">
+        <day name="First Sunday of Advent">
+            <lesson order="1">Is 64:1-9a</lesson>
+            <lesson order="2">Ps 80 or 80:1-7</lesson>
+            <lesson order="3">1 Cor 1:1-9</lesson>
+            <lesson order="4">Mk 13:24-37</lesson>
+        </day>
+        <day name="Second Sunday of Advent">
+            <lesson order="1">Is 40:1-11</lesson>
+            <lesson order="2">Ps 85</lesson>
+            <lesson order="3">2 Pet 3:8-18</lesson>
+            <lesson order="4">Mk 1:1-8</lesson>
+        </day>
+        <day name="Third Sunday of Advent">
+            <lesson order="1">Isa 65:17-25</lesson>
+            <lesson order="2">Ps 126</lesson>
+            <lesson order="3">1 Thess 5:12-28</lesson>
+            <lesson order="4">Jn 3:22-30</lesson>
+        </day>
+        <day name="Fourth Sunday of Advent">
+            <lesson order="1">2 Sam 7:1-17</lesson>
+            <lesson order="2">Ps 132:(1-7) 8-19</lesson>
+            <lesson order="3">Rom 16:25-27</lesson>
+            <lesson order="4">Lk 1:26-38</lesson>
+        </day>
+        <day name="Christmas, Proper I">
+            <lesson order="1">Is 9:1-7</lesson>
+            <lesson order="2">Ps 96</lesson>
+            <lesson order="3">Titus 2:11-14</lesson>
+            <lesson order="4">Lk 2:1-14(15-20)</lesson>
+        </day>
+        <day name="Christmas, Proper II">
+            <lesson order="1">Is 62:6-12</lesson>
+            <lesson order="2">Ps 97</lesson>
+            <lesson order="3">Titus 3:4-7</lesson>
+            <lesson order="4">Lk 2:(1-14)15-20</lesson>
+        </day>
+        <day name="Christmas, Proper III">
+            <lesson order="1">Is 52:7-12</lesson>
+            <lesson order="2">Ps 98</lesson>
+            <lesson order="3">Heb 1:1-12</lesson>
+            <lesson order="4">Jn 1:1-18</lesson>
+        </day>
+        <day name="First Sunday after Christmas Day">
+            <lesson order="1">Is 61:10-62:5</lesson>
+            <lesson order="2">Ps 147:13-21</lesson>
+            <lesson order="3">Gal 3:23-4:7</lesson>
+            <lesson order="4">Jn 1:1-18</lesson>
+        </day>
+        <day name="Holy Name of Jesus">
+            <lesson order="1">Ex 34:1-9</lesson>
+            <lesson order="2">Ps 8</lesson>
+            <lesson order="3">Rom 1:1-7</lesson>
+            <lesson order="4">Lk 2:15-21</lesson>
+        </day>
+        <day name="Second Sunday after Christmas Day">
+            <lesson order="1">Jer 31:7-14</lesson>
+            <lesson order="2">Ps 84</lesson>
+            <lesson order="3">Eph 1:3-14</lesson>
+            <lesson order="4">Mt 2:13-23 or Mt 2:1-12</lesson>
+        </day>
+        <day name="Epiphany of the Lord">
+            <lesson order="1">Is 60:1-9</lesson>
+            <lesson order="2">Ps 72 or 72:1-11</lesson>
+            <lesson order="3">Eph 3:1-13</lesson>
+            <lesson order="4">Mt 2:1-12</lesson>
+        </day>
+        <day name="Baptism of the Lord">
+            <lesson order="1">Isa 42:1-9</lesson>
+            <lesson order="2">Ps 89:1-29 or 89:20-29</lesson>
+            <lesson order="3">Acts 10:34-38</lesson>
+            <lesson order="4">Mk 1:7-11</lesson>
+        </day>
+        <day name="Second Sunday after the Epiphany">
+            <lesson order="1">1 Sam 3:1-20</lesson>
+            <lesson order="2">Ps 63:1-8(9-11)</lesson>
+            <lesson order="3">1 Cor 6:9-20</lesson>
+            <lesson order="4">Jn 1:43-51</lesson>
+        </day>
+        <day name="Third Sunday after the Epiphany">
+            <lesson order="1">Jer 3:19-4:4</lesson>
+            <lesson order="2">Ps 130</lesson>
+            <lesson order="3">1 Cor 7:17-24</lesson>
+            <lesson order="4">Mk 1:14-20</lesson>
+        </day>
+        <day name="Fourth Sunday after the Epiphany">
+            <lesson order="1">Deut 18:15-22</lesson>
+            <lesson order="2">Ps 111</lesson>
+            <lesson order="3">1 Cor 8:1-13</lesson>
+            <lesson order="4">Mk 1:21-28</lesson>
+        </day>
+        <day name="Fifth Sunday after the Epiphany">
+            <lesson order="1">2 Kings 4:8-21(22-31)32- 37</lesson>
+            <lesson order="2">Ps 142</lesson>
+            <lesson order="3">1 Cor 9:16-23</lesson>
+            <lesson order="4">Mk 1:29-39</lesson>
+        </day>
+        <day name="Sixth Sunday after the Epiphany">
+            <lesson order="1">2 Kings 5:1-15ab</lesson>
+            <lesson order="2">Ps42:1-7(8-15)</lesson>
+            <lesson order="3">1 Cor 9:24-27</lesson>
+            <lesson order="4">Mk 1:40-45</lesson>
+        </day>
+        <day name="Seventh Sunday after the Epiphany">
+            <lesson order="1">Isa 43:18-25</lesson>
+            <lesson order="2">Ps 32</lesson>
+            <lesson order="3">2 Cor 1:18-22</lesson>
+            <lesson order="4">Mk 2:1-12</lesson>
+        </day>
+        <day name="Eighth Sunday after the Epiphany">
+            <lesson order="1">Gen 12:1-3</lesson>
+            <lesson order="2">Ps 86:8-13</lesson>
+            <lesson order="3">Rev 7:9-17</lesson>
+            <lesson order="4">Mt 28:16-20</lesson>
+        </day>
+        <day name="Last Sunday after the Epiphany">
+            <lesson order="1">1 Kings 19:9-18</lesson>
+            <lesson order="2">Ps 27</lesson>
+            <lesson order="3">2 Pet 1:13-21</lesson>
+            <lesson order="4">Mk 9:2-9</lesson>
+        </day>
+        <day name="Ash Wednesday">
+            <lesson order="1">Joel 2:1-2, 12-17</lesson>
+            <lesson order="2">Ps 103 or 103:8-14</lesson>
+            <lesson order="3">2 Cor 5:20-6:10</lesson>
+            <lesson order="4">Mt 6:1-6, 16-18(19-21)</lesson>
+        </day>
+        <day name="First Sunday in Lent">
+            <lesson order="1">Gen 9:8-17</lesson>
+            <lesson order="2">Ps 25 or 25:3-9</lesson>
+            <lesson order="3">1 Pet 3:18-22</lesson>
+            <lesson order="4">Mk 1:9-13</lesson>
+        </day>
+        <day name="Second Sunday in Lent">
+            <lesson order="1">Gen 22:1-14</lesson>
+            <lesson order="2">Ps 16 or 16:5-11</lesson>
+            <lesson order="3">Rom 8:31-39</lesson>
+            <lesson order="4">Mk 8:31-38</lesson>
+        </day>
+        <day name="Third Sunday in Lent">
+            <lesson order="1">Ex 20:1-21</lesson>
+            <lesson order="2">Ps 19:7-14</lesson>
+            <lesson order="3">Rom 7:12-25</lesson>
+            <lesson order="4">Jn 2:13-22</lesson>
+        </day>
+        <day name="Fourth Sunday in Lent">
+            <lesson order="1">2 Chr 36:14-23</lesson>
+            <lesson order="2">Ps 122</lesson>
+            <lesson order="3">Eph 2:4-10</lesson>
+            <lesson order="4">Jn 6:1-15</lesson>
+        </day>
+        <day name="Fifth Sunday in Lent">
+            <lesson order="1">Jer 31:31-34</lesson>
+            <lesson order="2">Ps 51 or 51:11-16</lesson>
+            <lesson order="3">Heb 4:(14-16)5:1-10</lesson>
+            <lesson order="4">Jn 12:20-33(34-36)</lesson>
+        </day>
+        <day name="Liturgy of the Palms">
+            <lesson order="1">Mk 11:1-11a</lesson>
+            <lesson order="2">Ps 118:19-29</lesson>
+        </day>
+        <day name="Liturgy of the Passion">
+            <lesson order="1">Isa 52:13-53:12</lesson>
+            <lesson order="2">Ps 22:1-11 or Ps 22:1-21</lesson>
+            <lesson order="3">Phil 2:5-11</lesson>
+            <lesson order="4">Mk (14:32-72)15:1-39(40- 47)</lesson>
+        </day>
+        <day name="Monday of Holy Week">
+            <lesson order="1">Isa 42:1-9</lesson>
+            <lesson order="2">Ps 36:5-10</lesson>
+            <lesson order="3">Heb 11:39-12:3</lesson>
+            <lesson order="4">Jn 12:1-11 or Mk 14:3-9</lesson>
+        </day>
+        <day name="Tuesday of Holy Week">
+            <lesson order="1">Isa 49:1-6</lesson>
+            <lesson order="2">Ps 71:1-12</lesson>
+            <lesson order="3">1 Cor 1:18-31</lesson>
+            <lesson order="4">Jn 12:37-38,42-50 or Mk 11:15-19</lesson>
+        </day>
+        <day name="Wednesday of Holy Week">
+            <lesson order="1">Isa 50:4-9</lesson>
+            <lesson order="2">Ps 69:7-15,22-23</lesson>
+            <lesson order="3">Heb 9:11-28</lesson>
+            <lesson order="4">Mt 26:1-5,14-25</lesson>
+        </day>
+        <day name="Holy Thursday">
+            <lesson order="1">Ex 12:1-14</lesson>
+            <lesson order="2">Ps 78:14-25</lesson>
+            <lesson order="3">1 Cor 11:23-26(27-34)</lesson>
+            <lesson order="4">Jn 13:1-15 or Lk 22:14-30</lesson>
+        </day>
+        <day name="Good Friday">
+            <lesson order="1">Gen 22:1-18</lesson>
+            <lesson order="2">Ps 22:1-11(12-21) or Ps 40:1-14 or 69:1-23</lesson>
+            <lesson order="3">Heb 10:1-25</lesson>
+            <lesson order="4">Jn (18:1-40) 19:1-37</lesson>
+        </day>
+        <day name="Holy Saturday">
+            <lesson order="1">Job 14:1-17</lesson>
+            <lesson order="2">Ps 130 or 31:1-5</lesson>
+            <lesson order="3">1 Pet 4:1-8</lesson>
+            <lesson order="4">Mt 27:57-66 or Jn 19:38- 42</lesson>
+        </day>
+        <day name="Easter Vigil">
+            <lesson order="1">Genesis 1:1—2:2</lesson>
+            <lesson order="2">Genesis 7:1-5, 11-18; 8:8-18; 9:8-13</lesson>
+            <lesson order="3">Genesis 22:1-18</lesson>
+            <lesson order="4">Exodus 14:10—15:1</lesson>
+            <lesson order="5">Isaiah 4:2-6</lesson>
+            <lesson order="6">Isaiah 55:1-11</lesson>
+            <lesson order="7">Ezekiel 36:24-28</lesson>
+            <lesson order="8">Ezekiel 37:1-14</lesson>
+            <lesson order="9">Zephaniah 3:12-20</lesson>
+            <lesson order="10">Romans 6:3-11</lesson>
+            <lesson order="11">Matthew 28:1-10</lesson>
+        </day>
+        <day name="Easter Day">
+            <lesson order="1">Acts 10:34-43 or Isa 25:6-9</lesson>
+            <lesson order="2">Ps 118:14-17,22-24</lesson>
+            <lesson order="3">Col 3:1-4 or Acts 10:34-43</lesson>
+            <lesson order="4">Mk 16:1-8</lesson>
+        </day>
+        <day name="Easter Evening">
+            <lesson order="1">Dan 12:1-3</lesson>
+            <lesson order="2">Ps 136</lesson>
+            <lesson order="3">1 Cor 5:6-8</lesson>
+            <lesson order="4">Lk 24:13-35</lesson>
+        </day>
+        <day name="Second Sunday of Easter">
+            <lesson order="1">Acts 3:12a, 13-15,17-26 or Isa 26:1-9,19</lesson>
+            <lesson order="2">Ps 111</lesson>
+            <lesson order="3">1 Jn 5:1-5</lesson>
+            <lesson order="4">Jn 20:19-31</lesson>
+        </day>
+        <day name="Third Sunday of Easter">
+            <lesson order="1">Acts 4:5-14 or Mic 4:1-5</lesson>
+            <lesson order="2">Ps 98 or 98:1-5</lesson>
+            <lesson order="3">1 Jn 1:1-2:2</lesson>
+            <lesson order="4">Lk 24:36-49</lesson>
+        </day>
+        <day name="Fourth Sunday of Easter [Good Shepherd]">
+            <lesson order="1">Acts 4:(23-31)32-37 or Ezek 34:1-10</lesson>
+            <lesson order="2">Ps 23</lesson>
+            <lesson order="3">1 Jn 3:1-10</lesson>
+            <lesson order="4">Jn 10:11-16</lesson>
+        </day>
+        <day name="Fifth Sunday of Easter">
+            <lesson order="1">Acts 8:26-40 or Deut 4:32- 40</lesson>
+            <lesson order="2">Ps 66:1-11 or 66:1-8</lesson>
+            <lesson order="3">1 Jn 3: (11-17)18-24</lesson>
+            <lesson order="4">Jn 14:15-21</lesson>
+        </day>
+        <day name="Sixth Sunday of Easter">
+            <lesson order="1">Acts 11:19-30 or Isa 45:11-13,18-19(20-25)</lesson>
+            <lesson order="2">Ps 33 or 33:1-8,18-22</lesson>
+            <lesson order="3">1 Jn 4:7-21</lesson>
+            <lesson order="4">Jn 15:9-17</lesson>
+        </day>
+        <day name="Ascension of the Lord">
+            <lesson order="1">Acts 1:1-11</lesson>
+            <lesson order="2">Ps 47 or 110:1-5</lesson>
+            <lesson order="3">Eph 1:15-23</lesson>
+            <lesson order="4">Lk 24:44-53 or Mk 16:9-20</lesson>
+        </day>
+        <day name="Seventh Sunday of Easter">
+            <lesson order="1">Acts 1:15-26 or Ex 28:1- 4,9-10,29-30</lesson>
+            <lesson order="2">Ps 68:1-20 or 47</lesson>
+            <lesson order="3">1 Jn 5:6-15</lesson>
+            <lesson order="4">Jn 17:11b-19</lesson>
+        </day>
+        <day name="Day of Pentecost">
+            <lesson order="1">Acts 2:1-11</lesson>
+            <lesson order="2">Ps 104:25-37 or 104:25-32</lesson>
+            <lesson order="3">1 Cor 12:4-13</lesson>
+            <lesson order="4">Jn 20:19-23 or Jn 14:8-17</lesson>
+        </day>
+        <day name="Trinity Sunday">
+            <lesson order="1">Ex 3:1-6</lesson>
+            <lesson order="2">Ps 93</lesson>
+            <lesson order="3">Rom 8:12-17</lesson>
+            <lesson order="4">Jn 3:1-16</lesson>
+        </day>
+        <day name="Sunday between May 24 and May 28 inclusive">
+            <lesson order="1">Hos 2:14-23</lesson>
+            <lesson order="2">Ps 103 or 103:1-14</lesson>
+            <lesson order="3">2 Cor 3:4-18</lesson>
+            <lesson order="4">Mk 2:18-22</lesson>
+        </day>
+        <day name="Sunday between May 29 and June 4 inclusive">
+            <lesson order="1">Deut 5:6-21</lesson>
+            <lesson order="2">Ps 81:1-11(12-17)</lesson>
+            <lesson order="3">2 Cor 4:1-12</lesson>
+            <lesson order="4">Mk 2:23-28</lesson>
+        </day>
+        <day name="Sunday between June 5 and June 11 inclusive">
+            <lesson order="1">Gen 3:1-21</lesson>
+            <lesson order="2">Ps 130</lesson>
+            <lesson order="3">2 Cor 4:13-18</lesson>
+            <lesson order="4">Mk 3:20-35</lesson>
+        </day>
+        <day name="Sunday between June 12 and June 18 inclusive">
+            <lesson order="1">Ezek 31:1-6(7-9)10-14</lesson>
+            <lesson order="2">Ps 92</lesson>
+            <lesson order="3">2 Cor 5:1-10</lesson>
+            <lesson order="4">Mk 4:26-34</lesson>
+        </day>
+        <day name="Sunday between June 19 and June 25 inclusive">
+            <lesson order="1">Job 38:1-11(12-15)16-18</lesson>
+            <lesson order="2">Ps 107:1-3(4-22)23-32</lesson>
+            <lesson order="3">2 Cor 5:14-21</lesson>
+            <lesson order="4">Mk 4:35-41(5:1-20)</lesson>
+        </day>
+        <day name="Sunday between June 26 and July 2 inclusive">
+            <lesson order="1">Deut 15:7-11</lesson>
+            <lesson order="2">Ps 112</lesson>
+            <lesson order="3">2 Cor 8:1-15</lesson>
+            <lesson order="4">Mk 5:22-24,35b-43</lesson>
+        </day>
+        <day name="Sunday between July 3 and July 9 inclusive">
+            <lesson order="1">Ezek 2:1-7</lesson>
+            <lesson order="2">Ps 123</lesson>
+            <lesson order="3">2 Cor 12:2-10</lesson>
+            <lesson order="4">Mk 6:1-6</lesson>
+        </day>
+        <day name="Sunday between July 10 and July 16 inclusive">
+            <lesson order="1">Amos 7:7-15</lesson>
+            <lesson order="2">Ps 85</lesson>
+            <lesson order="3">Eph 1:1-14</lesson>
+            <lesson order="4">Mark 6:7-13</lesson>
+        </day>
+        <day name="Sunday between July 17 and July 23 inclusive">
+            <lesson order="1">Isa 57:14-21</lesson>
+            <lesson order="2">Ps 22:23-32</lesson>
+            <lesson order="3">Eph 2:11-22</lesson>
+            <lesson order="4">Mark 6:30-44</lesson>
+        </day>
+        <day name="Sunday between July 24 and July 30 inclusive">
+            <lesson order="1">2 Kings 2:1-15</lesson>
+            <lesson order="2">Ps 114</lesson>
+            <lesson order="3">Eph 4:1-16</lesson>
+            <lesson order="4">Mark 6:45-52</lesson>
+        </day>
+        <day name="Sunday between July 31 and August 6 inclusive">
+            <lesson order="1">Ex 16:2-4(5-8)9-15</lesson>
+            <lesson order="2">Ps 78:1-13(14-25)</lesson>
+            <lesson order="3">Eph 4:17-25</lesson>
+            <lesson order="4">Jn 6:24-35</lesson>
+        </day>
+        <day name="Sunday between August 7 and August 13 inclusive">
+            <lesson order="1">Deut 8:1-10</lesson>
+            <lesson order="2">Ps 34: (1-7)8-15(16-22)</lesson>
+            <lesson order="3">Eph 4:25-5:2</lesson>
+            <lesson order="4">Jn 6:37-51</lesson>
+        </day>
+        <day name="Sunday between August 14 and August 20 inclusive">
+            <lesson order="1">Prov 9:1-6</lesson>
+            <lesson order="2">Ps 147</lesson>
+            <lesson order="3">Eph 5:15-20</lesson>
+            <lesson order="4">Jn 6:53-59</lesson>
+        </day>
+        <day name="Sunday between August 21 and August 27 inclusive">
+            <lesson order="1">Josh 24:1-2a,14-25</lesson>
+            <lesson order="2">Ps 16</lesson>
+            <lesson order="3">Eph 5:21-33</lesson>
+            <lesson order="4">Jn 6:60-69</lesson>
+        </day>
+        <day name="Sunday between August 28 and September 3 inclusive">
+            <lesson order="1">Deut 4:1-9</lesson>
+            <lesson order="2">Ps 15</lesson>
+            <lesson order="3">Eph 6:10-20</lesson>
+            <lesson order="4">Mk 7:1-23</lesson>
+        </day>
+        <day name="Sunday between September 4 and September 10 inclusive">
+            <lesson order="1">Isa 35:4-7a</lesson>
+            <lesson order="2">Ps 146</lesson>
+            <lesson order="3">James 1:17-27</lesson>
+            <lesson order="4">Mk 7:31-37</lesson>
+        </day>
+        <day name="Sunday between September 11 and September 17 inclusive">
+            <lesson order="1">Isa 50:4-9</lesson>
+            <lesson order="2">Ps 116:1-9(10-19)</lesson>
+            <lesson order="3">James 2:1-18</lesson>
+            <lesson order="4">Mk 9:14-29</lesson>
+        </day>
+        <day name="Sunday between September 18 and September 24 inclusive">
+            <lesson order="1">Wis 1:16-2:1, 12-22</lesson>
+            <lesson order="2">Ps 54</lesson>
+            <lesson order="3">James 3:16-4:6</lesson>
+            <lesson order="4">Mk 9:30-37</lesson>
+        </day>
+        <day name="Sunday between September 25 and October 1 inclusive">
+            <lesson order="1">Num 11:4-6,10-17,24-29</lesson>
+            <lesson order="2">Ps 19:(1-6)7-14</lesson>
+            <lesson order="3">James 4:7-12(13-5:6)</lesson>
+            <lesson order="4">Mk 9:38-48</lesson>
+        </day>
+        <day name="Sunday between October 2 and October 8 inclusive">
+            <lesson order="1">Gen 2:18-24</lesson>
+            <lesson order="2">Ps 8</lesson>
+            <lesson order="3">Heb 2:(1-8)9-18</lesson>
+            <lesson order="4">Mk 10:2-9</lesson>
+        </day>
+        <day name="Sunday between October 9 and October 15 inclusive">
+            <lesson order="1">Amos 5:6-15</lesson>
+            <lesson order="2">Ps 90:1-12(13-17)</lesson>
+            <lesson order="3">Heb 3:1-6</lesson>
+            <lesson order="4">Mk 10:17-31</lesson>
+        </day>
+        <day name="Sunday between October 16 and October 22 inclusive">
+            <lesson order="1">Isa 53:4-12</lesson>
+            <lesson order="2">Ps 91</lesson>
+            <lesson order="3">Heb 4:12-16</lesson>
+            <lesson order="4">Mk 10:35-45</lesson>
+        </day>
+        <day name="Sunday between October 23 and October 29 inclusive">
+            <lesson order="1">Isa 59:9-20</lesson>
+            <lesson order="2">Ps 13</lesson>
+            <lesson order="3">Heb 5:11-6:12</lesson>
+            <lesson order="4">Mk 10:46-52</lesson>
+        </day>
+        <day name="All Saints">
+            <lesson order="1">Ecclesiasticus 44:1-14 or Rev 7:9-17</lesson>
+            <lesson order="2">Ps 149</lesson>
+            <lesson order="3">Rev 7:9-17 or Eph 1:(11-14)15-23</lesson>
+            <lesson order="4">Mt 5:1-12 or Lk 6:20-26(27-36)</lesson>
+        </day>
+        <day name="Sunday between October 30 and November 5 inclusive">
+            <lesson order="1">Deut 6:1-9</lesson>
+            <lesson order="2">Ps 119:1-16</lesson>
+            <lesson order="3">Heb 7:23-28</lesson>
+            <lesson order="4">Mk 12:28-34</lesson>
+        </day>
+        <day name="Sunday between November 6 and November 12 inclusive">
+            <lesson order="1">1 Kings 17:8-16</lesson>
+            <lesson order="2">Ps 146</lesson>
+            <lesson order="3">Heb 9:24-28</lesson>
+            <lesson order="4">Mk 12:38-44</lesson>
+        </day>
+        <day name="Sunday between November 13 and November 19 inclusive">
+            <lesson order="1">Dan 12:1-4a(4b-13)</lesson>
+            <lesson order="2">Ps 16</lesson>
+            <lesson order="3">Heb 10:31-39</lesson>
+            <lesson order="4">Mk 13:14-23</lesson>
+        </day>
+        <day name="Christ the King">
+            <lesson order="1">Dan 7:9-14</lesson>
+            <lesson order="2">Ps 93</lesson>
+            <lesson order="3">Rev 1:1-8</lesson>
+            <lesson order="4">Jn 18:33-37</lesson>
+        </day>
+    </year>
+    <year name="C">
+        <day name="First Sunday of Advent">
+            <lesson order="1">Jeremiah 33:14-16</lesson>
+            <lesson order="2">Psalm 25:1-10</lesson>
+            <lesson order="3">1 Thessalonians 3:9-13</lesson>
+            <lesson order="4">Luke 21:25-36</lesson>
+        </day>
+        <day name="Second Sunday of Advent">
+            <lesson order="1">Baruch 5:1-9 or Malachi 3:1-4</lesson>
+            <lesson order="2">Luke 1:68-79</lesson>
+            <lesson order="3">Philippians 1:3-11</lesson>
+            <lesson order="4">Luke 3:1-6</lesson>
+        </day>
+        <day name="Third Sunday of Advent">
+            <lesson order="1">Zephaniah 3:14-20</lesson>
+            <lesson order="2">Isaiah 12:2-6</lesson>
+            <lesson order="3">Philippians 4:4-7</lesson>
+            <lesson order="4">Luke 3:7-18</lesson>
+        </day>
+        <day name="Fourth Sunday of Advent">
+            <lesson order="1">Micah 5:2-5a</lesson>
+            <lesson order="2">Luke 1:46b-55 or Psalm 80:1-7</lesson>
+            <lesson order="3">Hebrews 10:5-10</lesson>
+            <lesson order="4">Luke 1:39-45 [46-55]</lesson>
+        </day>
+        <day name="Christmas, Proper I">
+            <lesson order="1">Isaiah 9:2-7</lesson>
+            <lesson order="2">Psalm 96</lesson>
+            <lesson order="3">Titus 2:11-14</lesson>
+            <lesson order="4">Luke 2:1-14 [15-20]</lesson>
+        </day>
+        <day name="Christmas, Proper II">
+            <lesson order="1">Isaiah 62:6-12</lesson>
+            <lesson order="2">Psalm 97</lesson>
+            <lesson order="3">Titus 3:4-7</lesson>
+            <lesson order="4">Luke 2:[1-7] 8-20</lesson>
+        </day>
+        <day name="Christmas, Proper III">
+            <lesson order="1">Isaiah 52:7-10</lesson>
+            <lesson order="2">Psalm 98</lesson>
+            <lesson order="3">Hebrews 1:1-4 [5-12]</lesson>
+            <lesson order="4">John 1:1-14</lesson>
+        </day>
+        <day name="First Sunday after Christmas Day">
+            <lesson order="1">1 Samuel 2:18-20, 26</lesson>
+            <lesson order="2">Psalm 148</lesson>
+            <lesson order="3">Colossians 3:12-17</lesson>
+            <lesson order="4">Luke 2:41-52</lesson>
+        </day>
+        <day name="Holy Name of Jesus">
+            <lesson order="1">Numbers 6:22-27</lesson>
+            <lesson order="2">Psalm 8</lesson>
+            <lesson order="3">Galatians 4:4-7 or Philippians 2:5-11</lesson>
+            <lesson order="4">Luke 2:15-21</lesson>
+        </day>
+        <day name="Second Sunday after Christmas Day">
+            <lesson order="1">Jeremiah 31:7-14 or Sirach 24:1-12</lesson>
+            <lesson order="2">Psalm 147:12-20 or Wisdom of Solomon 10:15-21</lesson>
+            <lesson order="3">Ephesians 1:3-14</lesson>
+            <lesson order="4">John 1:[1-9] 10-18</lesson>
+        </day>
+        <day name="Epiphany of the Lord">
+            <lesson order="1">Isaiah 60:1-6</lesson>
+            <lesson order="2">Psalm 72:1-7, 10-14</lesson>
+            <lesson order="3">Ephesians 3:1-12</lesson>
+            <lesson order="4">Matthew 2:1-12</lesson>
+        </day>
+        <day name="Baptism of the Lord">
+            <lesson order="1">Isaiah 43:1-7</lesson>
+            <lesson order="2">Psalm 29</lesson>
+            <lesson order="3">Acts 8:14-17</lesson>
+            <lesson order="4">Luke 3:15-17, 21-22</lesson>
+        </day>
+        <day name="Second Sunday after the Epiphany">
+            <lesson order="1">Isaiah 62:1-5</lesson>
+            <lesson order="2">Psalm 36:5-10</lesson>
+            <lesson order="3">1 Corinthians 12:1-11</lesson>
+            <lesson order="4">John 2:1-11</lesson>
+        </day>
+        <day name="Third Sunday after the Epiphany">
+            <lesson order="1">Nehemiah 8:1-3, 5-6, 8-10</lesson>
+            <lesson order="2">Psalm 19</lesson>
+            <lesson order="3">1 Corinthians 12:12-31a</lesson>
+            <lesson order="4">Luke 4:14-21</lesson>
+        </day>
+        <day name="Fourth Sunday after the Epiphany">
+            <lesson order="1">Jeremiah 1:4-10</lesson>
+            <lesson order="2">Psalm 71:1-6</lesson>
+            <lesson order="3">1 Corinthians 13:1-13</lesson>
+            <lesson order="4">Luke 4:21-30</lesson>
+        </day>
+        <day name="Fifth Sunday after the Epiphany">
+            <lesson order="1">Isaiah 6:1-8 [9-13]</lesson>
+            <lesson order="2">Psalm 138</lesson>
+            <lesson order="3">1 Corinthians 15:1-11</lesson>
+            <lesson order="4">Luke 5:1-11</lesson>
+        </day>
+        <day name="Sixth Sunday after the Epiphany">
+            <lesson order="1">Jeremiah 17:5-10</lesson>
+            <lesson order="2">Psalm 1</lesson>
+            <lesson order="3">1 Corinthians 15:12-20</lesson>
+            <lesson order="4">Luke 6:17-26</lesson>
+        </day>
+        <day name="Seventh Sunday after the Epiphany">
+            <lesson order="1">Genesis 45:3-11, 15</lesson>
+            <lesson order="2">Psalm 37:1-11, 39-40</lesson>
+            <lesson order="3">1 Corinthians 15:35-38, 42-50</lesson>
+            <lesson order="4">Luke 6:27-38</lesson>
+        </day>
+        <day name="Eighth Sunday after the Epiphany">
+            <lesson order="1">Sirach 27:4-7 or Isaiah 55:10-13</lesson>
+            <lesson order="2">Psalm 92:1-4, 12-15</lesson>
+            <lesson order="3">1 Corinthians 15:51-58</lesson>
+            <lesson order="4">Luke 6:39-49</lesson>
+        </day>
+        <day name="Last Sunday after the Epiphany">
+            <lesson order="1">Exodus 34:29-35</lesson>
+            <lesson order="2">Psalm 99</lesson>
+            <lesson order="3">2 Corinthians 3:12—4:2</lesson>
+            <lesson order="4">Luke 9:28-36 [37-43]</lesson>
+        </day>
+        <day name="Ash Wednesday">
+            <lesson order="1">Joel 2:1-2, 12-17 or Isaiah 58:1-12</lesson>
+            <lesson order="2">Psalm 51:1-17</lesson>
+            <lesson order="3">2 Corinthians 5:20b—6:10</lesson>
+            <lesson order="4">Matthew 6:1-6, 16-21</lesson>
+        </day>
+        <day name="First Sunday in Lent">
+            <lesson order="1">Deuteronomy 26:1-11</lesson>
+            <lesson order="2">Psalm 91:1-2, 9-16</lesson>
+            <lesson order="3">Romans 10:8b-13</lesson>
+            <lesson order="4">Luke 4:1-13</lesson>
+        </day>
+        <day name="Second Sunday in Lent">
+            <lesson order="1">Genesis 15:1-12, 17-18</lesson>
+            <lesson order="2">Psalm 27</lesson>
+            <lesson order="3">Philippians 3:17—4:1</lesson>
+            <lesson order="4">Luke 13:31-35 or Luke 9:28-36</lesson>
+        </day>
+        <day name="Third Sunday in Lent">
+            <lesson order="1">Isaiah 55:1-9</lesson>
+            <lesson order="2">Psalm 63:1-8</lesson>
+            <lesson order="3">1 Corinthians 10:1-13</lesson>
+            <lesson order="4">Luke 13:1-9</lesson>
+        </day>
+        <day name="Fourth Sunday in Lent">
+            <lesson order="1">Joshua 5:9-12</lesson>
+            <lesson order="2">Psalm 32</lesson>
+            <lesson order="3">2 Corinthians 5:16-21</lesson>
+            <lesson order="4">Luke 15:1-3, 11b-32</lesson>
+        </day>
+        <day name="Fifth Sunday in Lent">
+            <lesson order="1">Isaiah 43:16-21</lesson>
+            <lesson order="2">Psalm 126</lesson>
+            <lesson order="3">Philippians 3:4b-14</lesson>
+            <lesson order="4">John 12:1-8</lesson>
+        </day>
+        <day name="Liturgy of the Palms">
+            <lesson order="1">Luke 19:28-40</lesson>
+            <lesson order="2">Psalm 118:1-2, 19-29</lesson>
+        </day>
+        <day name="Liturgy of the Passion">
+            <lesson order="1">Isaiah 50:4-9a</lesson>
+            <lesson order="2">Psalm 31:9-16</lesson>
+            <lesson order="3">Philippians 2:5-11</lesson>
+            <lesson order="4">Luke 22:14—23:56 or Luke 23:1-49</lesson>
+        </day>
+        <day name="Monday of Holy Week">
+            <lesson order="1">Isaiah 42:1-9</lesson>
+            <lesson order="2">Psalm 36:5-11</lesson>
+            <lesson order="3">Hebrews 9:11-15</lesson>
+            <lesson order="4">John 12:1-11</lesson>
+        </day>
+        <day name="Tuesday of Holy Week">
+            <lesson order="1">Isaiah 49:1-7</lesson>
+            <lesson order="2">Psalm 71:1-14</lesson>
+            <lesson order="3">1 Corinthians 1:18-31</lesson>
+            <lesson order="4">John 12:20-36</lesson>
+        </day>
+        <day name="Wednesday of Holy Week">
+            <lesson order="1">Isaiah 50:4-9a</lesson>
+            <lesson order="2">Psalm 70</lesson>
+            <lesson order="3">Hebrews 12:1-3</lesson>
+            <lesson order="4">John 13:21-32</lesson>
+        </day>
+        <day name="Holy Thursday">
+            <lesson order="1">Exodus 12:1-4 [5-10] 11-14</lesson>
+            <lesson order="2">Psalm 116:1-2, 12-19</lesson>
+            <lesson order="3">1 Corinthians 11:23-26</lesson>
+            <lesson order="4">John 13:1-17, 31b-35</lesson>
+        </day>
+        <day name="Good Friday">
+            <lesson order="1">Isaiah 52:13—53:12</lesson>
+            <lesson order="2">Psalm 22</lesson>
+            <lesson order="3">Hebrews 10:16-25 or Hebrews 4:14-16; 5:7-9</lesson>
+            <lesson order="4">John 18:1—19:42</lesson>
+        </day>
+        <day name="Holy Saturday">
+            <lesson order="1">Job 14:1-14 or Lamentations 3:1-9, 19-24</lesson>
+            <lesson order="2">Psalm 31:1-4, 15-16</lesson>
+            <lesson order="3">1 Peter 4:1-8</lesson>
+            <lesson order="4">Matthew 27:57-66 or John 19:38-42</lesson>
+        </day>
+        <day name="Easter Vigil">
+            <lesson order="1">Genesis 1:1—2:4a</lesson>
+            <lesson order="1">Psalm 136:1-9, 23-26</lesson>
+            <lesson order="1">Genesis 7:1-5, 11-18; 8:6-18; 9:8-13</lesson>
+            <lesson order="1">Psalm 46</lesson>
+            <lesson order="1">Genesis 22:1-18</lesson>
+            <lesson order="1">Psalm 16</lesson>
+            <lesson order="1">Exodus 14:10-31; 15:20-21</lesson>
+            <lesson order="1">Exodus 15:1b-13, 17-18</lesson>
+            <lesson order="1">Isaiah 55:1-11</lesson>
+            <lesson order="1">Isaiah 12:2-6</lesson>
+            <lesson order="1">Baruch 3:9-15, 32—4:4 or Proverbs 8:1-8, 19-21; 9:4b-6</lesson>
+            <lesson order="1">Psalm 19</lesson>
+            <lesson order="1">Ezekiel 36:24-28</lesson>
+            <lesson order="1">Psalm 42 and 43</lesson>
+            <lesson order="1">Ezekiel 37:1-14</lesson>
+            <lesson order="1">Psalm 143</lesson>
+            <lesson order="1">Zephaniah 3:14-20</lesson>
+            <lesson order="1">Psalm 98</lesson>
+            <lesson order="1">Romans 6:3-11</lesson>
+            <lesson order="1">Psalm 114</lesson>
+            <lesson order="1">Luke 24:1-12</lesson>
+        </day>
+        <day name="Easter Day">
+            <lesson order="1">Acts 10:34-43 or Isaiah 65:17-25</lesson>
+            <lesson order="2">Psalm 118:1-2, 14-24</lesson>
+            <lesson order="3">1 Corinthians 15:19-26 or Acts 10:34-43</lesson>
+            <lesson order="4">John 20:1-18 or Luke 24:1-12</lesson>
+        </day>
+        <day name="Easter Evening">
+            <lesson order="1">Isaiah 25:6-9</lesson>
+            <lesson order="2">Psalm 114</lesson>
+            <lesson order="3">1 Corinthians 5:6b-8</lesson>
+            <lesson order="4">Luke 24:13-49</lesson>
+        </day>
+        <day name="Second Sunday of Easter">
+            <lesson order="1">Acts 5:27-32</lesson>
+            <lesson order="2">Psalm 118:14-29 or Psalm 150</lesson>
+            <lesson order="3">Revelation 1:4-8</lesson>
+            <lesson order="4">John 20:19-31</lesson>
+        </day>
+        <day name="Third Sunday of Easter">
+            <lesson order="1">Acts 9:1-6 [7-20]</lesson>
+            <lesson order="2">Psalm 30</lesson>
+            <lesson order="3">Revelation 5:11-14</lesson>
+            <lesson order="4">John 21:1-19</lesson>
+        </day>
+        <day name="Fourth Sunday of Easter">
+            <lesson order="1">Acts 9:36-43</lesson>
+            <lesson order="2">Psalm 23</lesson>
+            <lesson order="3">Revelation7:9-17</lesson>
+            <lesson order="4">John 10:22-30</lesson>
+        </day>
+        <day name="Fifth Sunday of Easter">
+            <lesson order="1">Acts 11:1-18</lesson>
+            <lesson order="2">Psalm 148</lesson>
+            <lesson order="3">Revelation 21:1-6</lesson>
+            <lesson order="4">John 13:31-35</lesson>
+        </day>
+        <day name="Sixth Sunday of Easter">
+            <lesson order="1">Acts 16:9-15</lesson>
+            <lesson order="2">Psalm 67</lesson>
+            <lesson order="3">Revelation 21:10, 22—22:5</lesson>
+            <lesson order="4">John 14:23-29 or John 5:1-9</lesson>
+        </day>
+        <day name="Ascension of the Lord">
+            <lesson order="1">Acts 1:1-11</lesson>
+            <lesson order="2">Psalm 47 or Psalm 93</lesson>
+            <lesson order="3">Ephesians 1:15-23</lesson>
+            <lesson order="4">Luke 24:44-53</lesson>
+        </day>
+        <day name="Seventh Sunday of Easter">
+            <lesson order="1">Acts 16:16-34</lesson>
+            <lesson order="2">Psalm 97</lesson>
+            <lesson order="3">Revelation 22:12-14, 16-17, 20-21</lesson>
+            <lesson order="4">John 17:20-26</lesson>
+        </day>
+        <day name="Day of Pentecost">
+            <lesson order="1">Acts 2:1-21 or Genesis 11:1-9</lesson>
+            <lesson order="2">Psalm 104:24-34, 35b</lesson>
+            <lesson order="3">Romans 8:14-17 or Acts 2:1-21</lesson>
+            <lesson order="4">John 14:8-17 [25-27]</lesson>
+        </day>
+        <day name="Trinity Sunday">
+            <lesson order="1">Proverbs 8:1-4, 22-31</lesson>
+            <lesson order="2">Psalm 8</lesson>
+            <lesson order="3">Romans 5:1-5</lesson>
+            <lesson order="4">John 16:12-15</lesson>
+        </day>
+        <day name="Sunday between May 24 and May 28 inclusive">
+            <lesson order="1">Sirach 27:4-7 or Isaiah 55:10-13</lesson>
+            <lesson order="2">Psalm 92:1-4, 12-15</lesson>
+            <lesson order="3">1 Corinthians 15:51-58</lesson>
+            <lesson order="4">Luke 6:39-49</lesson>
+        </day>
+        <day name="Sunday between May 29 and June 4 inclusive">
+            <lesson order="1">1 Kings 8:22-23, 41-43</lesson>
+            <lesson order="2">Psalm 96:1-9</lesson>
+            <lesson order="3">Galatians 1:1-12</lesson>
+            <lesson order="4">Luke 7:1-10</lesson>
+        </day>
+        <day name="Sunday between June 5 and June 11 inclusive">
+            <lesson order="1">1 Kings 17:17-24</lesson>
+            <lesson order="2">Psalm 30</lesson>
+            <lesson order="3">Galatians 1:11-24</lesson>
+            <lesson order="4">Luke 7:11-17</lesson>
+        </day>
+        <day name="Sunday between June 12 and June 18 inclusive">
+            <lesson order="1">2 Samuel 11:26—12:10, 13-15</lesson>
+            <lesson order="2">Psalm 32</lesson>
+            <lesson order="3">Galatians 2:15-21</lesson>
+            <lesson order="4">Luke 7:36—8:3</lesson>
+        </day>
+        <day name="Sunday between June 19 and June 25 inclusive">
+            <lesson order="1">Isaiah 65:1-9</lesson>
+            <lesson order="2">Psalm 22:19-28</lesson>
+            <lesson order="3">Galatians 3:23-29</lesson>
+            <lesson order="4">Luke 8:26-39</lesson>
+        </day>
+        <day name="Sunday between June 26 and July 2 inclusive">
+            <lesson order="1">1 Kings 19:15-16, 19-21</lesson>
+            <lesson order="2">Psalm 16</lesson>
+            <lesson order="3">Galatians 5:1, 13-25</lesson>
+            <lesson order="4">Luke 9:51-62</lesson>
+        </day>
+        <day name="Sunday between July 3 and July 9 inclusive">
+            <lesson order="1">Isaiah 66:10-14</lesson>
+            <lesson order="2">Psalm 66:1-9</lesson>
+            <lesson order="3">Galatians 6:[1-6] 7-16</lesson>
+            <lesson order="4">Luke 10:1-11, 16-20</lesson>
+        </day>
+        <day name="Sunday between July 10 and July 16 inclusive">
+            <lesson order="1">Deuteronomy 30:9-14</lesson>
+            <lesson order="2">Psalm 25:1-10</lesson>
+            <lesson order="3">Colossians 1:1-14</lesson>
+            <lesson order="4">Luke 10:25-37</lesson>
+        </day>
+        <day name="Sunday between July 17 and July 23 inclusive">
+            <lesson order="1">Genesis 18:1-10a</lesson>
+            <lesson order="2">Psalm 15</lesson>
+            <lesson order="3">Colossians 1:15-28</lesson>
+            <lesson order="4">Luke 10:38-42</lesson>
+        </day>
+        <day name="Sunday between July 24 and July 30 inclusive">
+            <lesson order="1">Genesis 18:20-32</lesson>
+            <lesson order="2">Psalm 138</lesson>
+            <lesson order="3">Colossians 2:6-15 [16-19]</lesson>
+            <lesson order="4">Luke 11:1-13</lesson>
+        </day>
+        <day name="Sunday between July 31 and August 6 inclusive">
+            <lesson order="1">Ecclesiastes 1:2, 12-14; 2:18-23</lesson>
+            <lesson order="2">Psalm 49:1-12</lesson>
+            <lesson order="3">Colossians 3:1-11</lesson>
+            <lesson order="4">Luke 12:13-21</lesson>
+        </day>
+        <day name="Sunday between August 7 and August 13 inclusive">
+            <lesson order="1">Genesis 15:1-6</lesson>
+            <lesson order="2">Psalm 33:12-22</lesson>
+            <lesson order="3">Hebrews 11:1-3, 8-16</lesson>
+            <lesson order="4">Luke 12:32-40</lesson>
+        </day>
+        <day name="Sunday between August 14 and August 20 inclusive">
+            <lesson order="1">Jeremiah 23:23-29</lesson>
+            <lesson order="2">Psalm 82</lesson>
+            <lesson order="3">Hebrews 11:29—12:2</lesson>
+            <lesson order="4">Luke 12:49-56</lesson>
+        </day>
+        <day name="Sunday between August 21 and August 27 inclusive">
+            <lesson order="1">Isaiah 58:9b-14</lesson>
+            <lesson order="2">Psalm 103:1-8</lesson>
+            <lesson order="3">Hebrews 12:18-29</lesson>
+            <lesson order="4">Luke 13:10-17</lesson>
+        </day>
+        <day name="Sunday between August 28 and September 3 inclusive">
+            <lesson order="1">Sirach 10:12-18 or Proverbs 25:6-7</lesson>
+            <lesson order="2">Psalm 112</lesson>
+            <lesson order="3">Hebrews 13:1-8, 15-16</lesson>
+            <lesson order="4">Luke 14:1, 7-14</lesson>
+        </day>
+        <day name="Sunday between September 4 and September 10 inclusive">
+            <lesson order="1">Deuteronomy 30:15-20</lesson>
+            <lesson order="2">Psalm 1</lesson>
+            <lesson order="3">Philemon 1-21</lesson>
+            <lesson order="4">Luke 14:25-33</lesson>
+        </day>
+        <day name="Sunday between September 11 and September 17 inclusive">
+            <lesson order="1">Exodus 32:7-14</lesson>
+            <lesson order="2">Psalm 51:1-10</lesson>
+            <lesson order="3">1 Timothy 1:12-17</lesson>
+            <lesson order="4">Luke 15:1-10</lesson>
+        </day>
+        <day name="Sunday between September 18 and September 24 inclusive">
+            <lesson order="1">Amos 8:4-7</lesson>
+            <lesson order="2">Psalm 113</lesson>
+            <lesson order="3">1 Timothy 2:1-7</lesson>
+            <lesson order="4">Luke 16:1-13</lesson>
+        </day>
+        <day name="Sunday between September 25 and October 1 inclusive">
+            <lesson order="1">Amos 6:1a, 4-7</lesson>
+            <lesson order="2">Psalm 146</lesson>
+            <lesson order="3">1 Timothy 6:6-19</lesson>
+            <lesson order="4">Luke 16:19-31</lesson>
+        </day>
+        <day name="Sunday between October 2 and October 8 inclusive">
+            <lesson order="1">Habakkuk 1:1-4; 2:1-4</lesson>
+            <lesson order="2">Psalm 37:1-9</lesson>
+            <lesson order="3">2 Timothy 1:1-14</lesson>
+            <lesson order="4">Luke 17:5-10</lesson>
+        </day>
+        <day name="Sunday between October 9 and October 15 inclusive">
+            <lesson order="1">2 Kings 5:1-3, 7-15c</lesson>
+            <lesson order="2">Psalm 111</lesson>
+            <lesson order="3">2 Timothy 2:8-15</lesson>
+            <lesson order="4">Luke 17:11-19</lesson>
+        </day>
+        <day name="Sunday between October 16 and October 22 inclusive">
+            <lesson order="1">Genesis 32:22-31</lesson>
+            <lesson order="2">Psalm 121</lesson>
+            <lesson order="3">2 Timothy 3:14—4:5</lesson>
+            <lesson order="4">Luke 18:1-8</lesson>
+        </day>
+        <day name="Sunday between October 23 and October 29 inclusive">
+            <lesson order="1">Sirach 35:12-17 or Jeremiah 14:7-10, 19-22</lesson>
+            <lesson order="2">Psalm 84:1-7</lesson>
+            <lesson order="3">2 Timothy 4:6-8, 16-18</lesson>
+            <lesson order="4">Luke 18:9-14</lesson>
+        </day>
+        <day name="All Saints">
+            <lesson order="1">Daniel 7:1-3, 15-18</lesson>
+            <lesson order="2">Psalm 149</lesson>
+            <lesson order="3">Ephesians 1:11-23</lesson>
+            <lesson order="4">Luke 6:20-31</lesson>
+        </day>
+        <day name="Sunday between October 30 and November 5 inclusive">
+            <lesson order="1">Isaiah 1:10-18</lesson>
+            <lesson order="2">Psalm 32:1-7</lesson>
+            <lesson order="3">2 Thessalonians 1:1-4, 11-12</lesson>
+            <lesson order="4">Luke 19:1-10</lesson>
+        </day>
+        <day name="Sunday between November 6 and November 12 inclusive">
+            <lesson order="1">Job 19:23-27a</lesson>
+            <lesson order="2">Psalm 17:1-9</lesson>
+            <lesson order="3">2 Thessalonians 2:1-5, 13-17</lesson>
+            <lesson order="4">Luke 20:27-38</lesson>
+        </day>
+        <day name="Sunday between November 13 and November 19 inclusive">
+            <lesson order="1">Malachi 4:1-2a</lesson>
+            <lesson order="2">Psalm 98</lesson>
+            <lesson order="3">2 Thessalonians 3:6-13</lesson>
+            <lesson order="4">Luke 21:5-19</lesson>
+        </day>
+        <day name="Christ the King">
+            <lesson order="1">Jeremiah 23:1-6</lesson>
+            <lesson order="2">Psalm 46</lesson>
+            <lesson order="3">Colossians 1:11-20</lesson>
+            <lesson order="4">Luke 23:33-43</lesson>
+        </day>
+    </year>
+</lectionary>

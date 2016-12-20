@@ -24,11 +24,11 @@ Date::Lectionary::Day
 
 =head1 VERSION
 
-Version 1.20161110
+Version 1.20161218
 
 =cut
 
-our $VERSION = '1.20161110';
+our $VERSION = '1.20161218';
 
 =head1 SYNOPSIS
 
@@ -170,6 +170,61 @@ sub _determineDisplayName {
 =head2 _determineAltName
 
 =cut
+
+sub _determineAltName {
+    my $tradition  = shift;
+    my $commonName = shift;
+
+    my $parser = XML::LibXML->new();
+    my $data_location;
+    my $lectionary;
+
+    try {
+        $data_location =
+          dist_file( 'Date-Lectionary', 'date_lectionary_xref.xml' );
+        $lectionary = $parser->parse_file($data_location);
+    }
+    catch {
+        confess
+          "The lectionary cross reference file could not be found or parsed.";
+    };
+
+    my $compiled_xpath;
+    my $multi_xpath;
+
+    try {
+        $compiled_xpath = XML::LibXML::XPathExpression->new(
+            "/xref/day[\@name=\"$commonName\"]/alt[\@type='$tradition-alt']");
+        $multi_xpath =
+          XML::LibXML::XPathExpression->new(
+            "/xref/day[\@multi=\"$commonName\"]");
+    }
+    catch {
+        confess
+"The XPATH expression to to query the cross reference database could not be compiled.";
+    };
+
+    my $altName;
+
+    try {
+        $altName = $lectionary->findvalue($compiled_xpath);
+
+        if ( $lectionary->exists($multi_xpath) ) {
+            return $commonName;
+        }
+        elsif ( $altName eq '' ) {
+            return $commonName;
+        }
+        else {
+            return $altName;
+        }
+    }
+    catch {
+        confess
+"An unpected error occured while querying the cross reference database.";
+    };
+
+}
 
 =head2 _determineAdvent
 
