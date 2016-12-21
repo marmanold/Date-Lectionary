@@ -4,7 +4,7 @@
       "Michael Wayne Arnold <marmanold@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -53,6 +53,13 @@
       }
    },
    "release_status" : "stable",
-   "resources" : {},
-   "version" : "1.20161106"
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/marmanold/Date-Lectionary.git",
+         "web" : "https://github.com/marmanold/Date-Lectionary"
+      }
+   },
+   "version" : "1.20161218",
+   "x_serialization_backend" : "JSON::PP version 2.27400"
 }

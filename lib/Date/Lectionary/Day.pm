@@ -38,6 +38,7 @@ A helper object for Date::Lectionary to determine the liturgical name(s) and typ
 
 enum 'DayType',        [qw(fixedFeast moveableFeast Sunday noLect)];
 enum 'LectionaryType', [qw(acna rcl)];
+enum 'MultiLect',      [qw(yes no)];
 no Moose::Util::TypeConstraints;
 
 =head1 SUBROUTINES/METHODS
@@ -86,6 +87,20 @@ has 'commonName' => (
     init_arg => undef,
 );
 
+has 'multiLect' => (
+    is       => 'ro',
+    isa      => 'MultiLect',
+    writer   => '_setMultiLect',
+    init_arg => undef,
+);
+
+has 'subLects' => (
+    is       => 'ro',
+    isa      => 'ArrayRef',
+    writer   => '_setSubLects',
+    init_arg => undef,
+);
+
 =head2 BUILD
 
 Constructor for the Date::Lectionary object.  Takes a Time::Piect object, date, to create the object.
@@ -106,6 +121,64 @@ sub BUILD {
     );
 
     $self->_setType( $commonNameInfo{type} );
+
+    my %multiLectInfo =
+      _determineMultiLect( $self->lectionary, $commonNameInfo{commonName} );
+    $self->_setMultiLect( $multiLectInfo{multiLect} );
+    $self->_setSubLects( $multiLectInfo{multiNames} );
+}
+
+=head2 _determineMultiLect
+
+=cut
+
+sub _determineMultiLect {
+    my $tradition  = shift;
+    my $commonName = shift;
+
+    my $parser = XML::LibXML->new();
+    my $data_location;
+    my $lectionary;
+
+    try {
+        $data_location =
+          dist_file( 'Date-Lectionary', 'date_lectionary_xref.xml' );
+        $lectionary = $parser->parse_file($data_location);
+    }
+    catch {
+        confess
+          "The lectionary cross reference file could not be found or parsed.";
+    };
+
+    my $compiled_xpath;
+
+    try {
+        $compiled_xpath = XML::LibXML::XPathExpression->new(
+            "/xref/day[\@multi=\"$commonName\"]/alt[\@type='$tradition']");
+    }
+    catch {
+        confess
+"The XPATH expression to to query the cross reference database could not be compiled.";
+    };
+
+    my @multiNames;
+
+    try {
+        if ( $lectionary->exists($compiled_xpath) ) {
+            my @nodes = $lectionary->findnodes($compiled_xpath);
+            foreach my $node (@nodes) {
+                push( @multiNames, $node->textContent );
+            }
+            return ( multiLect => 'yes', multiNames => \@multiNames );
+        }
+        else {
+            return ( multiLect => 'no', multiNames => \@multiNames );
+        }
+    }
+    catch {
+        confess
+"An unpected error occured while querying the cross reference database.";
+    };
 }
 
 =head2 _determineDisplayName

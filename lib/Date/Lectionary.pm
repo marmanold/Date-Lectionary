@@ -22,11 +22,11 @@ Date::Lectionary
 
 =head1 VERSION
 
-Version 1.20161218
+Version 1.20161221
 
 =cut
 
-our $VERSION = '1.20161218';
+our $VERSION = '1.20161221';
 
 =head1 SYNOPSIS
 
@@ -101,11 +101,43 @@ sub BUILD {
         )
     );
 
-    $self->_setReadings(
-        _buildReadings(
-            $self->day->name, $self->lectionary, $self->year->name
-        )
-    );
+    if ( $self->day->multiLect eq 'yes' ) {
+        $self->_setReadings(
+            _buildMultiReadings(
+                $self->day->subLects, $self->lectionary, $self->year->name
+            )
+        );
+    }
+    else {
+        $self->_setReadings(
+            _buildReadings(
+                $self->day->name, $self->lectionary, $self->year->name
+            )
+        );
+    }
+}
+
+=head2 _buildMultiReadings
+
+=cut
+
+sub _buildMultiReadings {
+    my $multiNames = shift;
+    my $lectionary = shift;
+    my $year       = shift;
+
+    my @multiReadings;
+    foreach my $name (@$multiNames) {
+
+        my %lectPart = (
+            name     => $name,
+            readings => _buildReadings( $name, $lectionary, $year )
+        );
+
+        push( @multiReadings, \%lectPart );
+    }
+
+    return \@multiReadings;
 }
 
 =head2 _buildReadings
