@@ -8,10 +8,10 @@ Date::Lectionary
     use Time::Piece;
     use Date::Lectionary;
 
-    my $christmas = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-12-25", "%Y-%m-%d"));
-    say $christmas->day->name; #String representation of the name of the day in the liturgical calendar; e.g. 'Christmas Day'
-    say $christmas->year->name; #String representation of the name of the liturgical year; e.g. 'C'
-    say ${$christmas->readings}[0] #String representation of the first reading for the day.
+    my $epiphany = Date::Lectionary->new('date'=>Time::Piece->strptime("2017-01-06", "%Y-%m-%d"));
+    say $epiphany->day->name; #String representation of the name of the day in the liturgical calendar; e.g. 'The Epiphany'
+    say $epiphany->year->name; #String representation of the name of the liturgical year; e.g. 'A'
+    say ${$epiphany->readings}[0] #String representation of the first reading for the day.
 
 =head1 DESCRIPTION
 
