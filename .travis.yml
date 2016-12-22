@@ -1,7 +1,7 @@
 language: perl
 perl:
   - "5.24"
-  - "5.22.2"
+  - "5.22"
 
 before_install:
   - git clone git://github.com/haarg/perl-travis-helper
