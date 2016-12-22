@@ -7,7 +7,7 @@ before_install:
   - eval $(curl https://travis-perl.github.io/init) --auto
 
 install:
-  - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1 COVERAGE-1
+  - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1 COVERAGE=1
   - cpanm --quiet --notest Devel::Cover::Report::Coveralls
   - cpanm --quiet --notest --installdeps .
 
