@@ -20,7 +20,7 @@ use XML::LibXML;
 
 =head1 NAME
 
-Date::Lectionary::Day
+Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
@@ -41,7 +41,29 @@ enum 'LectionaryType', [qw(acna rcl)];
 enum 'MultiLect',      [qw(yes no)];
 no Moose::Util::TypeConstraints;
 
-=head1 SUBROUTINES/METHODS
+=head1 SUBROUTINES/METHODS/ATTRIBUTES
+
+=head2 ATTRIBUTES
+
+=head3 date
+
+The Time::Piece object date given at object construction.
+
+=head3 lectionary
+
+An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary.  This attribute defaults to 'acna' if no value is given.
+
+=head3 type
+
+Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
+
+=head3 name
+
+The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
+
+=head3 alt
+
+The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
 
 =cut
 
@@ -103,7 +125,7 @@ has 'subLects' => (
 
 =head2 BUILD
 
-Constructor for the Date::Lectionary object.  Takes a Time::Piect object, date, to create the object.
+Constructor for the Date::Lectionary object.  Takes a Time::Piect object, C<date>, to create the object.
 
 =cut
 
@@ -131,6 +153,8 @@ sub BUILD {
 }
 
 =head2 _determineMultiLect
+
+Private method to determine if the day has multiple lectionary services and readings for the day.
 
 =cut
 
@@ -184,6 +208,8 @@ sub _determineMultiLect {
 }
 
 =head2 _determineDisplayName
+
+Private method to determine the unique display name for the day.
 
 =cut
 
@@ -243,6 +269,8 @@ sub _determineDisplayName {
 }
 
 =head2 _determineAltName
+
+Private method to determine if the day has any alternative names for the day.
 
 =cut
 
@@ -589,7 +617,7 @@ sub _buildFixedDays {
 
 =head2 _determineAshWednesday
 
-	Private method that takes the Time::Piece date for Easter and determines the date for Ash Wednesday.  Ash Wednesday is the start of Lent.  It occurs 46 days before Easter for the given year.
+Private method that takes the Time::Piece date for Easter and determines the date for Ash Wednesday.  Ash Wednesday is the start of Lent.  It occurs 46 days before Easter for the given year.
 
 =cut
 
@@ -1236,6 +1264,10 @@ L<http://cpanratings.perl.org/d/Date-Lectionary-Day>
 L<http://search.cpan.org/dist/Date-Lectionary-Day/>
 
 =back
+
+=head1 ACKNOWLEDGEMENTS
+
+Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
 
 =head1 LICENSE AND COPYRIGHT
 

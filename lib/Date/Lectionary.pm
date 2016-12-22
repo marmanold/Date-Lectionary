@@ -18,25 +18,76 @@ use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
-Date::Lectionary
+Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20161221
+Version 1.20161222
 
 =cut
 
-our $VERSION = '1.20161221';
+our $VERSION = '1.20161222';
 
 =head1 SYNOPSIS
 
-Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for either the date or, if the date isn't a Sunday or Holiday, the next Sunday's readings.
+    use Time::Piece;
+    use Date::Lectionary;
 
-	use Time::Piece;
-	use Date::Lectionary;
+    my $epiphany = Date::Lectionary->new('date'=>Time::Piece->strptime("2017-01-06", "%Y-%m-%d"));
+    say $epiphany->day->name; #String representation of the name of the day in the liturgical calendar; e.g. 'The Epiphany'
+    say $epiphany->year->name; #String representation of the name of the liturgical year; e.g. 'A'
+    say ${$epiphany->readings}[0] #String representation of the first reading for the day.
 
-	my $christmas = Date::Lectionary->new('date'=>Time::Piece->strptime("2016-12-25", "%Y-%m-%d"));
-	say $christmas->day; #String representation of the name of the day in the liturgical calednar; e.g. Christmas Day
+=head1 DESCRIPTION
+
+Date::Lectionary takes a Time::Piece date and returns the liturgical day and associated readings for the day.
+
+=head2 ATTRIBUTES
+
+=head3 date
+
+The Time::Piece object date given at object construction.
+
+=head3 lectionary
+
+An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary.  This attribute defaults to 'acna' if no value is given.
+
+=head3 day
+
+A Date::Lectionary::Day object containing attributes related to the liturgical day.
+
+type: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
+
+name: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
+
+alt: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+
+=head3 year
+
+A Date::Lectionary::Year object containing attributes related to the liturgical year the date given at object construction resides in.
+
+name: Returns 'A', 'B', or 'C' depending on the liturgical year the date given at object construction resides in.
+
+=head3 readings
+
+Return an ArrayRef of the String representation of the day's readings if there are any.  Readings in the ArrayRef are ordered in the array according to the order the readings are given in the lectionary.  If mutliple readings exist for the day, an ArrayRef of HashRefs will be given.
+
+  my $singleReading = Date::Lectionary->new(
+      'date'       => Time::Piece->strptime( "2016-11-13", "%Y-%m-%d" ),
+      'lectionary' => 'acna'
+  );
+
+  say ${ $testReading->readings }[1]; #Will print 'Ps 98', the second reading for the Sunday closest to November 16 in the default ACNA lectionary for year C.
+  say $testReading->day->multiLect; #Will print 'no' because this day does not have multiple services in the lectionary.
+
+  my $multiReading = Date::Lectionary->new(
+      'date'       => Time::Piece->strptime( "2016-12-25", "%Y-%m-%d" ),
+      'lectionary' => 'rcl'
+  );
+
+  say $multiReading->day->multiLect; #Will print 'yes' because this day does have multiple services in the lectionary.
+  say ${ $multiReading->readings }[0]{name}; #Will print 'Christmas, Proper I', the first services of Christmas Day in the RCL
+  say ${ $multiReading->readings }[1]{readings}[0]; #Will print 'Isaiah 62:6-12', the first reading of the second service 'Christmas, Proper II' on Christmas Day in the RCL.
 
 =cut
 
@@ -118,6 +169,8 @@ sub BUILD {
 }
 
 =head2 _buildMultiReadings
+
+Private method that returns an ArrayRef of HashRefs for the multiple services and lectionary readings associated wth the date.
 
 =cut
 
@@ -246,6 +299,7 @@ L<http://search.cpan.org/dist/Date-Lectionary/>
 
 =head1 ACKNOWLEDGEMENTS
 
+Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
 
 =head1 LICENSE AND COPYRIGHT
 

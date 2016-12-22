@@ -35,7 +35,7 @@ type: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveab
 
 name: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
 
-alt: The alternative name --- if one is given --- of the day in the lectionary.  For noLect days a String representation of the day is returned as the alternative name.
+alt: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
 
 =head3 year
 
@@ -46,6 +46,23 @@ name: Returns 'A', 'B', or 'C' depending on the liturgical year the date given a
 =head3 readings
 
 Return an ArrayRef of the String representation of the day's readings if there are any.  Readings in the ArrayRef are ordered in the array according to the order the readings are given in the lectionary.
+
+  my $singleReading = Date::Lectionary->new(
+      'date'       => Time::Piece->strptime( "2016-11-13", "%Y-%m-%d" ),
+      'lectionary' => 'acna'
+  );
+
+  say ${ $testReading->readings }[1]; #Will print 'Ps 98', the second reading for the Sunday closest to November 16 in the default ACNA lectionary for year C.
+  say $testReading->day->multiLect; #Will print 'no' because this day does not have multiple services in the lectionary.
+
+  my $multiReading = Date::Lectionary->new(
+      'date'       => Time::Piece->strptime( "2016-12-25", "%Y-%m-%d" ),
+      'lectionary' => 'rcl'
+  );
+
+  say $multiReading->day->multiLect; #Will print 'yes' because this day does have multiple services in the lectionary.
+  say ${ $multiReading->readings }[0]{name}; #Will print 'Christmas, Proper I', the first services of Christmas Day in the RCL
+  say ${ $multiReading->readings }[1]{readings}[0]; #Will print 'Isaiah 62:6-12', the first reading of the second service 'Christmas, Proper II' on Christmas Day in the RCL.
 
 =head1 INSTALLATION
 

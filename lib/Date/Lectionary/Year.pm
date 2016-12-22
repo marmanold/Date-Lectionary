@@ -12,15 +12,15 @@ use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
-Date::Lectionary::Year
+Date::Lectionary::Year - Cycle Year for the Lectionary
 
 =head1 VERSION
 
-Version 1.20161027
+Version 1.20161222
 
 =cut
 
-our $VERSION = '1.20161027';
+our $VERSION = '1.20161222';
 
 =head1 SYNOPSIS
 
@@ -129,9 +129,9 @@ L<http://search.cpan.org/dist/Date-Lectionary-Year/>
 
 =back
 
-
 =head1 ACKNOWLEDGEMENTS
 
+Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
 
 =head1 LICENSE AND COPYRIGHT
 
