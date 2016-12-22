@@ -119,6 +119,12 @@ sub BUILD {
     $self->_setDisplayName(
         _determineDisplayName( $self->lectionary, $commonNameInfo{commonName} )
     );
+    $self->_setAltName(
+        _determineAltName(
+            $self->lectionary, $commonNameInfo{commonName},
+            $self->displayName
+        )
+    );
 
     $self->_setType( $commonNameInfo{type} );
 
@@ -245,8 +251,9 @@ sub _determineDisplayName {
 =cut
 
 sub _determineAltName {
-    my $tradition  = shift;
-    my $commonName = shift;
+    my $tradition   = shift;
+    my $commonName  = shift;
+    my $displayName = shift;
 
     my $parser = XML::LibXML->new();
     my $data_location;
@@ -286,7 +293,7 @@ sub _determineAltName {
             return $commonName;
         }
         elsif ( $altName eq '' ) {
-            return $commonName;
+            return $displayName;
         }
         else {
             return $altName;
