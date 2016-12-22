@@ -120,11 +120,7 @@ sub BUILD {
         _determineDisplayName( $self->lectionary, $commonNameInfo{commonName} )
     );
     $self->_setAltName(
-        _determineAltName(
-            $self->lectionary, $commonNameInfo{commonName},
-            $self->displayName
-        )
-    );
+        _determineAltName( $self->lectionary, $commonNameInfo{commonName} ) );
 
     $self->_setType( $commonNameInfo{type} );
 

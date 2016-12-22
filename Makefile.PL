@@ -48,6 +48,19 @@ WriteMakefile(
                 web  => 'https://github.com/marmanold/Date-Lectionary',
             },
         },
+        provides => {
+            'Date::Lectionary' => {
+                file => 'lib/Date/Lectionary.pm',
+            },
+            'Date::Lectionary::Day' => {
+                file => 'lib/Date/Lectionary/Day.pm',
+            },
+            'Date::Lectionary::Year' => {
+                file => 'lib/Date/Lectionary/Year.pm',
+            },
+        },
+        keywords  => [qw/ lectionary rcl acna readings christian liturgical /],
+        x_twitter => 'https://www.twitter.com/marmanold/',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES    => 'Date-Lectionary-*' },
