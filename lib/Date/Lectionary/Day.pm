@@ -24,11 +24,11 @@ Date::Lectionary::Day
 
 =head1 VERSION
 
-Version 1.20161218
+Version 1.20161221
 
 =cut
 
-our $VERSION = '1.20161218';
+our $VERSION = '1.20161221';
 
 =head1 SYNOPSIS
 
@@ -251,9 +251,8 @@ sub _determineDisplayName {
 =cut
 
 sub _determineAltName {
-    my $tradition   = shift;
-    my $commonName  = shift;
-    my $displayName = shift;
+    my $tradition  = shift;
+    my $commonName = shift;
 
     my $parser = XML::LibXML->new();
     my $data_location;
@@ -275,9 +274,6 @@ sub _determineAltName {
     try {
         $compiled_xpath = XML::LibXML::XPathExpression->new(
             "/xref/day[\@name=\"$commonName\"]/alt[\@type='$tradition-alt']");
-        $multi_xpath =
-          XML::LibXML::XPathExpression->new(
-            "/xref/day[\@multi=\"$commonName\"]");
     }
     catch {
         confess
@@ -288,16 +284,7 @@ sub _determineAltName {
 
     try {
         $altName = $lectionary->findvalue($compiled_xpath);
-
-        if ( $lectionary->exists($multi_xpath) ) {
-            return $commonName;
-        }
-        elsif ( $altName eq '' ) {
-            return $displayName;
-        }
-        else {
-            return $altName;
-        }
+        return $altName;
     }
     catch {
         confess
@@ -1253,10 +1240,6 @@ L<http://cpanratings.perl.org/d/Date-Lectionary-Day>
 L<http://search.cpan.org/dist/Date-Lectionary-Day/>
 
 =back
-
-
-=head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 

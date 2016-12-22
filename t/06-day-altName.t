@@ -10,38 +10,25 @@ use Date::Lectionary;
 
 my $sunday = Date::Lectionary->new(
     'date' => Time::Piece->strptime( "2017-02-02", "%Y-%m-%d" ) );
-is(
-    $sunday->day->alt,
-    "The Presentation of Christ in the Temple",
-'Validating that 2017-02-02 returns [The Presentation of Christ in the Temple].'
-);
+is( $sunday->day->alt, '', 'Validating that 2017-02-02 returns nothing.' );
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-02-02", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is(
-    $sunday->day->alt,
-    "Presentation of the Lord",
-    'Validating that 2017-02-02 returns [Presentation of the Lord].'
-);
+is( $sunday->day->alt, '', 'Validating that 2017-02-02 returns nothing.' );
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-02-24", "%Y-%m-%d" ),
     'lectionary' => 'acna'
 );
-is( $sunday->day->alt,
-    "St. Matthias", 'Validating that 2017-02-24 returns [St. Matthias].' );
+is( $sunday->day->alt, '', 'Validating that 2017-02-24 returns nothing.' );
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-02-24", "%Y-%m-%d" ),
     'lectionary' => 'rcl'
 );
-is(
-    $sunday->day->alt,
-    "Friday, February 24, 2017",
-    'Validating that 2017-02-24 returns nothing.'
-);
+is( $sunday->day->alt, '', 'Validating that 2017-02-24 returns nothing.' );
 
 $sunday = Date::Lectionary->new(
     'date' => Time::Piece->strptime( "2015-01-11", "%Y-%m-%d" ) );

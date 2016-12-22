@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 36;
 use Test::Exception;
 
 use Time::Piece;
@@ -177,7 +177,6 @@ is(
     'Validating that 2017-08-15 returns nothing for the RCL.'
 );
 
-#8/24 St. Bartholomew
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-08-24", "%Y-%m-%d" ),
     'lectionary' => 'acna'
@@ -198,21 +197,153 @@ is(
     'Validating that 2017-08-24 returns nothing for the RCL.'
 );
 
-#9/14 Holy Cross Day
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-14", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Holy Cross Day",
+    'Validating that 2017-09-14 returns [Holy Cross Day].'
+);
 
-#9/21 St. Matthew
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-14", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Holy Cross Day",
+    'Validating that 2017-09-14 returns [Holy Cross Day].'
+);
 
-#9/29 Holy Michael & All Angels
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-21", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is( $sunday->day->name, "St. Matthew",
+    'Validating that 2017-09-21 returns [St. Matthew].' );
 
-#11/30 St. Andrew
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-21", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Thursday, September 21, 2017",
+    'Validating that 2017-09-21 returns nothing for the RCL.'
+);
 
-#12/21 St. Thomas
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-29", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Holy Michael & All Angels",
+    'Validating that 2017-09-29 returns [Holy Michael & All Angels].'
+);
 
-#12/26 St. Stephen
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-09-29", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Friday, September 29, 2017",
+    'Validating that 2017-09-29 returns nothing for the RCL.'
+);
 
-#12/28 Holy Innocents
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-11-30", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is( $sunday->day->name, "St. Andrew",
+    'Validating that 2017-11-30 returns [St. Andrew].' );
 
-#1/6 The Epiphany
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-11-30", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Thursday, November 30, 2017",
+    'Validating that 2017-11-30 returns nothing for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-21", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is( $sunday->day->name, "St. Thomas",
+    'Validating that 2017-12-21 returns [St. Thomas].' );
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-21", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Thursday, December 21, 2017",
+    'Validating that 2017-12-21 returns nothing for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-26", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is( $sunday->day->name, "St. Stephen",
+    'Validating that 2017-12-26 returns [St. Stephen].' );
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-26", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Tuesday, December 26, 2017",
+    'Validating that 2017-12-26 returns nothing for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-28", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Holy Innocents",
+    'Validating that 2017-12-28 returns [Holy Innocents].'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-12-28", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Thursday, December 28, 2017",
+    'Validating that 2017-12-28 returns nothing for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2018-01-06", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "The Epiphany",
+    'Validating that 2018-01-06 returns [The Epiphany] for the ACNA lectionary.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2018-01-06", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Epiphany of the Lord",
+'Validating that 2018-01-06 returns nothing [Epiphany of the Lord] for the RCL.'
+);
 
 #Good Friday
 
