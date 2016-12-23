@@ -50,7 +50,7 @@ The Time::Piece object date given at object construction.
 
 =head3 lectionary
 
-An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary.  This attribute defaults to 'acna' if no value is given.
+An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary with complementary readings in ordinary time.  This attribute defaults to 'acna' if no value is given.
 
 =head3 day
 

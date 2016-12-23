@@ -25,17 +25,25 @@ The Time::Piece object date given at object construction.
 
 =head3 lectionary
 
-An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary.  This attribute defaults to 'acna' if no value is given.
+An optional attribute given at object creation time.  Valid values are 'acna' for the Anglican Church of North America lectionary and 'rcl' for the Revised Common Lectionary with complementary readings in ordinary time.  This attribute defaults to 'acna' if no value is given.
 
 =head3 day
 
 A Date::Lectionary::Day object containing attributes related to the liturgical day.
 
-type: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
+C<type>: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
 
-name: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
+C<name>: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
 
-alt: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+C<alt>: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+
+C<multiLect>: Returns 'yes' if the day has multiple services with readings associated with it.  (E.g. Christmas Day, Easter, etc.)  Returns 'no' if the day is a normal lectioanry day with only one service and one set of readings.
+
+=head3 year
+
+A Date::Lectionary::Year object containing attributes related to the liturgical year the date given at object construction resides in.
+
+C<name>: Returns 'A', 'B', or 'C' depending on the liturgical year the date given at object construction resides in.
 
 =head3 year
 
@@ -100,6 +108,9 @@ You can also look for information at:
     Search CPAN
         http://search.cpan.org/dist/Date-Lectionary
 
+=head1 ACKNOWLEDGEMENTS
+
+Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
 
 =head1 LICENSE AND COPYRIGHT
 
