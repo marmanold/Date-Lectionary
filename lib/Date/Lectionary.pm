@@ -22,11 +22,11 @@ Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20161222
+Version 1.20161223
 
 =cut
 
-our $VERSION = '1.20161222';
+our $VERSION = '1.20161223';
 
 =head1 SYNOPSIS
 
@@ -56,17 +56,19 @@ An optional attribute given at object creation time.  Valid values are 'acna' fo
 
 A Date::Lectionary::Day object containing attributes related to the liturgical day.
 
-type: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
+C<type>: Stores the type of liturgical day. 'fixedFeast' is returned for non-moveable feast days such as Christmas Day. 'moveableFeast' is returned for moveable feast days.  Moveable feasts move to a Monday when they occure on a Sunday. 'Sunday' is returned for non-fixed feast Sundays of the liturgical year.  'noLect' is returned for days with no feast day or Sunday readings.
 
-name: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
+C<name>: The name of the day in the lectionary.  For noLect days a String representation of the day is returned as the name.
 
-alt: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+C<alt>: The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+
+C<multiLect>: Returns 'yes' if the day has multiple services with readings associated with it.  (E.g. Christmas Day, Easter, etc.)  Returns 'no' if the day is a normal lectioanry day with only one service and one set of readings.
 
 =head3 year
 
 A Date::Lectionary::Year object containing attributes related to the liturgical year the date given at object construction resides in.
 
-name: Returns 'A', 'B', or 'C' depending on the liturgical year the date given at object construction resides in.
+C<name>: Returns 'A', 'B', or 'C' depending on the liturgical year the date given at object construction resides in.
 
 =head3 readings
 
@@ -133,7 +135,7 @@ has 'readings' => (
 
 =head2 BUILD
 
-Constructor for the Date::Lectionary object.  Takes a Time::Piect object, date, to create the object.
+Constructor for the Date::Lectionary object.  Takes a Time::Piect object, C<date>, to create the object.
 
 =cut
 
@@ -170,7 +172,7 @@ sub BUILD {
 
 =head2 _buildMultiReadings
 
-Private method that returns an ArrayRef of HashRefs for the multiple services and lectionary readings associated wth the date.
+Private method that returns an ArrayRef of HashRefs for the multiple services and lectionary readings associated with the date.
 
 =cut
 

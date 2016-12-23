@@ -24,11 +24,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20161221
+Version 1.20161223
 
 =cut
 
-our $VERSION = '1.20161221';
+our $VERSION = '1.20161223';
 
 =head1 SYNOPSIS
 
@@ -64,6 +64,14 @@ The name of the day in the lectionary.  For noLect days a String representation 
 =head3 alt
 
 The alternative name --- if one is given --- of the day in the lectionary.  If there is no alternative name for the day, then the empty string will be returned.
+
+=head3 multiLect
+
+Returns 'yes' if the day has multiple services with readings associated with it.  (E.g. Christmas Day, Easter, etc.)  Returns 'no' if the day is a normal lectioanry day with only one service and one set of readings.
+
+=head3 subLects
+
+An ArrayRef of the names of the multiple services that occur on a multiLect day.
 
 =cut
 
