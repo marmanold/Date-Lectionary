@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 54;
 use Test::Exception;
 
 use Time::Piece;
@@ -255,6 +255,26 @@ is(
 );
 
 $sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-10-28", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "St. Simon & St. Jude",
+    'Validating that 2017-10-28 returns [Holy Michael & All Angels].'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-10-28", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Saturday, October 28, 2017",
+    'Validating that 2017-10-28 returns nothing for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-11-30", "%Y-%m-%d" ),
     'lectionary' => 'acna'
 );
@@ -342,15 +362,162 @@ $sunday = Date::Lectionary->new(
 is(
     $sunday->day->name,
     "Epiphany of the Lord",
-'Validating that 2018-01-06 returns nothing [Epiphany of the Lord] for the RCL.'
+    'Validating that 2018-01-06 returns [Epiphany of the Lord] for the RCL.'
 );
 
-#Good Friday
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-14", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Good Friday",
+    'Validating that 2017-04-14 returns [Good Friday] for the ACNA lectionary.'
+);
 
-#Maundy Thursday
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-14", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is( $sunday->day->name, "Good Friday",
+    'Validating that 2017-04-14 returns [Good Friday] for the RCL.' );
 
-#Wednesday in Holy Week
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-13", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Maundy Thursday",
+'Validating that 2017-04-13 returns [Maundy Thursday] for the ACNA lectionary.'
+);
 
-#Tuesday in Holy Week
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-13", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Holy Thursday",
+    'Validating that 2017-04-13 returns [Holy Thursday] for the RCL.'
+);
 
-#Monday in Holy Week
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-12", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Wednesday in Holy Week",
+'Validating that 2017-04-12 returns [Wednesday in Holy Week] for the ACNA lectionary.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-12", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Wednesday of Holy Week",
+    'Validating that 2017-04-12 returns [Wednesday of Holy Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-11", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Tuesday in Holy Week",
+'Validating that 2017-04-11 returns [Tuesday in Holy Week] for the ACNA lectionary.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-11", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Tuesday of Holy Week",
+    'Validating that 2017-04-11 returns [Tuesday of Holy Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-10", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is(
+    $sunday->day->name,
+    "Monday in Holy Week",
+'Validating that 2017-04-10 returns [Monday in Holy Week] for the ACNA lectionary.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2017-04-10", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Monday of Holy Week",
+    'Validating that 2017-04-10 returns [Monday of Holy Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-22", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Monday of Easter Week",
+    'Validating that 2019-04-12 returns [Monday of Easter Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-23", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Tuesday of Easter Week",
+    'Validating that 2019-04-23 returns [Tuesday of Easter Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-24", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Wednesday of Easter Week",
+    'Validating that 2019-04-24 returns [Wednesday of Easter Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-25", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Thursday of Easter Week",
+    'Validating that 2019-04-25 returns [Thursday of Easter Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-26", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Friday of Easter Week",
+    'Validating that 2019-04-26 returns [Friday of Easter Week] for the RCL.'
+);
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2019-04-27", "%Y-%m-%d" ),
+    'lectionary' => 'rcl'
+);
+is(
+    $sunday->day->name,
+    "Saturday of Easter Week",
+    'Validating that 2019-04-27 returns [Saturday of Easter Week] for the RCL.'
+);
