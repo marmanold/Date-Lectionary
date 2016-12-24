@@ -8,12 +8,12 @@ use File::ShareDir::Install;
 install_share dist => 'share';
 
 WriteMakefile(
-    NAME               => 'Date::Lectionary',
-    AUTHOR             => q{Michael Wayne Arnold <marmanold@cpan.org>},
-    VERSION_FROM       => 'lib/Date/Lectionary.pm',
-    ABSTRACT           => 'Date::Lectionary',
-    LICENSE            => 'perl_5',
-    PL_FILES           => {},
+    NAME         => 'Date::Lectionary',
+    AUTHOR       => q{Michael Wayne Arnold <marmanold@cpan.org>},
+    VERSION_FROM => 'lib/Date/Lectionary.pm',
+    ABSTRACT     => 'Date::Lectionary - Readings for the Christian Lectionary',
+    LICENSE      => 'perl_5',
+    PL_FILES     => {},
     MIN_PERL_VERSION   => 5.022000,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker'     => 0,
@@ -67,4 +67,4 @@ WriteMakefile(
 );
 
 package MY;
-use File::ShareDir::Install 'postamble';
+use File::ShareDir::Install qw(postamble);

@@ -1,5 +1,5 @@
 ---
-abstract: Date::Lectionary
+abstract: 'Date::Lectionary - Readings for the Christian Lectionary'
 author:
   - 'Michael Wayne Arnold <marmanold@cpan.org>'
 build_requires:
@@ -11,6 +11,13 @@ configure_requires:
   File::ShareDir::Install: '0.11'
 dynamic_config: 0
 generated_by: 'ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.150010'
+keywords:
+  - lectionary
+  - rcl
+  - acna
+  - readings
+  - christian
+  - liturgical
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,6 +27,13 @@ no_index:
   directory:
     - t
     - inc
+provides:
+  Date::Lectionary:
+    file: lib/Date/Lectionary.pm
+  Date::Lectionary::Day:
+    file: lib/Date/Lectionary/Day.pm
+  Date::Lectionary::Year:
+    file: lib/Date/Lectionary/Year.pm
 requires:
   Carp: '1.38'
   Date::Advent: '1.20160727'
@@ -37,5 +51,6 @@ requires:
   perl: '5.022'
 resources:
   repository: git://github.com/marmanold/Date-Lectionary.git
-version: '1.20161218'
+version: '1.20161223'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
+x_twitter: https://www.twitter.com/marmanold/

@@ -1,10 +1,18 @@
 {
-   "abstract" : "Date::Lectionary",
+   "abstract" : "Date::Lectionary - Readings for the Christian Lectionary",
    "author" : [
       "Michael Wayne Arnold <marmanold@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.150010",
+   "keywords" : [
+      "lectionary",
+      "rcl",
+      "acna",
+      "readings",
+      "christian",
+      "liturgical"
+   ],
    "license" : [
       "perl_5"
    ],
@@ -52,6 +60,17 @@
          }
       }
    },
+   "provides" : {
+      "Date::Lectionary" : {
+         "file" : "lib/Date/Lectionary.pm"
+      },
+      "Date::Lectionary::Day" : {
+         "file" : "lib/Date/Lectionary/Day.pm"
+      },
+      "Date::Lectionary::Year" : {
+         "file" : "lib/Date/Lectionary/Year.pm"
+      }
+   },
    "release_status" : "stable",
    "resources" : {
       "repository" : {
@@ -60,6 +79,7 @@
          "web" : "https://github.com/marmanold/Date-Lectionary"
       }
    },
-   "version" : "1.20161218",
-   "x_serialization_backend" : "JSON::PP version 2.27400"
+   "version" : "1.20161223",
+   "x_serialization_backend" : "JSON::PP version 2.27400",
+   "x_twitter" : "https://www.twitter.com/marmanold/"
 }
