@@ -380,29 +380,25 @@ sub _determineFeasts {
 
     my $yesterday = $date - ONE_DAY;
 
+    my $yesterdayName;
     if ( $yesterday->wday == 1 ) {
-        my $dayName = _buildMoveableDays( $yesterday, $lectionary );
-        if ($dayName) {
-            return ( commonName => $dayName, type => 'moveableFeast' );
-        }
+        $yesterdayName = _buildMoveableDays( $yesterday, $lectionary );
     }
-    elsif ( $date->wday == 1 ) {
-        my $dayName = _buildFixedDays( $date, $lectionary );
-        if ($dayName) {
-            return ( commonName => $dayName, type => 'fixedFeast' );
-        }
-    }
-    else {
-        my $dayName = _buildFixedDays( $date, $lectionary );
-        if ($dayName) {
-            return ( commonName => $dayName, type => 'fixedFeast' );
-        }
 
-        $dayName = _buildMoveableDays( $date, $lectionary );
-        if ($dayName) {
-            return ( commonName => $dayName, type => 'moveableFeast' );
-        }
+    if ($yesterdayName) {
+        return ( commonName => $yesterdayName, type => 'moveableFeast' );
     }
+
+    my $fixedDayName = _buildFixedDays( $date, $lectionary );
+    if ($fixedDayName) {
+        return ( commonName => $fixedDayName, type => 'fixedFeast' );
+    }
+
+    my $moveableDayName = _buildMoveableDays( $date, $lectionary );
+    if ( $moveableDayName && $date->wday != 1 ) {
+        return ( commonName => $moveableDayName, type => 'moveableFeast' );
+    }
+
     return ( commonName => undef, type => undef );
 }
 

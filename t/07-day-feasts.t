@@ -2,7 +2,7 @@
 use v5.22;
 use strict;
 use warnings;
-use Test::More tests => 54;
+use Test::More tests => 55;
 use Test::Exception;
 
 use Time::Piece;
@@ -307,6 +307,13 @@ is(
     "Thursday, December 21, 2017",
     'Validating that 2017-12-21 returns nothing for the RCL.'
 );
+
+$sunday = Date::Lectionary->new(
+    'date'       => Time::Piece->strptime( "2016-12-26", "%Y-%m-%d" ),
+    'lectionary' => 'acna'
+);
+is( $sunday->day->name, "St. Stephen",
+    'Validating that 2016-12-26 returns [St. Stephen].' );
 
 $sunday = Date::Lectionary->new(
     'date'       => Time::Piece->strptime( "2017-12-26", "%Y-%m-%d" ),
