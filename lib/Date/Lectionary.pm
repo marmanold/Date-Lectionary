@@ -22,11 +22,11 @@ Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20161223
+Version 1.20161227
 
 =cut
 
-our $VERSION = '1.20161223';
+our $VERSION = '1.20161227';
 
 =head1 SYNOPSIS
 

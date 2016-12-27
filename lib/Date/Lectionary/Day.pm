@@ -24,11 +24,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20161223
+Version 1.20161227
 
 =cut
 
-our $VERSION = '1.20161223';
+our $VERSION = '1.20161227';
 
 =head1 SYNOPSIS
 
