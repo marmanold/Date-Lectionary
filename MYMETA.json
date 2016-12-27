@@ -62,13 +62,16 @@
    },
    "provides" : {
       "Date::Lectionary" : {
-         "file" : "lib/Date/Lectionary.pm"
+         "file" : "lib/Date/Lectionary.pm",
+         "version" : "1.20161227"
       },
       "Date::Lectionary::Day" : {
-         "file" : "lib/Date/Lectionary/Day.pm"
+         "file" : "lib/Date/Lectionary/Day.pm",
+         "version" : "1.20161227"
       },
       "Date::Lectionary::Year" : {
-         "file" : "lib/Date/Lectionary/Year.pm"
+         "file" : "lib/Date/Lectionary/Year.pm",
+         "version" : "1.20161227"
       }
    },
    "release_status" : "stable",
@@ -79,7 +82,7 @@
          "web" : "https://github.com/marmanold/Date-Lectionary"
       }
    },
-   "version" : "1.20161223",
+   "version" : "1.20161227",
    "x_serialization_backend" : "JSON::PP version 2.27400",
    "x_twitter" : "https://www.twitter.com/marmanold/"
 }

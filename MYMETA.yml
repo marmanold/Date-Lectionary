@@ -30,10 +30,13 @@ no_index:
 provides:
   Date::Lectionary:
     file: lib/Date/Lectionary.pm
+    version: '1.20161227'
   Date::Lectionary::Day:
     file: lib/Date/Lectionary/Day.pm
+    version: '1.20161227'
   Date::Lectionary::Year:
     file: lib/Date/Lectionary/Year.pm
+    version: '1.20161227'
 requires:
   Carp: '1.38'
   Date::Advent: '1.20160727'
@@ -51,6 +54,6 @@ requires:
   perl: '5.022'
 resources:
   repository: git://github.com/marmanold/Date-Lectionary.git
-version: '1.20161223'
+version: '1.20161227'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
 x_twitter: https://www.twitter.com/marmanold/
