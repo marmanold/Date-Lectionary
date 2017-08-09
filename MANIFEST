@@ -16,7 +16,6 @@ t/05-readings.t
 t/06-day-altName.t
 t/07-day-feasts.t
 t/08-day-includeFeasts.t
-t/manifest.t
 t/pod-coverage.t
 t/pod.t
 xt/boilerplate.t
