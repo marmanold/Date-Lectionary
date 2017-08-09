@@ -6,6 +6,7 @@ use Test::More tests => 2;
 use Test::Exception;
 
 use Time::Piece;
+use Date::Lectionary;
 use Date::Lectionary::Day;
 
 my $sunday = Date::Lectionary::Day->new(
