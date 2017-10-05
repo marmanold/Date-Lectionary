@@ -1,21 +1,31 @@
-sudo: false
 language: perl
 perl:
   - "5.26"
   - "5.24"
   - "5.22"
+  - "dev"
+sudo: false
+
+env:
+  global: 
+    - COVERAGE=1
+    - AUTHOR_TESTING=1
+    - RELEASE_TESTING=1
+    - AUTOMATED_TESTING=1
+    - HARNESS_OPTIONS=c
+    - HARNESS_TIMER=1
+
 
 before_install:
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
-  - source ~/travis-perl-helpers/init
+  - source ~/travis-perl-helpers/init --always-upgrade-modules
   - build-perl
   - perl -V
   - build-dist
   - cd $BUILD_DIR
 
 install:
-  - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1 COVERAGE=1
-  - cpan-install --deps
+  - cpan-install --deps --update-prereqs
   - cpan-install --coverage
 
 after_install:
@@ -25,7 +35,7 @@ before_script:
   - coverage-setup
 
 script:
-  - PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine prove -lrsv t
+  - prove -lrsv t
 
 after_success:
   - coverage-report
