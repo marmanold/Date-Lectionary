@@ -1,6 +1,8 @@
+INSTALL
 lib/Date/Lectionary.pm
 lib/Date/Lectionary/Day.pm
 lib/Date/Lectionary/Year.pm
+LICENSE
 Makefile.PL
 MANIFEST			This list of files
 README.pod
@@ -19,4 +21,3 @@ t/08-day-includeFeasts.t
 t/pod-coverage.t
 t/pod.t
 xt/boilerplate.t
-LICENSE
