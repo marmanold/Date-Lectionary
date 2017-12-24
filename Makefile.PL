@@ -38,6 +38,7 @@ WriteMakefile(
         'namespace::autoclean'         => '0.28',
         'File::Share'                  => '0.25',
         'XML::LibXML'                  => '2.0128',
+        'MooseX::StrictConstructor'    => '0.21',
     },
     META_MERGE => {
         "meta-spec" => { version => 2 },

@@ -46,6 +46,7 @@ requires:
   Moose: '2.1804'
   Moose::Util::TypeConstraints: '2.1804'
   MooseX::Aliases: '0.11'
+  MooseX::StrictConstructor: '0.21'
   Time::Piece: '1.31'
   Time::Seconds: '1.31'
   Try::Tiny: '0.24'
