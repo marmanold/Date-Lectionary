@@ -25,11 +25,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20171223
+Version 1.20180108
 
 =cut
 
-our $VERSION = '1.20171223';
+our $VERSION = '1.20180108';
 
 =head1 SYNOPSIS
 
@@ -776,6 +776,8 @@ sub _determineChristmasEpiphany {
 
     my $ashWednesday = shift;
 
+    my $epiphany = Time::Piece->strptime( $date->year . "-01-06", "%Y-%m-%d" );
+
     #Is the date in Christmastide?
     my $dateMarker = nextSunday( $advent->fourthSunday );
     if ( $date == $dateMarker ) {
@@ -783,8 +785,11 @@ sub _determineChristmasEpiphany {
     }
 
     $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
+    if ( $date == $dateMarker && $date < $epiphany) {
         return "The Second Sunday of Christmas";
+    }
+    elsif ($date == $dateMarker && $date > $epiphany) {
+        return "The First Sunday of Epiphany";
     }
 
     #Is the date in Epiphany?

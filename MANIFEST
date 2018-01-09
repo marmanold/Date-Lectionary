@@ -5,6 +5,8 @@ lib/Date/Lectionary/Year.pm
 LICENSE
 Makefile.PL
 MANIFEST			This list of files
+README
+README.md
 README.pod
 share/acna_lect.xml
 share/date_lectionary_xref.xml

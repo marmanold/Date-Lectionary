@@ -52,15 +52,15 @@ WriteMakefile(
         provides => {
             'Date::Lectionary' => {
                 file    => 'lib/Date/Lectionary.pm',
-                version => '1.20171223',
+                version => '1.20180108',
             },
             'Date::Lectionary::Day' => {
                 file    => 'lib/Date/Lectionary/Day.pm',
-                version => '1.20171223',
+                version => '1.20180108',
             },
             'Date::Lectionary::Year' => {
                 file    => 'lib/Date/Lectionary/Year.pm',
-                version => '1.20171223',
+                version => '1.20180108',
             },
         },
         keywords  => [qw/ lectionary rcl acna readings christian liturgical /],
