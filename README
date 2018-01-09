@@ -2,7 +2,7 @@ NAME
     Date::Lectionary - Readings for the Christian Lectionary
 
 VERSION
-    Version 1.20180108
+    Version 1.20180109
 
 SYNOPSIS
         use Time::Piece;

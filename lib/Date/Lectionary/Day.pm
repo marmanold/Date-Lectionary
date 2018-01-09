@@ -25,11 +25,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20180108
+Version 1.20180109
 
 =cut
 
-our $VERSION = '1.20180108';
+our $VERSION = '1.20180109';
 
 =head1 SYNOPSIS
 
@@ -763,6 +763,29 @@ sub _determineEasterWeek {
     return undef;
 }
 
+=head2 _hasChristmas2
+
+Private method to determine if there is a second Sunday of Christmas in the current liturgical year.  Returns 1 when there is a second Sunday of Christmas and 0 otherwise.
+
+=cut
+
+sub _hasChristmas2 {
+    my $advent   = shift;
+    my $epiphany = shift;
+
+    my $firstChristmas = nextSunday( $advent->fourthSunday );
+    my $dateMarker     = nextSunday($firstChristmas);
+
+    if ( $dateMarker < $epiphany ) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+
+    return 0;
+}
+
 =head2 _determineChristmasEpiphany
 
 Private method that matches the date given at construction against the Sundays in Christmastide and Epiphany.  Returns a string representation of the name of the Sunday in the lectionary.
@@ -776,7 +799,11 @@ sub _determineChristmasEpiphany {
 
     my $ashWednesday = shift;
 
+    my $lectionary = shift;
+
     my $epiphany = Time::Piece->strptime( $date->year . "-01-06", "%Y-%m-%d" );
+
+    my $christmas2 = _hasChristmas2( $advent, $epiphany );
 
     #Is the date in Christmastide?
     my $dateMarker = nextSunday( $advent->fourthSunday );
@@ -785,60 +812,34 @@ sub _determineChristmasEpiphany {
     }
 
     $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker && $date < $epiphany) {
+    if ( $date == $dateMarker && $christmas2 == 1 ) {
         return "The Second Sunday of Christmas";
     }
-    elsif ($date == $dateMarker && $date > $epiphany) {
+    elsif ( $date == $dateMarker ) {
         return "The First Sunday of Epiphany";
     }
+
+    my @epiphanySundays = ( "The First Sunday of Epiphany", "The Second Sunday of Epiphany", "The Third Sunday of Epiphany", "The Fourth Sunday of Epiphany", "The Fifth Sunday of Epiphany", "The Sixth Sunday of Epiphany", "The Seventh Sunday of Epiphany", "The Last Sunday after Epiphany" );
 
     #Is the date in Epiphany?
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The First Sunday of Epiphany";
-    }
+    my $sunCount = 0;
+    foreach my $sunday (@epiphanySundays) {
+        $dateMarker = nextSunday($dateMarker);
+        if ( $date == $dateMarker && $date == prevSunday($ashWednesday) ) {
+            return "The Last Sunday after Epiphany";
+        }
+        if ( $date == $dateMarker && $date == prevSunday( prevSunday($ashWednesday) ) && $lectionary eq 'acna' ) {
+            return "The Second to Last Sunday after Epiphany";
+        }
 
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Second Sunday of Epiphany";
-    }
+        if ( $date == $dateMarker && $christmas2 == 1 ) {
+            return $epiphanySundays[$sunCount];
+        }
+        elsif ( $date == $dateMarker && $christmas2 == 0 ) {
+            return $epiphanySundays[ $sunCount + 1 ];
+        }
 
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Third Sunday of Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Fourth Sunday of Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Fifth Sunday of Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Sixth Sunday of Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Seventh Sunday of Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker && $date != prevSunday($ashWednesday) ) {
-        return "The Second to Last Sunday after Epiphany";
-    }
-    elsif ( $date == $dateMarker && $date == prevSunday($ashWednesday) ) {
-        return "The Last Sunday after Epiphany";
-    }
-
-    $dateMarker = nextSunday($dateMarker);
-    if ( $date == $dateMarker ) {
-        return "The Last Sunday after Epiphany";
+        $sunCount++;
     }
 
     confess "There are no further Sundays of Christmastide or Epiphany.";
@@ -1167,7 +1168,7 @@ sub _determineDay {
     #Sundays of the Liturgical Year
     if ( $date < $ashWednesday ) {
         return (
-            commonName => _determineChristmasEpiphany( $date, $advent, $ashWednesday ),
+            commonName => _determineChristmasEpiphany( $date, $advent, $ashWednesday, $lectionary ),
             type       => 'Sunday'
         );
     }

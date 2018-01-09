@@ -23,11 +23,11 @@ Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20180108
+Version 1.20180109
 
 =cut
 
-our $VERSION = '1.20180108';
+our $VERSION = '1.20180109';
 
 =head1 SYNOPSIS
 
@@ -210,7 +210,7 @@ sub _buildReadings {
         carp "The readings database for the $lectionary lectionary could not be found or parsed.";
     };
 
-    my $compiled_xpath = XML::LibXML::XPathExpression->new( "/lectionary/year[\@name=\"$year\" or \@name=\"holidays\"]/day[\@name=\"$displayName\"]/lesson" );
+    my $compiled_xpath = XML::LibXML::XPathExpression->new("/lectionary/year[\@name=\"$year\" or \@name=\"holidays\"]/day[\@name=\"$displayName\"]/lesson");
 
     my @readings;
     try {
