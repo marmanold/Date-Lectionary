@@ -1,0 +1,5 @@
+Revision history for Date::Lectionary
+
+1.20180313
+
+ - Swtiched from Try::Tiny to Try::Catch & Try::Tiny::Tiny
