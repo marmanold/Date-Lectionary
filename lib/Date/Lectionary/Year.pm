@@ -4,10 +4,12 @@ use v5.22;
 use strict;
 use warnings;
 
+use Try::Tiny::Tiny;
+
 use Moose;
 use MooseX::StrictConstructor;
 use Carp;
-use Try::Tiny;
+use Try::Catch;
 use namespace::autoclean;
 use Moose::Util::TypeConstraints;
 
@@ -17,11 +19,11 @@ Date::Lectionary::Year - Cycle Year for the Lectionary
 
 =head1 VERSION
 
-Version 1.20180302
+Version 1.20180313
 
 =cut
 
-our $VERSION = '1.20180302';
+our $VERSION = '1.20180313';
 
 =head1 SYNOPSIS
 

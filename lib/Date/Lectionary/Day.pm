@@ -4,11 +4,13 @@ use v5.22;
 use strict;
 use warnings;
 
+use Try::Tiny::Tiny;
+
 use Moose;
 use MooseX::StrictConstructor;
 use MooseX::Aliases;
 use Carp;
-use Try::Tiny;
+use Try::Catch;
 use Time::Piece;
 use Time::Seconds;
 use Date::Advent;
@@ -25,11 +27,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20180302
+Version 1.20180313
 
 =cut
 
-our $VERSION = '1.20180302';
+our $VERSION = '1.20180313';
 
 =head1 SYNOPSIS
 
