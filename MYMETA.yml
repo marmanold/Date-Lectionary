@@ -5,6 +5,8 @@ author:
 build_requires:
   Test::CheckManifest: '0.9'
   Test::Exception: '0.43'
+  Test::Kwalitee: '1.27'
+  Test::Kwalitee::Extra: v0.4.0
   Test::More: '1.302040'
 configure_requires:
   ExtUtils::MakeMaker: '0'
@@ -30,13 +32,13 @@ no_index:
 provides:
   Date::Lectionary:
     file: lib/Date/Lectionary.pm
-    version: '1.20180313'
+    version: '1.20180314'
   Date::Lectionary::Day:
     file: lib/Date/Lectionary/Day.pm
-    version: '1.20180313'
+    version: '1.20180314'
   Date::Lectionary::Year:
     file: lib/Date/Lectionary/Year.pm
-    version: '1.20180313'
+    version: '1.20180314'
 requires:
   Carp: '1.38'
   Date::Advent: '1.20171223'
@@ -56,6 +58,6 @@ requires:
   perl: '5.022'
 resources:
   repository: git://github.com/marmanold/Date-Lectionary.git
-version: '1.20180313'
+version: '1.20180314'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
 x_twitter: https://www.twitter.com/marmanold/

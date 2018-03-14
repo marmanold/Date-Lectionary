@@ -2,4 +2,9 @@ Revision history for Date::Lectionary
 
 1.20180313
 
- - Swtiched from Try::Tiny to Try::Catch & Try::Tiny::Tiny
+ - Switched from Try::Tiny to Try::Catch & Try::Tiny::Tiny
+
+1.20180314
+
+ - Corrected issue with Manifest file
+ - Corrected issue with tarball

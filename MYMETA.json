@@ -32,6 +32,8 @@
          "requires" : {
             "Test::CheckManifest" : "0.9",
             "Test::Exception" : "0.43",
+            "Test::Kwalitee" : "1.27",
+            "Test::Kwalitee::Extra" : "v0.4.0",
             "Test::More" : "1.302040"
          }
       },
@@ -65,15 +67,15 @@
    "provides" : {
       "Date::Lectionary" : {
          "file" : "lib/Date/Lectionary.pm",
-         "version" : "1.20180313"
+         "version" : "1.20180314"
       },
       "Date::Lectionary::Day" : {
          "file" : "lib/Date/Lectionary/Day.pm",
-         "version" : "1.20180313"
+         "version" : "1.20180314"
       },
       "Date::Lectionary::Year" : {
          "file" : "lib/Date/Lectionary/Year.pm",
-         "version" : "1.20180313"
+         "version" : "1.20180314"
       }
    },
    "release_status" : "stable",
@@ -84,7 +86,7 @@
          "web" : "https://github.com/marmanold/Date-Lectionary"
       }
    },
-   "version" : "1.20180313",
+   "version" : "1.20180314",
    "x_serialization_backend" : "JSON::PP version 2.97001",
    "x_twitter" : "https://www.twitter.com/marmanold/"
 }

@@ -19,11 +19,11 @@ Date::Lectionary::Year - Cycle Year for the Lectionary
 
 =head1 VERSION
 
-Version 1.20180313
+Version 1.20180314
 
 =cut
 
-our $VERSION = '1.20180313';
+our $VERSION = '1.20180314';
 
 =head1 SYNOPSIS
 
@@ -134,9 +134,9 @@ L<http://search.cpan.org/dist/Date-Lectionary-Year/>
 
 Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
 
-=head1 LICENSE AND COPYRIGHT
+=head1 LICENSE
 
-Copyright 2016-2017 MICHAEL WAYNE ARNOLD
+Copyright 2016-2018 MICHAEL WAYNE ARNOLD
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
