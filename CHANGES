@@ -13,3 +13,7 @@ Revision history for Date::Lectionary
 
  - Added author tests to ensure better distribution quality
  - Tidied up the code a little bit
+
+1.20180410 2018-04-16
+
+ - Corrected the look-up value for the Fourth Sunday of Easter in the ACNA Year B lectionary to resolve an issue for 2018-04-22 was not returning any readings
