@@ -9,7 +9,7 @@ install_share dist => 'share';
 
 WriteMakefile(
     NAME               => 'Date::Lectionary',
-    AUTHOR             => q{Michael Wayne Arnold <marmanold@cpan.org>},
+    AUTHOR             => q{Michael Wayne Arnold <michael@rnold.info>},
     VERSION_FROM       => 'lib/Date/Lectionary.pm',
     ABSTRACT           => 'Date::Lectionary - Readings for the Christian Lectionary',
     LICENSE            => 'freebsd',
@@ -61,15 +61,15 @@ WriteMakefile(
         provides => {
             'Date::Lectionary' => {
                 file    => 'lib/Date/Lectionary.pm', 
-                version => '1.20180417'
+                version => '1.20180418'
             },
             'Date::Lectionary::Day' => {
                 file    => 'lib/Date/Lectionary/Day.pm', 
-                version => '1.20180417'
+                version => '1.20180418'
             },
             'Date::Lectionary::Year' => {
                 file    => 'lib/Date/Lectionary/Year.pm', 
-                version => '1.20180417'
+                version => '1.20180418'
             },
         },
         keywords  => [qw/ lectionary rcl acna readings christian liturgical /],

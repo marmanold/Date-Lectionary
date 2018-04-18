@@ -25,11 +25,11 @@ Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20180417
+Version 1.20180418
 
 =cut
 
-use version; our $VERSION = version->declare("v1.20180417");
+use version; our $VERSION = version->declare("v1.20180418");
 
 =head1 SYNOPSIS
 
@@ -249,9 +249,13 @@ sub _determineAdvent {
 
 =head1 AUTHOR
 
-Michael Wayne Arnold, C<< <marmanold at cpan.org> >>
+Michael Wayne Arnold, C<< <michael at rnold.info> >>
 
 =head1 BUGS
+
+=for html <a href="https://travis-ci.org/marmanold/Date-Lectionary"><img src="https://travis-ci.org/marmanold/Date-Lectionary.svg?branch=master"></a>
+
+=for html <a href='https://coveralls.io/github/marmanold/Date-Lectionary?branch=master'><img src='https://coveralls.io/repos/github/marmanold/Date-Lectionary/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 Please report any bugs or feature requests to C<bug-date-lectionary at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Date-Lectionary>.  I will be notified, and then you'll
