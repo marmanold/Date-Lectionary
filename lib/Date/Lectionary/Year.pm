@@ -19,11 +19,11 @@ Date::Lectionary::Year - Cycle Year for the Lectionary
 
 =head1 VERSION
 
-Version 1.20180417
+Version 1.20180418
 
 =cut
 
-use version; our $VERSION = version->declare("v1.20180417");
+use version; our $VERSION = version->declare("v1.20180418");
 
 =head1 SYNOPSIS
 
@@ -93,7 +93,7 @@ sub _determineYear {
 
 =head1 AUTHOR
 
-Michael Wayne Arnold, C<< <marmanold at cpan.org> >>
+Michael Wayne Arnold, C<< <michael at rnold.info> >>
 
 =head1 BUGS
 
@@ -132,7 +132,7 @@ L<http://search.cpan.org/dist/Date-Lectionary-Year/>
 
 =head1 ACKNOWLEDGEMENTS
 
-Many thanks to my beautiful wife, Jennifer, and my amazing daughter, Rosemary.  But, above all, SOLI DEO GLORIA!
+Many thanks to my beautiful wife, Jennifer, my amazing daughter, Rosemary, and my sweet son, Oliver.  But, above all, SOLI DEO GLORIA!
 
 =head1 LICENSE
 
