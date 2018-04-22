@@ -4,8 +4,6 @@ use v5.22;
 use strict;
 use warnings;
 
-use Try::Tiny::Tiny;
-
 use Moose;
 use MooseX::StrictConstructor;
 use Carp;
@@ -25,11 +23,11 @@ Date::Lectionary - Readings for the Christian Lectionary
 
 =head1 VERSION
 
-Version 1.20180418
+Version 1.20180422
 
 =cut
 
-use version; our $VERSION = version->declare("v1.20180418");
+use version; our $VERSION = version->declare("v1.20180422");
 
 =head1 SYNOPSIS
 
