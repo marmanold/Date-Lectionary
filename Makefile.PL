@@ -16,7 +16,7 @@ WriteMakefile(
     PL_FILES           => {},
     MIN_PERL_VERSION   => 5.022000,
     CONFIGURE_REQUIRES => {
-        'ExtUtils::MakeMaker'     => 0,
+        'ExtUtils::MakeMaker'     => '7.34',
         'File::ShareDir::Install' => '0.11'
     },
     BUILD_REQUIRES => {
@@ -60,15 +60,15 @@ WriteMakefile(
         provides => {
             'Date::Lectionary' => {
                 file    => 'lib/Date/Lectionary.pm', 
-                version => '1.20180423'
+                version => '1.20180625'
             },
             'Date::Lectionary::Day' => {
                 file    => 'lib/Date/Lectionary/Day.pm', 
-                version => '1.20180423'
+                version => '1.20180625'
             },
             'Date::Lectionary::Year' => {
                 file    => 'lib/Date/Lectionary/Year.pm', 
-                version => '1.20180423'
+                version => '1.20180625'
             },
         },
         keywords  => [qw/ lectionary rcl acna readings christian liturgical /],
