@@ -25,11 +25,11 @@ Date::Lectionary::Day - Determines the Day in the Christian Liturgical Year
 
 =head1 VERSION
 
-Version 1.20180625
+Version 1.20190120
 
 =cut
 
-use version; our $VERSION = version->declare("v1.20180625");
+use version; our $VERSION = version->declare("v1.20190120");
 
 =head1 SYNOPSIS
 
@@ -401,7 +401,7 @@ sub _determineFeasts {
     }
 
     my $fixedDayName = _buildFixedDays( $date, $lectionary );
-    if ( $fixedDayName ) {
+    if ($fixedDayName) {
         return (
             commonName => $fixedDayName->{commonName},
             type       => 'fixedFeast',
@@ -877,6 +877,9 @@ sub _determineChristmasEpiphany {
         }
 
         if ( $date == $dateMarker && $christmas2 == 1 ) {
+            return $epiphanySundays[$sunCount];
+        }
+        elsif ( $date == $dateMarker && $epiphany->wday == 1 ) {
             return $epiphanySundays[$sunCount];
         }
         elsif ( $date == $dateMarker && $christmas2 == 0 ) {
