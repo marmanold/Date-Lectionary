@@ -1,5 +1,5 @@
 # Top-level filter (only include the following...)
-^(?!(?:script|examples|lib|inc|t|xt|maint|share)/|(?:(?:Makefile|Build)\.PL|README\.pod|README|LICENSE|README\.md|INSTALL|MANIFEST|Changes|META\.(?:yml|json)|\.xml)$)
+^(?!(?:script|examples|lib|inc|t|xt|maint|share)/|(?:(?:Makefile|Build)\.PL|README\.pod|README|LICENSE|README\.md|INSTALL|MANIFEST|CHANGES|META\.(?:yml|json)|\.xml)$)
 
 # Avoid version control files.
 \bRCS\b

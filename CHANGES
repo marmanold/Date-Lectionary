@@ -29,3 +29,6 @@ Revision history for Date::Lectionary
 
 1.20180423 2018-04-23
  - Force upgrade to Date-Lectionary-Time to 1.20180422.1
+
+1.20190120 2019-01-20
+ - Corrected issue where Sundays in Epiphany would be ahead by one week when Epiphany is on a Sunday.
